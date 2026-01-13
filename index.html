@@ -6,9 +6,9 @@
     <style>
         body { font-family: sans-serif; background: #000; color: #fff; margin: 0; padding-bottom: 120px; }
         .nav { background: #111; padding: 15px; text-align: center; border-bottom: 3px solid #fbbf24; position: sticky; top:0; z-index:100; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        
-        /* LOGO STYLING */
         .logo-icon { width: 50px; height: 50px; margin-bottom: 5px; fill: #fbbf24; }
+        .dev-info { font-size: 0.65rem; color: #888; margin-top: 5px; line-height: 1.4; }
+        .admin-trigger { color: #fbbf24; text-decoration: underline; cursor: pointer; font-weight: bold; margin-top: 5px; font-size: 0.75rem; }
         
         .container { padding: 15px; }
         .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 25px 0 15px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.9rem; }
@@ -36,7 +36,10 @@
             <path d="M12,7V3H2V21H22V7H12M10,19H4V17H10V19M10,15H4V13H10V15M10,11H4V9H10V11M20,19H12V17H20V19M20,15H12V13H20V15M20,11H12V9H20V11Z" />
         </svg>
         <h2 style="color:#fbbf24; margin:0; font-size: 1.1rem;">KENNETH OMONDI SUPPLIES</h2>
-        <div onclick="loginAdmin()" style="font-size:0.7rem; color:#fbbf24; cursor:pointer; text-decoration:underline; margin-top:5px;">Admin Login (1234)</div>
+        <div class="dev-info">
+            Robin | okothrobin323@gmail.com | 0742178833
+        </div>
+        <div class="admin-trigger" onclick="loginAdmin()">Admin Access</div>
     </div>
 
     <div class="container">
@@ -79,14 +82,15 @@
 
     <script>
         function loginAdmin() {
-            let pass = prompt("Enter Admin Password:");
+            let pass = prompt("Security Check - Enter Password:");
             if(pass === "1234") { document.getElementById('admin-sec').style.display = 'block'; window.scrollTo(0, 0); }
+            else { alert("Unauthorized Access Denied."); }
         }
         function savePrices() {
             const keys = ['9d', '9u', '6d', '6u', 'hard', 'mar'];
             keys.forEach(k => localStorage.setItem('price_' + k, document.getElementById('i_' + k).value));
             loadSavedPrices();
-            alert("Prices Saved!");
+            alert("Success! Live prices updated.");
         }
         function loadSavedPrices() {
             const keys = ['9d', '9u', '6d', '6u', 'hard', 'mar'];
@@ -101,7 +105,7 @@
         function sendWA(item, id) {
             let q = document.getElementById('userQty').value;
             let p = document.getElementById(id).innerText;
-            window.open("https://wa.me/254712694976?text=" + encodeURIComponent("Inquiry for " + q + " units of " + item + " @ Ksh " + p), '_blank');
+            window.open("https://wa.me/254712694976?text=" + encodeURIComponent("I want to order " + q + " units of " + item + " @ Ksh " + p), '_blank');
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
