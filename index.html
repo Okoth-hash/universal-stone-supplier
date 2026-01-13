@@ -163,6 +163,72 @@
     <footer class="navy-bg text-white py-10 text-center border-t border-yellow-500/20">
         <p class="text-[10px] text-slate-500 uppercase font-bold tracking-[0.5em]">Kenneth Omondi Ware &copy; 2026 - All Rights Reserved</p>
     </footer>
+    <section id="admin-login" class="py-10 bg-slate-200 border-t-4 border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-slate-600">Supplier Control Panel</h3>
+            <div id="login-form" class="max-w-xs mx-auto flex gap-2">
+                <input type="password" id="pass-input" placeholder="Enter Admin Password" class="w-full p-4 rounded-xl border-none shadow-inner focus:ring-2 focus:ring-yellow-500">
+                <button onclick="checkPass()" class="bg-slate-900 text-white px-6 rounded-xl font-bold">Access</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin-panel" class="hidden py-16 bg-slate-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-10 border-b border-slate-800 pb-6">
+                <h2 class="text-2xl font-black italic uppercase text-yellow-500">Universal Price Manager</h2>
+                <button onclick="logout()" class="text-[10px] font-bold uppercase border border-red-500 text-red-500 px-4 py-1 rounded-full">Lock System</button>
+            </div>
+            
+            <div id="admin-controls" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
+            
+            <div class="mt-10 text-center">
+                <button onclick="saveChanges()" class="bg-green-600 hover:bg-green-500 text-white px-12 py-4 rounded-2xl font-black uppercase shadow-xl transition">Apply New Prices Live</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function checkPass() {
+            const input = document.getElementById('pass-input').value;
+            if(input === "1234") {
+                document.getElementById('admin-login').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                loadAdminControls();
+            } else {
+                alert("Unauthorized Access Denied.");
+            }
+        }
+
+        function loadAdminControls() {
+            const container = document.getElementById('admin-controls');
+            container.innerHTML = products.map((p, index) => 
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">\</p>
+                    <div class="flex items-center gap-2">
+                        <span class="text-slate-400 font-bold text-xs uppercase">Ksh</span>
+                        <input type="number" value="\" id="price-\" class="bg-slate-900 text-white w-full p-2 rounded-lg border border-slate-700 font-black">
+                    </div>
+                </div>
+            ).join('');
+        }
+
+        function saveChanges() {
+            products.forEach((p, index) => {
+                const newPrice = document.getElementById(\price-\\).value;
+                p.price = parseInt(newPrice);
+            });
+            render(); // Refresh the public shop view
+            alert("Universal Prices Updated Successfully!");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function logout() {
+            location.reload();
+        }
+    </script>
 </body>
 </html>
+
 
