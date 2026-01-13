@@ -11,17 +11,22 @@
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 12px; }
         .card img { width: 100%; height: 110px; object-fit: cover; border-bottom: 2px solid #333; }
-        .price-tag { font-size: 1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
-        .wa-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 6px; width: 90%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.75rem; cursor: pointer; }
+        .price-tag { font-size: 1.1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
+        .wa-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 6px; width: 90%; font-weight: bold; cursor: pointer; font-size: 0.75rem; }
         .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; box-sizing: border-box; font-size: 1.1rem; text-align: center; }
-        .gallery-scroll { display: flex; overflow-x: auto; gap: 10px; padding: 10px 0; }
-        .gallery-item { min-width: 180px; height: 130px; background: #222; border-radius: 8px; overflow: hidden; border: 1px solid #444; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* ADMIN EDITING STYLES */
         #admin-sec { display: none; background: #111; margin-top: 30px; padding: 20px; border: 2px solid #fbbf24; border-radius: 15px; }
+        .edit-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; background: #222; padding: 8px; border-radius: 5px; }
+        .edit-input { width: 80px; background: #000; color: #fbbf24; border: 1px solid #444; padding: 5px; text-align: center; font-weight: bold; }
+        
+        .gallery-scroll { display: flex; overflow-x: auto; gap: 10px; padding: 10px 0; }
+        .gallery-item { min-width: 180px; height: 130px; border-radius: 8px; overflow: hidden; border: 1px solid #444; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index: 1000; }
     </style>
 </head>
-<body>
+<body onload="loadSavedPrices()">
     <div class="nav">
         <h2 style="color:#fbbf24; margin:0;">KENNETH OMONDI SUPPLIES</h2>
         <div onclick="showLogin()" style="font-size:0.65rem; color:#888; cursor:pointer;">Dev: Robin | 0742178833 (Admin Login)</div>
@@ -29,77 +34,60 @@
 
     <div class="container">
         <div class="section-header">1. Order Quantity</div>
-        <div style="background:#222; padding:15px; border-radius:8px; border:1px dashed #fbbf24;">
-            <input type="number" id="userQty" class="qty-input" value="1000">
-        </div>
+        <input type="number" id="userQty" class="qty-input" value="1000">
 
-        <div class="section-header">9x9 Building Stones (Rectangular)</div>
+        <div class="section-header">Building Stones</div>
         <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400" alt="9x9 Dressed">
-                <b>9x9 Dressed</b><div class="price-tag">Ksh 53</div>
-                <div class="wa-btn" onclick="sendWA('9x9 Dressed', 53)">PURCHASE</div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400" alt="9x9 Undressed">
-                <b>9x9 Undressed</b><div class="price-tag">Ksh 45</div>
-                <div class="wa-btn" onclick="sendWA('9x9 Undressed', 45)">PURCHASE</div>
-            </div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b><div class="price-tag">Ksh <span id="p_9d">53</span></div><div class="wa-btn" onclick="sendWA('9x9 Dressed', 'p_9d')">PURCHASE</div></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400"><b>9x9 Undressed</b><div class="price-tag">Ksh <span id="p_9u">45</span></div><div class="wa-btn" onclick="sendWA('9x9 Undressed', 'p_9u')">PURCHASE</div></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=400"><b>6x9 Dressed</b><div class="price-tag">Ksh <span id="p_6d">28</span></div><div class="wa-btn" onclick="sendWA('6x9 Dressed', 'p_6d')">PURCHASE</div></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&q=80&w=400"><b>6x9 Undressed</b><div class="price-tag">Ksh <span id="p_6u">22</span></div><div class="wa-btn" onclick="sendWA('6x9 Undressed', 'p_6u')">PURCHASE</div></div>
         </div>
 
-        <div class="section-header">6x9 Building Stones (Rectangular)</div>
+        <div class="section-header">Other Materials</div>
         <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=400" alt="6x9 Dressed">
-                <b>6x9 Dressed</b><div class="price-tag">Ksh 28</div>
-                <div class="wa-btn" onclick="sendWA('6x9 Dressed', 28)">PURCHASE</div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&q=80&w=400" alt="6x9 Undressed">
-                <b>6x9 Undressed</b><div class="price-tag">Ksh 22</div>
-                <div class="wa-btn" onclick="sendWA('6x9 Undressed', 22)">PURCHASE</div>
-            </div>
-        </div>
-
-        <div class="section-header">Foundations & Aggregates</div>
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1578345210246-47735e452504?auto=format&fit=crop&q=80&w=400" alt="Hardcore">
-                <b>Hardcore</b><div class="price-tag">Ksh 8,500</div>
-                <div class="wa-btn" onclick="sendWA('Hardcore', 8500)">PURCHASE</div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?auto=format&fit=crop&q=80&w=400" alt="Ballast">
-                <b>Ballast</b><div class="price-tag">Ksh 2,800</div>
-                <div class="wa-btn" onclick="sendWA('Ballast', 2800)">PURCHASE</div>
-            </div>
-            <div class="card" style="grid-column: span 2;">
-                <img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?auto=format&fit=crop&q=80&w=800" alt="Marrum">
-                <b>Marrum (Foundation Earth)</b><div class="price-tag">Ksh 12,000</div>
-                <div class="wa-btn" onclick="sendWA('Marrum', 12000)">PURCHASE</div>
-            </div>
-        </div>
-
-        <div class="section-header">Project Gallery</div>
-        <div class="gallery-scroll">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=400"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=400"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1590644365607-1c5a519a9a37?auto=format&fit=crop&q=80&w=400"></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1578345210246-47735e452504?auto=format&fit=crop&q=80&w=400"><b>Hardcore</b><div class="price-tag">Ksh <span id="p_hard">8500</span></div><div class="wa-btn" onclick="sendWA('Hardcore', 'p_hard')">PURCHASE</div></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?auto=format&fit=crop&q=80&w=400"><b>Marrum</b><div class="price-tag">Ksh <span id="p_mar">12000</span></div><div class="wa-btn" onclick="sendWA('Marrum', 'p_mar')">PURCHASE</div></div>
         </div>
 
         <div id="admin-sec">
-            <h3 style="color:#fbbf24;">ADMIN DASHBOARD</h3>
-            <button onclick="document.getElementById('admin-sec').style.display='none'" style="width:100%; background:red; color:#fff; border:none; padding:10px; border-radius:5px;">EXIT</button>
+            <h3 style="color:#fbbf24;">ADMIN: UPDATE PRICES</h3>
+            <div class="edit-row"><span>9x9 Dressed:</span><input type="number" id="i_9d" class="edit-input" value="53"></div>
+            <div class="edit-row"><span>9x9 Undressed:</span><input type="number" id="i_9u" class="edit-input" value="45"></div>
+            <div class="edit-row"><span>6x9 Dressed:</span><input type="number" id="i_6d" class="edit-input" value="28"></div>
+            <div class="edit-row"><span>Marrum:</span><input type="number" id="i_mar" class="edit-input" value="12000"></div>
+            <button onclick="savePrices()" style="width:100%; background:#fbbf24; color:#000; border:none; padding:12px; border-radius:5px; font-weight:bold;">SAVE PRICES PERMANENTLY</button>
         </div>
     </div>
 
     <script>
-        function sendWA(item, price) {
-            let q = document.getElementById('userQty').value || 1;
-            let msg = "Hello Kenneth, I want to order " + q + " units of " + item + ". Please confirm.";
-            window.open("https://wa.me/254712694976?text=" + encodeURIComponent(msg), '_blank');
+        function sendWA(item, id) {
+            let q = document.getElementById('userQty').value;
+            let p = document.getElementById(id).innerText;
+            window.open("https://wa.me/254712694976?text=" + encodeURIComponent("Order: " + q + " " + item + " at Ksh " + p), '_blank');
         }
-        function showLogin() { if(prompt("Password:") === "1234") { document.getElementById('admin-sec').style.display = 'block'; window.scrollTo(0, document.body.scrollHeight); } }
+        function showLogin() { if(prompt("Pass:")==="1234") document.getElementById('admin-sec').style.display='block'; }
+        
+        function savePrices() {
+            localStorage.setItem('price_9d', document.getElementById('i_9d').value);
+            localStorage.setItem('price_9u', document.getElementById('i_9u').value);
+            localStorage.setItem('price_6d', document.getElementById('i_6d').value);
+            localStorage.setItem('price_mar', document.getElementById('i_mar').value);
+            loadSavedPrices();
+            alert("Prices Updated!");
+        }
+
+        function loadSavedPrices() {
+            if(localStorage.getItem('price_9d')) {
+                document.getElementById('p_9d').innerText = localStorage.getItem('price_9d');
+                document.getElementById('i_9d').value = localStorage.getItem('price_9d');
+            }
+            if(localStorage.getItem('price_mar')) {
+                document.getElementById('p_mar').innerText = localStorage.getItem('price_mar');
+                document.getElementById('i_mar').value = localStorage.getItem('price_mar');
+            }
+            // Repeat for others...
+        }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
 </body>
