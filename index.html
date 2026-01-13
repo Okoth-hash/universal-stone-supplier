@@ -2,104 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI WARE | ORDER BY FOOT</title>
+    <title>KENNETH OMONDI WARE | PREMIUM STONES</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f1f5f9; font-family: 'Arial Black', sans-serif; }
-        .navy-header { background-color: #0F172A; border-bottom: 4px solid #eab308; }
-        .stone-card { background: white; border: 4px solid #000; padding: 20px; margin-bottom: 20px; }
-        .input-feet { border: 3px solid #000; width: 80px; padding: 5px; text-align: center; font-size: 1.2rem; }
+        body { background-color: #f8fafc; font-family: 'Segoe UI', sans-serif; }
+        .navy-header { background: linear-gradient(to right, #0F172A, #1e293b); border-bottom: 5px solid #eab308; }
+        .stone-card { background: white; border-radius: 15px; overflow: hidden; border: 2px solid #e2e8f0; transition: 0.3s; }
+        .stone-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: #eab308; }
+        .stone-img { height: 200px; width: 100%; object-fit: cover; background: #cbd5e1; }
+        .price-badge { background: #eab308; color: #000; font-weight: 900; padding: 5px 15px; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <nav class="navy-header p-6 text-white text-center">
-        <h1 class="text-3xl font-black text-yellow-400 uppercase">KENNETH OMONDI WARE</h1>
-        <p class="text-xs tracking-widest opacity-80">PRICED PER FOOT - ENTER QUANTITY BELOW</p>
+    <nav class="navy-header p-8 text-white text-center">
+        <h1 class="text-4xl font-black text-yellow-400 tracking-tighter">KENNETH OMONDI WARE</h1>
+        <p class="uppercase tracking-widest text-sm opacity-90">Direct Quarry Supplies  9x9 & 6x6 Specialist</p>
     </nav>
 
-    <div class="container mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2">
-            <h2 class="text-2xl font-black uppercase mb-4">Dressed Stones</h2>
-            <div class="stone-card flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-black">9" x 9" DRESSED</h3>
-                    <p class="text-red-600 font-bold">Ksh 53 / Foot</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <input type="number" id="d99" placeholder="Feet" class="input-feet" oninput="calculate()">
-                </div>
-            </div>
-            <div class="stone-card flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-black">6" x 6" DRESSED</h3>
-                    <p class="text-red-600 font-bold">Ksh 43 / Foot</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <input type="number" id="d66" placeholder="Feet" class="input-feet" oninput="calculate()">
+    <div class="container mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="stone-card">
+                <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Grey Stone">
+                <div class="p-4">
+                    <h3 class="font-black text-xl uppercase">Grey Dressed</h3>
+                    <p class="text-sm text-gray-500 mb-4 italic">Clean, modern, structural finish.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="price-badge text-xl">Ksh 53</span>
+                        <input type="number" id="grey_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
+                    </div>
                 </div>
             </div>
 
-            <h2 class="text-2xl font-black uppercase mb-4 mt-8">Undressed Stones</h2>
-            <div class="stone-card flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-black">9" x 9" UNDRESSED</h3>
-                    <p class="text-red-600 font-bold">Ksh 36 / Foot</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <input type="number" id="u99" placeholder="Feet" class="input-feet" oninput="calculate()">
-                </div>
-            </div>
-            <div class="stone-card flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-black">6" x 6" UNDRESSED</h3>
-                    <p class="text-red-600 font-bold">Ksh 28 / Foot</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <input type="number" id="u66" placeholder="Feet" class="input-feet" oninput="calculate()">
+            <div class="stone-card">
+                <img src="https://images.unsplash.com/photo-1590059393165-27a36c6451d6?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Red Stone">
+                <div class="p-4">
+                    <h3 class="font-black text-xl uppercase text-red-700">Red Dressed</h3>
+                    <p class="text-sm text-gray-500 mb-4 italic">Premium decorative exterior stone.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="price-badge text-xl">Ksh 53</span>
+                        <input type="number" id="red_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
+                    </div>
                 </div>
             </div>
+
+            <div class="stone-card">
+                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Black Stone">
+                <div class="p-4">
+                    <h3 class="font-black text-xl uppercase text-gray-900">Black Dressed</h3>
+                    <p class="text-sm text-gray-500 mb-4 italic">Elegant, bold, and high-strength.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="price-badge text-xl">Ksh 53</span>
+                        <input type="number" id="black_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="stone-card">
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Yellow Stone">
+                <div class="p-4">
+                    <h3 class="font-black text-xl uppercase text-yellow-600">Yellow Dressed</h3>
+                    <p class="text-sm text-gray-500 mb-4 italic">Bright, natural, warm aesthetic.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="price-badge text-xl">Ksh 53</span>
+                        <input type="number" id="yellow_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-        <aside class="bg-yellow-400 border-8 border-black p-6 h-fit sticky top-5">
-            <h2 class="text-3xl font-black border-b-4 border-black mb-4">YOUR ORDER</h2>
-            <div id="summary" class="text-lg font-bold space-y-2 mb-6">Enter feet to start...</div>
-            <div class="text-4xl font-black italic">TOTAL:<br>Ksh <span id="grandTotal">0</span></div>
-            <button onclick="sendOrder()" class="w-full bg-black text-white py-4 mt-6 font-black text-xl border-2 border-white">SEND TO KENNETH</button>
-        </aside>
+        
+        <div class="mt-10 text-center">
+            <button onclick="window.location.href='sms:0712694976'" class="bg-black text-white px-10 py-5 rounded-full font-black text-2xl hover:bg-yellow-400 hover:text-black transition">
+                ORDER VIA SMS
+            </button>
+        </div>
     </div>
-
-    <script>
-        function calculate() {
-            let total = 0;
-            let list = "";
-            const items = [
-                { id: 'd99', name: '9x9 Dressed', price: 53 },
-                { id: 'd66', name: '6x6 Dressed', price: 43 },
-                { id: 'u99', name: '9x9 Undressed', price: 36 },
-                { id: 'u66', name: '6x6 Undressed', price: 28 }
-            ];
-            
-            items.forEach(item => {
-                let qty = document.getElementById(item.id).value;
-                if(qty > 0) {
-                    let sub = qty * item.price;
-                    total += sub;
-                    list += "<div>" + item.name + ": " + qty + "ft (Ksh " + sub + ")</div>";
-                }
-            });
-            
-            document.getElementById('grandTotal').innerText = total.toLocaleString();
-            document.getElementById('summary').innerHTML = list || "Enter feet to start...";
-        }
-
-        function sendOrder() {
-            let total = document.getElementById('grandTotal').innerText;
-            if(total == "0") return alert("Please enter the number of feet first!");
-            let body = "ORDER FOR KENNETH:\n" + document.getElementById('summary').innerText.replace(/<\/div>/g, '\n').replace(/<div>/g, '') + "\nTOTAL: Ksh " + total;
-            window.location.href = "sms:0712694976?body=" + encodeURIComponent(body);
-        }
-    </script>
 </body>
 </html>
-
-
