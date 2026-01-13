@@ -10,92 +10,74 @@
         .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 25px 0 10px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.9rem; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 12px; text-align: center; }
-        .price-tag { font-size: 1.1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
-        .wa-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.8rem; cursor: pointer; }
+        .price-tag { font-size: 1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
+        .wa-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.75rem; cursor: pointer; }
         .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; box-sizing: border-box; font-size: 1.1rem; }
-        
         #admin-sec { display: none; background: #111; margin-top: 30px; padding: 20px; border: 2px solid #fbbf24; border-radius: 15px; }
-        .report-box { background: #000; border: 1px solid #333; padding: 10px; border-radius: 8px; margin-top: 15px; font-family: monospace; font-size: 0.8rem; height: 150px; overflow-y: auto; color: #0f0; }
-        .admin-btn { background: #fbbf24; color: #000; border: none; padding: 10px; border-radius: 5px; width: 100%; font-weight: bold; margin-top: 10px; cursor: pointer; }
-        
+        .report-box { background: #000; border: 1px solid #333; padding: 10px; border-radius: 8px; margin-top: 15px; font-family: monospace; font-size: 0.8rem; height: 120px; overflow-y: auto; color: #0f0; }
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index: 1000; }
     </style>
 </head>
 <body>
     <div class="nav">
-        <h2 style="color:#fbbf24; margin:0;">KENNETH OMONDI SUPPLIES</h2>
+        <h2 style="color:#fbbf24; margin:0; font-size: 1.4rem;">KENNETH OMONDI SUPPLIES</h2>
         <div onclick="showLogin()" style="font-size:0.65rem; color:#888; cursor:pointer;">Dev: Robin | 0742178833 (Admin Login)</div>
     </div>
 
     <div class="container">
         <div class="section-header">1. Set Order Quantity</div>
-        <div class="qty-editor"><input type="number" id="userQty" class="qty-input" value="1000"></div>
+        <div style="background:#222; padding:15px; border-radius:8px; border:1px dashed #fbbf24;">
+            <input type="number" id="userQty" class="qty-input" value="1000">
+        </div>
 
-        <div class="section-header">Stone Inventory</div>
+        <div class="section-header">Building Stones</div>
         <div class="grid">
-            <div class="card"><b>9x9 Dressed</b><div class="price-tag">Ksh <span id="p9d">53</span></div><div class="wa-btn" onclick="sendWA('9x9 Dressed', 'p9d')">ORDER</div></div>
-            <div class="card"><b>9x9 Undressed</b><div class="price-tag">Ksh <span id="p9u">45</span></div><div class="wa-btn" onclick="sendWA('9x9 Undressed', 'p9u')">ORDER</div></div>
-            <div class="card"><b>6x9 Dressed</b><div class="price-tag">Ksh <span id="p6d">28</span></div><div class="wa-btn" onclick="sendWA('6x9 Dressed', 'p6d')">ORDER</div></div>
-            <div class="card"><b>6x9 Undressed</b><div class="price-tag">Ksh <span id="p6u">22</span></div><div class="wa-btn" onclick="sendWA('6x9 Undressed', 'p6u')">ORDER</div></div>
+            <div class="card"><b>9x9 Dressed</b><div class="price-tag">Ksh 53</div><div class="wa-btn" onclick="sendWA('9x9 Dressed', 53)">PURCHASE</div></div>
+            <div class="card"><b>9x9 Undressed</b><div class="price-tag">Ksh 45</div><div class="wa-btn" onclick="sendWA('9x9 Undressed', 45)">PURCHASE</div></div>
+            <div class="card"><b>6x9 Dressed</b><div class="price-tag">Ksh 28</div><div class="wa-btn" onclick="sendWA('6x9 Dressed', 28)">PURCHASE</div></div>
+            <div class="card"><b>6x9 Undressed</b><div class="price-tag">Ksh 22</div><div class="wa-btn" onclick="sendWA('6x9 Undressed', 22)">PURCHASE</div></div>
+        </div>
+
+        <div class="section-header">Aggregates & Fills</div>
+        <div class="grid">
+            <div class="card"><b>Hardcore</b><small>7-Ton Lorry</small><div class="price-tag">Ksh 8,500</div><div class="wa-btn" onclick="sendWA('Hardcore Lorry', 8500)">PURCHASE</div></div>
+            <div class="card"><b>Ballast</b><small>per Ton</small><div class="price-tag">Ksh 2,800</div><div class="wa-btn" onclick="sendWA('Ballast Ton', 2800)">PURCHASE</div></div>
+            <div class="card" style="grid-column: span 2;"><b>Marrum</b><small>per Lorry</small><div class="price-tag">Ksh 12,000</div><div class="wa-btn" onclick="sendWA('Marrum Lorry', 12000)">PURCHASE</div></div>
         </div>
 
         <div class="section-header">Education Dashboard</div>
-        <div style="background:#111; padding:15px; border-radius:10px; font-size:0.85rem; color:#aaa; border:1px solid #333;">
-            Construction Tip: 9x9 stones provide better thermal insulation than 6x9 stones.
+        <div style="background:#111; padding:15px; border-radius:10px; font-size:0.85rem; color:#aaa; border: 1px solid #333;">
+            <p><b>Marrum Tip:</b> Quality marrum should have a high clay content for better binding in road and foundation bases.</p>
         </div>
 
         <div id="admin-sec">
-            <h3 style="color:#fbbf24; margin-top:0;">SALES REPORT MANAGER</h3>
-            <div style="background:#222; padding:10px; border-radius:5px; margin-bottom:15px;">
-                <b>Total Session Revenue:</b> <span id="totalRevenue" style="color:#fbbf24;">Ksh 0</span>
-            </div>
-            
-            <div style="font-weight:bold; color:#fbbf24;">Inquiry Activity Log:</div>
-            <div id="salesLog" class="report-box">Ready to track...</div>
-            
-            <button class="admin-btn" onclick="downloadReport()">DOWNLOAD TODAY'S REPORT</button>
-            <button class="admin-btn" style="background:red; color:white; margin-top:20px;" onclick="document.getElementById('admin-sec').style.display='none'">CLOSE ADMIN</button>
+            <h3 style="color:#fbbf24;">ADMIN SALES REPORT</h3>
+            <div style="background:#222; padding:10px; border-radius:5px;"><b>Revenue:</b> <span id="totalRevenue">Ksh 0</span></div>
+            <div id="salesLog" class="report-box">Log Ready...</div>
+            <button onclick="downloadReport()" style="background:#fbbf24; color:#000; border:none; padding:10px; border-radius:5px; width:100%; font-weight:bold; margin-top:10px;">DOWNLOAD REPORT</button>
+            <button onclick="document.getElementById('admin-sec').style.display='none'" style="background:red; color:white; border:none; padding:10px; border-radius:5px; width:100%; margin-top:10px;">EXIT</button>
         </div>
     </div>
 
     <script>
         let revenue = 0;
-        let logText = "SALES REPORT - KENNETH OMONDI SUPPLIES\n==============================\n";
-
-        function sendWA(item, priceId) {
+        let logText = "SALES REPORT\n";
+        function sendWA(item, price) {
             let q = document.getElementById('userQty').value || 1;
-            let p = document.getElementById(priceId).innerText;
-            let total = q * p;
+            let total = q * price;
             revenue += total;
-            
-            let time = new Date().toLocaleTimeString();
-            let entry = "[" + time + "] " + q + " units of " + item + " (Ksh " + total.toLocaleString() + ")";
-            
-            // Update UI
-            let logDiv = document.getElementById('salesLog');
-            logDiv.innerHTML = entry + "<br>" + logDiv.innerHTML;
+            let entry = "[" + new Date().toLocaleTimeString() + "] " + q + " x " + item + " (Ksh " + total.toLocaleString() + ")";
+            document.getElementById('salesLog').innerHTML = entry + "<br>" + document.getElementById('salesLog').innerHTML;
             document.getElementById('totalRevenue').innerText = "Ksh " + revenue.toLocaleString();
-            
-            // Update Download String
             logText += entry + "\n";
-            
             window.open("https://wa.me/254712694976?text=" + encodeURIComponent("Order: " + q + " " + item), '_blank');
         }
-
         function showLogin() {
-            if(prompt("Admin Password:") === "1234") {
-                document.getElementById('admin-sec').style.display = 'block';
-                window.scrollTo(0, document.body.scrollHeight);
-            }
+            if(prompt("Admin Password:") === "1234") { document.getElementById('admin-sec').style.display = 'block'; window.scrollTo(0, document.body.scrollHeight); }
         }
-
         function downloadReport() {
-            let finalReport = logText + "\nTOTAL PROJECTED REVENUE: Ksh " + revenue.toLocaleString();
-            let blob = new Blob([finalReport], { type: "text/plain" });
-            let a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "Sales_Report_" + new Date().toLocaleDateString() + ".txt";
-            a.click();
+            let blob = new Blob([logText + "\nTotal: Ksh " + revenue.toLocaleString()], { type: "text/plain" });
+            let a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "Sales_Report.txt"; a.click();
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
