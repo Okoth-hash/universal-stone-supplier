@@ -4,100 +4,112 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KENNETH OMONDI SUPPLIES</title>
     <style>
-        body { font-family: sans-serif; background: #000; color: #fff; margin: 0; padding-bottom: 120px; }
-        .nav { background: #111; padding: 15px; text-align: center; border-bottom: 3px solid #fbbf24; position: sticky; top:0; z-index:100; display: flex; flex-direction: column; align-items: center; }
-        .logo-icon { width: 45px; height: 45px; margin-bottom: 5px; fill: #fbbf24; }
-        .dev-info { font-size: 0.6rem; color: #888; }
-        .admin-trigger { color: #fbbf24; text-decoration: underline; cursor: pointer; font-size: 0.75rem; margin-top: 8px; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; margin: 0; padding-bottom: 120px; }
+        .nav { background: #111; padding: 15px; text-align: center; border-bottom: 3px solid #fbbf24; position: sticky; top:0; z-index:100; }
+        .logo-icon { width: 45px; height: 45px; fill: #fbbf24; }
+        .admin-trigger { color: #fbbf24; text-decoration: underline; cursor: pointer; font-size: 0.7rem; font-weight: bold; margin-top: 5px; }
         
         .container { padding: 15px; }
-        .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 20px 0 10px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.85rem; }
+        .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 25px 0 10px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.9rem; }
         
-        #admin-sec { display: none; background: #1a1a1a; padding: 20px; border: 2px solid #fbbf24; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
-        .admin-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #222; padding: 8px; border-radius: 6px; }
-        .admin-input { width: 90px; background: #000; color: #fbbf24; border: 1px solid #fbbf24; padding: 6px; text-align: center; border-radius: 4px; }
-        .save-all-btn { background: #fbbf24; color: #000; border: none; padding: 15px; border-radius: 6px; font-weight: 900; width: 100%; cursor: pointer; }
-        .logout-btn { background: transparent; color: #ff4444; border: 1px solid #ff4444; padding: 10px; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px; }
+        /* ADMIN SECTION */
+        #admin-sec { display: none; background: #1a1a1a; padding: 15px; border: 2px solid #fbbf24; border-radius: 12px; margin-bottom: 20px; }
+        .admin-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .admin-input { width: 80px; background: #000; color: #fbbf24; border: 1px solid #fbbf24; text-align: center; }
 
-        .edu-box { background: #111; border-top: 2px solid #fbbf24; padding: 20px; margin-top: 40px; border-radius: 15px 15px 0 0; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 10px; }
+        /* ORDER SPECS */
+        .qty-box { background: #111; padding: 15px; border-radius: 10px; border: 1px solid #333; }
+        .qty-input { width: 100%; padding: 15px; background: #222; color: #fbbf24; border: 2px solid #fbbf24; border-radius: 6px; font-size: 1.2rem; text-align: center; font-weight: bold; }
+
+        /* PRODUCT GRID */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+        .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; position: relative; padding-bottom: 10px;}
         .card img { width: 100%; height: 100px; object-fit: cover; }
-        .price-tag { font-size: 1.1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
-        .wa-btn { background: #25D366; color: white; border: none; padding: 8px; border-radius: 6px; width: 90%; font-weight: bold; font-size: 0.7rem; cursor: pointer; }
-        .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; text-align: center; }
-        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; }
+        .price-tag { font-size: 1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
+        
+        /* CHECKOUT SYSTEM */
+        .checkout-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 6px; width: 90%; font-weight: bold; cursor: pointer; font-size: 0.75rem; text-transform: uppercase; }
+
+        /* EDUCATION AT BOTTOM */
+        .edu-box { background: #111; border-top: 2px solid #fbbf24; padding: 20px; margin-top: 30px; border-radius: 20px 20px 0 0; }
+        .edu-content { font-size: 0.8rem; color: #ccc; line-height: 1.6; }
+
+        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; font-size: 1.2rem; }
     </style>
 </head>
 <body onload="loadSavedPrices()">
     <div class="nav">
         <svg class="logo-icon" viewBox="0 0 24 24"><path d="M12,7V3H2V21H22V7H12M10,19H4V17H10V19M10,15H4V13H10V15M10,11H4V9H10V11M20,19H12V17H20V19M20,15H12V13H20V15M20,11H12V9H20V11Z" /></svg>
-        <h2 style="color:#fbbf24; margin:0; font-size: 1rem;">KENNETH OMONDI SUPPLIES</h2>
-        <div class="dev-info">Robin | okothrobin323@gmail.com | 0742178833</div>
-        <div class="admin-trigger" id="admin-link" onclick="loginAdmin()">OPEN ADMIN UPDATER</div>
+        <h2 style="color:#fbbf24; margin:0; font-size: 1.1rem;">KENNETH OMONDI SUPPLIES</h2>
+        <div style="font-size:0.6rem; color:#888;">Robin | okothrobin323@gmail.com | 0742178833</div>
+        <div class="admin-trigger" id="atrig" onclick="loginAdmin()">ADMIN UPDATER</div>
     </div>
 
     <div class="container">
         <div id="admin-sec">
-            <h3 style="color:#fbbf24; margin-top:0;">Manager Dashboard</h3>
-            <div class="admin-row"><label>9x9 Dressed:</label><input type="number" id="i_9d" class="admin-input" value="53"></div>
-            <div class="admin-row"><label>9x9 Undressed:</label><input type="number" id="i_9u" class="admin-input" value="45"></div>
-            <div class="admin-row"><label>6x9 Dressed:</label><input type="number" id="i_6d" class="admin-input" value="28"></div>
-            <div class="admin-row"><label>6x9 Undressed:</label><input type="number" id="i_6u" class="admin-input" value="22"></div>
-            <div class="admin-row"><label>Hardcore:</label><input type="number" id="i_hard" class="admin-input" value="8500"></div>
-            <div class="admin-row"><label>Marrum:</label><input type="number" id="i_mar" class="admin-input" value="12000"></div>
-            
-            <button class="save-all-btn" onclick="savePrices()">SAVE ALL CHANGES</button>
-            <button class="logout-btn" onclick="logoutAdmin()">LOG OUT & SECURE</button>
+            <h4 style="color:#fbbf24; margin-top:0;">Update Unit Prices</h4>
+            <div class="admin-row"><span>9x9 Dressed:</span><input type="number" id="i_9d" class="admin-input" value="53"></div>
+            <div class="admin-row"><span>6x9 Dressed:</span><input type="number" id="i_6d" class="admin-input" value="28"></div>
+            <div class="admin-row"><span>Hardcore:</span><input type="number" id="i_hard" class="admin-input" value="8500"></div>
+            <div class="admin-row"><span>Ballast:</span><input type="number" id="i_bal" class="admin-input" value="3500"></div>
+            <div class="admin-row"><span>Marrum:</span><input type="number" id="i_mar" class="admin-input" value="12000"></div>
+            <button onclick="savePrices()" style="width:100%; background:#fbbf24; border:none; padding:10px; font-weight:bold; margin-top:10px;">SAVE ALL</button>
+            <button onclick="logoutAdmin()" style="width:100%; background:red; color:#fff; border:none; padding:8px; margin-top:5px;">LOGOUT</button>
         </div>
 
-        <div class="section-header">Order Materials</div>
-        <input type="number" id="userQty" class="qty-input" value="1000">
+        <div class="section-header">Order Specifications</div>
+        <div class="qty-box">
+            <label style="font-size:0.7rem; color:#888;">Enter Required Quantity (Units/Loads):</label>
+            <input type="number" id="userQty" class="qty-input" value="1000">
+        </div>
 
-        <div class="grid" style="margin-top:15px;">
-            <div class="card"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b><div class="price-tag">Ksh <span id="p_9d">53</span></div><div class="wa-btn" onclick="sendWA('9x9 Dressed', 'p_9d')">PURCHASE</div></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400"><b>9x9 Undressed</b><div class="price-tag">Ksh <span id="p_9u">45</span></div><div class="wa-btn" onclick="sendWA('9x9 Undressed', 'p_9u')">PURCHASE</div></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=400"><b>6x9 Dressed</b><div class="price-tag">Ksh <span id="p_6d">28</span></div><div class="wa-btn" onclick="sendWA('6x9 Dressed', 'p_6d')">PURCHASE</div></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&q=80&w=400"><b>6x9 Undressed</b><div class="price-tag">Ksh <span id="p_6u">22</span></div><div class="wa-btn" onclick="sendWA('6x9 Undressed', 'p_6u')">PURCHASE</div></div>
+        <div class="section-header">Building Stones</div>
+        <div class="grid">
+            <div class="card"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b><div class="price-tag">Ksh <span id="p_9d">53</span></div><button class="checkout-btn" onclick="checkout('9x9 Dressed', 'p_9d')">PROCEED TO CHECKOUT</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=400"><b>6x9 Dressed</b><div class="price-tag">Ksh <span id="p_6d">28</span></div><button class="checkout-btn" onclick="checkout('6x9 Dressed', 'p_6d')">PROCEED TO CHECKOUT</button></div>
+        </div>
+
+        <div class="section-header">Marrum, Hardcore & Ballast</div>
+        <div class="grid">
+            <div class="card"><img src="https://images.unsplash.com/photo-1578345210246-47735e452504?auto=format&fit=crop&q=80&w=400"><b>Hardcore</b><div class="price-tag">Ksh <span id="p_hard">8500</span></div><button class="checkout-btn" onclick="checkout('Hardcore', 'p_hard')">PROCEED TO CHECKOUT</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?auto=format&fit=crop&q=80&w=400"><b>Marrum</b><div class="price-tag">Ksh <span id="p_mar">12000</span></div><button class="checkout-btn" onclick="checkout('Marrum', 'p_mar')">PROCEED TO CHECKOUT</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1533036490184-3165b70bb391?auto=format&fit=crop&q=80&w=400"><b>Ballast</b><div class="price-tag">Ksh <span id="p_bal">3500</span></div><button class="checkout-btn" onclick="checkout('Ballast', 'p_bal')">PROCEED TO CHECKOUT</button></div>
         </div>
 
         <div class="edu-box">
-            <h2 style="color:#fbbf24; text-align:center;">BUILDER'S GUIDE</h2>
-            <p style="font-size:0.8rem; color:#ccc; line-height:1.6;">For a standard house requiring 7,000 to 8,000 stones, start with a solid foundation using Marrum and Hardcore. Use 9x9 stones for structural external walls and 6x9 stones for internal partitions...</p>
+            <h3 style="color:#fbbf24; text-align:center;">EDUCATION DASHBOARD</h3>
+            <div class="edu-content">
+                <p><b>Estimating Your Project:</b> For a standard perimeter wall, we recommend a reference of 7,000 to 8,000 stones. Use <b>Hardcore</b> for the base and <b>Ballast</b> for high-strength concrete columns.</p>
+                <p><b>Quality Check:</b> Our Marrum is high-compaction grade, ideal for road works and house foundations to prevent sinking.</p>
+            </div>
         </div>
     </div>
 
     <script>
-        function loginAdmin() {
-            if(prompt("Pass:") === "1234") {
-                document.getElementById('admin-sec').style.display='block';
-                document.getElementById('admin-link').style.display='none';
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            }
-        }
-        function logoutAdmin() {
-            document.getElementById('admin-sec').style.display='none';
-            document.getElementById('admin-link').style.display='block';
-            window.scrollTo({top: 0, behavior: 'smooth'});
-            alert("Logged out successfully.");
-        }
+        function loginAdmin() { if(prompt("Pass:") === "1234") { document.getElementById('admin-sec').style.display='block'; document.getElementById('atrig').style.display='none'; }}
+        function logoutAdmin() { document.getElementById('admin-sec').style.display='none'; document.getElementById('atrig').style.display='block'; }
+        
         function savePrices() {
-            const keys = ['9d', '9u', '6d', '6u', 'hard', 'mar'];
+            const keys = ['9d', '6d', 'hard', 'bal', 'mar'];
             keys.forEach(k => localStorage.setItem('price_' + k, document.getElementById('i_' + k).value));
             loadSavedPrices();
-            alert("Prices Updated!");
+            alert("All prices updated on the live site!");
         }
+
         function loadSavedPrices() {
-            const keys = ['9d', '9u', '6d', '6u', 'hard', 'mar'];
+            const keys = ['9d', '6d', 'hard', 'bal', 'mar'];
             keys.forEach(k => {
                 let s = localStorage.getItem('price_' + k);
                 if(s) { document.getElementById('p_' + k).innerText = s; document.getElementById('i_' + k).value = s; }
             });
         }
-        function sendWA(item, id) {
+
+        function checkout(item, id) {
             let q = document.getElementById('userQty').value;
             let p = document.getElementById(id).innerText;
-            window.open("https://wa.me/254712694976?text=" + encodeURIComponent("Order: " + q + " units of " + item + " @ Ksh " + p), '_blank');
+            let total = q * p.replace(/,/g, '');
+            let msg = "*ORDER SPECIFICATIONS*\n--------------------------\nItem: " + item + "\nQuantity: " + q + "\nUnit Price: Ksh " + p + "\n*ESTIMATED TOTAL: Ksh " + total.toLocaleString() + "*\n\nPlease confirm availability for delivery.";
+            window.open("https://wa.me/254712694976?text=" + encodeURIComponent(msg), '_blank');
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
