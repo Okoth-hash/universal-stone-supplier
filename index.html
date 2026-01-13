@@ -2,119 +2,72 @@
 <html>
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI | CONSTRUCTION SUPPLIES</title>
+    <title>KENNETH OMONDI | SUPPLIES</title>
     <style>
         body { font-family: sans-serif; background: #111; color: white; margin: 0; padding-bottom: 120px; }
-        nav { background: #000; padding: 20px; text-align: center; border-bottom: 5px solid #fbbf24; position: sticky; top: 0; z-index: 100; }
+        nav { background: #000; padding: 20px; text-align: center; border-bottom: 5px solid #fbbf24; }
         .btn-admin { background: #fbbf24; color: #000; border: none; padding: 10px 20px; font-weight: 900; border-radius: 5px; cursor: pointer; }
         .container { padding: 15px; }
-        .section-title { border-left: 5px solid #fbbf24; padding-left: 10px; margin: 25px 0 15px 0; text-transform: uppercase; font-size: 1.2rem; }
+        .section-title { border-left: 5px solid #fbbf24; padding-left: 10px; margin: 25px 0 15px 0; text-transform: uppercase; font-weight: bold; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .card { background: #fff; color: #000; border-radius: 8px; overflow: hidden; text-align: center; border: 2px solid #333; display: flex; flex-direction: column; }
-        .card-header { padding: 15px; font-weight: 900; color: white; font-size: 0.9rem; text-transform: uppercase; }
-        .card-body { padding: 12px; font-weight: bold; background: #fff; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        .price { color: #b91c1c; font-size: 1.1rem; }
+        .card { background: #fff; color: #000; border-radius: 8px; overflow: hidden; text-align: center; border: 2px solid #333; }
+        .card-header { padding: 15px; font-weight: 900; color: white; font-size: 0.8rem; }
+        .price { color: #b91c1c; font-size: 1.1rem; font-weight: bold; }
         .admin-panel { display: none; position: fixed; inset: 0; background: #f4f4f4; color: black; z-index: 2000; padding: 20px; overflow-y: auto; }
-        .edit-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .order-bar { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: black; padding: 20px; text-align: center; font-weight: 900; font-size: 1.2rem; cursor: pointer; border-top: 4px solid #000; }
-        input { width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
-        label { font-size: 0.8rem; color: #666; font-weight: bold; }
+        .order-bar { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: black; padding: 20px; text-align: center; font-weight: 900; cursor: pointer; }
+        input { width: 90%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; }
     </style>
 </head>
 <body>
     <nav>
-        <h1 style="color:#fbbf24; margin:0 0 10px 0;">KENNETH OMONDI SUPPLIES</h1>
+        <h1 style="color:#fbbf24; margin:0;">KENNETH OMONDI SUPPLIES</h1>
         <button class="btn-admin" onclick="openAdmin()">ADMIN LOGIN</button>
     </nav>
-
     <div class="container">
         <div class="section-title">Building Stones</div>
         <div class="grid" id="stones-container"></div>
-
         <div class="section-title">Aggregates & Fills</div>
         <div class="grid" id="aggregates-container"></div>
     </div>
-
-    <div class="order-bar" onclick="sendSMS()">ORDER VIA SMS / CALL</div>
-
+    <div class="order-bar" onclick="window.location.href='sms:+254700000000'">ORDER VIA SMS</div>
     <div id="admin-ui" class="admin-panel">
-        <h2 style="margin-top:0;">MASTER INVENTORY EDITOR</h2>
-        <p>Update prices and quantities below:</p>
+        <h2>INVENTORY & QUANTITY EDITOR</h2>
         <div id="editor-list"></div>
-        <button onclick="saveAll()" style="background:#059669; color:white; width:100%; padding:20px; font-weight:bold; border:none; border-radius:8px; margin-top:10px; font-size:1.1rem;">PUBLISH ALL CHANGES</button>
-        <button onclick="location.reload()" style="width:100%; margin-top:10px; padding:12px; background:#666; color:white; border:none; border-radius:8px;">CANCEL</button>
+        <button onclick="saveAll()" style="background:green; color:white; width:100%; padding:15px; font-weight:bold; border:none; border-radius:8px;">SAVE CHANGES</button>
+        <button onclick="location.reload()" style="width:100%; margin-top:10px; padding:10px; border:none; background:#ccc;">EXIT</button>
     </div>
-
     <script>
-        const defaultData = [
-            { id: 0, name: "Grey Stone", type: "stone", size: "9x9", price: "53", color: "#6b7280" },
-            { id: 1, name: "Red Stone", type: "stone", size: "9x9", price: "53", color: "#991b1b" },
-            { id: 2, name: "Black Stone", type: "stone", size: "6x6", price: "28", color: "#000000" },
-            { id: 3, name: "Yellow Stone", type: "stone", size: "6x6", price: "28", color: "#ca8a04" },
-            { id: 4, name: "Ballast", type: "agg", size: "per Ton", price: "2800", color: "#4b5563" },
-            { id: 5, name: "Murram", type: "agg", size: "per Lorry", price: "12000", color: "#92400e" },
-            { id: 6, name: "Hardcore", type: "agg", size: "per Lorry", price: "8000", color: "#374151" },
-            { id: 7, name: "Sand", type: "agg", size: "per Ton", price: "3500", color: "#d97706" }
+        const defaultInv = [
+            { name: "Grey Stone", type: "stone", size: "9x9", price: "53", color: "#6b7280" },
+            { name: "Red Stone", type: "stone", size: "9x9", price: "53", color: "#991b1b" },
+            { name: "Black Stone", type: "stone", size: "6x6", price: "28", color: "#000" },
+            { name: "Yellow Stone", type: "stone", size: "6x6", price: "28", color: "#ca8a04" },
+            { name: "Ballast", type: "agg", size: "per Ton", price: "2800", color: "#4b5563" },
+            { name: "Murram", type: "agg", size: "per Lorry", price: "12000", color: "#92400e" },
+            { name: "Hardcore", type: "agg", size: "per Lorry", price: "8000", color: "#374151" }
         ];
-
-        let inventory = JSON.parse(localStorage.getItem('k_master_inv')) || defaultData;
-
+        let inv = JSON.parse(localStorage.getItem('k_master_v2')) || defaultInv;
         function render() {
-            const stoneBox = document.getElementById('stones-container');
-            const aggBox = document.getElementById('aggregates-container');
-            const editBox = document.getElementById('editor-list');
-            
-            stoneBox.innerHTML = ''; aggBox.innerHTML = ''; editBox.innerHTML = '';
-
-            inventory.forEach((item, i) => {
-                // Render Public View
-                const card = 
-                    <div class="card">
-                        <div class="card-header" style="background:"></div>
-                        <div class="card-body">
-                            <span></span>
-                            <span class="price">Ksh </span>
-                        </div>
-                    </div>;
-                if(item.type === 'stone') stoneBox.innerHTML += card; else aggBox.innerHTML += card;
-
-                // Render Admin Editor
-                editBox.innerHTML += 
-                    <div class="edit-card">
-                        <div style="font-weight:bold; color:; margin-bottom:10px;"></div>
-                        <label>Price (Ksh)</label>
-                        <input type="number" id="p" value="">
-                        <label>Quantity/Size Label</label>
-                        <input type="text" id="s" value="">
-                    </div>;
+            const sBox = document.getElementById('stones-container');
+            const aBox = document.getElementById('aggregates-container');
+            const eBox = document.getElementById('editor-list');
+            sBox.innerHTML = ''; aBox.innerHTML = ''; eBox.innerHTML = '';
+            inv.forEach((item, i) => {
+                const html = '<div class="card"><div class="card-header" style="background:'+item.color+'">'+item.name+'</div><div style="padding:10px;">'+item.size+'<br><span class="price">Ksh '+item.price+'</span></div></div>';
+                if(item.type === 'stone') sBox.innerHTML += html; else aBox.innerHTML += html;
+                eBox.innerHTML += '<div style="padding:10px; border-bottom:1px solid #ddd;"><b>'+item.name+'</b><br>Price: <input type="number" id="p'+i+'" value="'+item.price+'"><br>Label: <input type="text" id="s'+i+'" value="'+item.size+'"></div>';
             });
         }
-
-        function openAdmin() {
-            if(prompt("Enter Admin Password:") === "1234") {
-                document.getElementById('admin-ui').style.display = 'block';
-            }
-        }
-
+        function openAdmin() { if(prompt("Password:") === "1234") document.getElementById('admin-ui').style.display='block'; }
         function saveAll() {
-            inventory.forEach((item, i) => {
+            inv.forEach((item, i) => { 
                 item.price = document.getElementById('p'+i).value;
                 item.size = document.getElementById('s'+i).value;
             });
-            localStorage.setItem('k_master_inv', JSON.stringify(inventory));
-            alert("Website updated successfully!");
-            location.reload();
+            localStorage.setItem('k_master_v2', JSON.stringify(inv));
+            alert("Visibility Update: Prices saved!"); location.reload();
         }
-
-        function sendSMS() {
-            window.location.href = "sms:+254700000000?body=I want to inquire about construction materials.";
-        }
-
         render();
     </script>
 </body>
 </html>
-
-
-
-
