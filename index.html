@@ -352,8 +352,64 @@
 
     render();
 </script>
+<script>
+    // Initializing Universal Data
+    if (!window.products) {
+        window.products = [
+            { name: "9x9 Dressed Stone", price: 50, stock: 5000, img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400", cat: "stones" },
+            { name: "Ballast (Per Ton)", price: 1800, stock: 50, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400", cat: "aggregates" },
+            { name: "Hardcore (Standard)", price: 900, stock: 1000, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400", cat: "hardcore" },
+            { name: "Marrum (Fine Grade)", price: 1200, stock: 200, img: "https://images.unsplash.com/photo-1590131431182-6256d510e9ae?q=80&w=400", cat: "aggregates" }
+        ];
+    }
+
+    function render() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = products.map((p, index) => {
+            const isOut = p.stock <= 0;
+            return 
+            <div class="bg-white rounded-[2.5rem] shadow-lg border \">
+                <div class="relative">
+                    <img src="\" class="h-48 w-full object-cover">
+                    \
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-black uppercase italic text-xl">\</h3>
+                        <span class="text-[9px] font-black px-2 py-1 bg-slate-100 rounded">\ In Stock</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-black text-slate-900">Ksh \</span>
+                        <button onclick="add('\', \, \)" \ class="bg-yellow-500 px-6 py-2 rounded-xl font-black \">ADD</button>
+                    </div>
+                </div>
+            </div>;
+        }).join('');
+    }
+
+    // Sales Tracking logic for Kenneth's Admin Panel
+    let totalSalesThisMonth = 0;
+    
+    function logOrder(amt) {
+        totalSalesThisMonth += amt;
+        document.getElementById('sales-display').innerText = totalSalesThisMonth.toLocaleString();
+    }
+
+    // Override the SMS function to track sales locally
+    const originalSMS = sendSMS;
+    sendSMS = function() {
+        if(totalVal === 0) return alert("Truck is empty");
+        logOrder(totalVal);
+        const phone = "0712694976";
+        const msg = "ORDER FOR KENNETH: " + truck.join(', ') + ". Total: Ksh " + totalVal;
+        window.location.href = "sms:" + phone + "?body=" + encodeURIComponent(msg);
+    };
+
+    render();
+</script>
 </body>
 </html>
+
 
 
 
