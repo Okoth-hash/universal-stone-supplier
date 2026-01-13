@@ -4,66 +4,61 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KENNETH OMONDI SUPPLIES</title>
     <style>
-        body { font-family: sans-serif; background: #111; color: white; margin: 0; padding-bottom: 120px; }
-        nav { background: #000; padding: 20px; text-align: center; border-bottom: 5px solid #fbbf24; }
-        .btn-admin { background: #fbbf24; color: #000; border: none; padding: 10px 20px; font-weight: 900; border-radius: 5px; cursor: pointer; }
+        body { font-family: sans-serif; background: #000; color: white; margin: 0; padding-bottom: 100px; }
+        nav { background: #000; padding: 20px; text-align: center; border-bottom: 2px solid #fbbf24; }
+        .btn-admin { background: #fbbf24; color: #000; border: none; padding: 8px 15px; font-weight: bold; border-radius: 4px; cursor: pointer; }
         .container { padding: 15px; }
-        .section-title { border-left: 5px solid #fbbf24; padding-left: 10px; margin: 25px 0 10px 0; text-transform: uppercase; font-weight: bold; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .card { background: #fff; color: #000; border-radius: 8px; overflow: hidden; text-align: center; border: 2px solid #333; }
-        .card-header { padding: 15px; font-weight: 900; color: white; font-size: 0.8rem; }
-        .price { color: #b91c1c; font-size: 1.1rem; font-weight: bold; }
-        .admin-panel { display: none; position: fixed; inset: 0; background: #f4f4f4; color: black; z-index: 2000; padding: 20px; overflow-y: auto; }
-        .order-bar { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: black; padding: 20px; text-align: center; font-weight: 900; }
-        input { width: 92%; padding: 12px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .section-header { border-left: 4px solid #fbbf24; padding-left: 10px; margin: 25px 0 15px 0; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
+        .item-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .item-card { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 15px; text-align: center; transition: 0.3s; }
+        .item-card:active { transform: scale(0.95); border-color: #fbbf24; }
+        .item-name { font-weight: bold; font-size: 1rem; margin-bottom: 5px; color: #fbbf24; }
+        .item-spec { font-size: 0.8rem; color: #ccc; margin-bottom: 10px; }
+        .item-price { font-size: 1.1rem; font-weight: 900; color: #fff; }
+        .footer-order { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 20px; text-align: center; font-weight: 900; font-size: 1.2rem; cursor: pointer; text-decoration: none; display: block; }
     </style>
 </head>
 <body>
     <nav>
-        <h1 style="color:#fbbf24; margin:0 0 10px 0;">KENNETH OMONDI</h1>
-        <button class="btn-admin" onclick="auth()">ADMIN LOGIN</button>
+        <h2 style="color:#fbbf24; margin:0 0 10px 0;">KENNETH OMONDI SUPPLIES</h2>
+        <button class="btn-admin" onclick="alert('Login: 1234')">ADMIN LOGIN</button>
     </nav>
     <div class="container">
-        <div class="section-title">Stones (9x9 & 6x6)</div>
-        <div class="grid" id="s-box"></div>
-        <div class="section-title">Aggregates & Fills</div>
-        <div class="grid" id="a-box"></div>
+        <div class="section-header">Building Stones</div>
+        <div class="item-grid">
+            <div class="item-card" onclick="order('9x9 Grey Stone')">
+                <div class="item-name">Grey Stone</div>
+                <div class="item-spec">Size: 9x9</div>
+                <div class="item-price">Ksh 53</div>
+            </div>
+            <div class="item-card" onclick="order('6x6 Black Stone')">
+                <div class="item-name">Black Stone</div>
+                <div class="item-spec">Size: 6x6</div>
+                <div class="item-price">Ksh 28</div>
+            </div>
+        </div>
+        <div class="section-header">Aggregates & Fills</div>
+        <div class="item-grid">
+            <div class="item-card" onclick="order('Ballast')">
+                <div class="item-name">Ballast</div>
+                <div class="item-spec">Unit: per Ton</div>
+                <div class="item-price">Ksh 2,800</div>
+            </div>
+            <div class="item-card" onclick="order('Murram')">
+                <div class="item-name">Murram</div>
+                <div class="item-spec">Unit: per Lorry</div>
+                <div class="item-price">Ksh 12,000</div>
+            </div>
+        </div>
     </div>
-    <div class="order-bar" onclick="window.location.href='sms:+254700000000'">ORDER VIA SMS / CALL</div>
-    <div id="admin-ui" class="admin-panel">
-        <h2>STORE MANAGER</h2>
-        <div id="edit-list"></div>
-        <button onclick="save()" style="background:green; color:white; width:100%; padding:20px; font-weight:bold; border:none; border-radius:8px; font-size:18px;">PUBLISH CHANGES</button>
-        <button onclick="location.reload()" style="width:100%; margin-top:10px; padding:10px; border:none; background:#ccc;">EXIT</button>
-    </div>
+    <a href="sms:+254700000000?body=I want to make an inquiry" class="footer-order">
+        ORDER VIA SMS / CALL
+    </a>
     <script>
-        const items = [
-            { n: "Grey Stone", t: "s", s: "9x9", p: "53", c: "#6b7280" },
-            { n: "Red Stone", t: "s", s: "9x9", p: "53", c: "#991b1b" },
-            { n: "Black Stone", t: "s", s: "6x6", p: "28", c: "#000" },
-            { n: "Yellow Stone", t: "s", s: "6x6", p: "28", c: "#ca8a04" },
-            { n: "Ballast", t: "a", s: "per Ton", p: "2800", c: "#4b5563" },
-            { n: "Murram", t: "a", s: "per Lorry", p: "12000", c: "#92400e" },
-            { n: "Hardcore", t: "a", s: "per Lorry", p: "8000", c: "#374151" }
-        ];
-        let db = JSON.parse(localStorage.getItem('k_master_v5')) || items;
-        function draw() {
-            const sB = document.getElementById('s-box'); const aB = document.getElementById('a-box'); const eB = document.getElementById('edit-list');
-            sB.innerHTML = ''; aB.innerHTML = ''; eB.innerHTML = '';
-            db.forEach((item, i) => {
-                const h = '<div class="card"><div class="card-header" style="background:'+item.c+'">'+item.n+'</div><div style="padding:10px;">'+item.s+'<br><span class="price">Ksh '+item.p+'</span></div></div>';
-                if(item.t === 's') sB.innerHTML += h; else aB.innerHTML += h;
-                eB.innerHTML += '<div style="padding:10px; border-bottom:1px solid #ddd;"><b>'+item.n+'</b><br>Price: <input type="number" id="p'+i+'" value="'+item.p+'"><br>Unit: <input type="text" id="s'+i+'" value="'+item.s+'"></div>';
-            });
+        function order(item) {
+            const msg = "Hello Kenneth, I would like to order: " + item;
+            window.location.href = "sms:+254700000000?body=" + encodeURIComponent(msg);
         }
-        function auth() { if(prompt("Password:") === "1234") document.getElementById('admin-ui').style.display='block'; }
-        function save() {
-            db.forEach((item, i) => { item.p = document.getElementById('p'+i).value; item.s = document.getElementById('s'+i).value; });
-            localStorage.setItem('k_master_v5', JSON.stringify(db));
-            alert("Success: Prices Updated!"); location.reload();
-        }
-        draw();
     </script>
 </body>
 </html>
-
