@@ -19,13 +19,13 @@
                     <h1 class="text-xl md:text-2xl font-black text-yellow-500 italic uppercase">Kenneth Omondi Ware</h1>
                     <p class="text-[9px] tracking-[0.4em] uppercase text-slate-400">Universal Materials & Logistics</p>
                 </div>
-                <a href="tel:+254712694976" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-lg font-black text-xs uppercase">📞 0712 694 976</a>
+                <a href="tel:+254712694976" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-lg font-black text-xs uppercase"> 0712 694 976</a>
             </div>
         </nav>
 
         <section class="bg-white py-6 border-b text-center">
             <h2 class="text-xl font-black uppercase italic">Nyanza Delivery Network</h2>
-            <p class="text-slate-400 text-[9px] font-bold uppercase tracking-widest">Kisumu • Kisii • Homa Bay • Migori • +5KM Border Radius</p>
+            <p class="text-slate-400 text-[9px] font-bold uppercase tracking-widest">Kisumu  Kisii  Homa Bay  Migori  +5KM Border Radius</p>
         </section>
 
         <main class="container mx-auto py-10 px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -34,7 +34,7 @@
             <aside class="bg-white rounded-3xl shadow-2xl border-4 border-slate-900 h-fit sticky top-24 overflow-hidden">
                 <div class="navy-bg text-white p-4 text-center font-black uppercase tracking-widest text-xs">Load Manifest</div>
                 <div class="p-4 bg-slate-100">
-                    <button id="gps-btn" onclick="getSiteLocation()" class="w-full bg-slate-900 text-white py-3 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all">📍 Pin Building Site GPS</button>
+                    <button id="gps-btn" onclick="getSiteLocation()" class="w-full bg-slate-900 text-white py-3 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all"> Pin Building Site GPS</button>
                 </div>
                 <div id="cart-items" class="p-6 space-y-3 min-h-[100px] text-sm italic text-slate-400">Truck is empty...</div>
                 <div class="p-6 bg-slate-50 border-t-2">
@@ -42,8 +42,8 @@
                         <span>Total:</span>
                         <span class="text-indigo-900 font-mono">Ksh <span id="total-val">0</span></span>
                     </div>
-                    <button onclick="sendSMS()" class="w-full bg-blue-600 text-white py-4 rounded-xl font-black uppercase mb-2 shadow-lg">💬 Send Order via SMS</button>
-                    <button onclick="printInvoice()" class="w-full bg-slate-200 text-slate-700 py-3 rounded-xl font-black uppercase text-[10px]">📄 Generate Receipt</button>
+                    <button onclick="sendSMS()" class="w-full bg-blue-600 text-white py-4 rounded-xl font-black uppercase mb-2 shadow-lg"> Send Order via SMS</button>
+                    <button onclick="printInvoice()" class="w-full bg-slate-200 text-slate-700 py-3 rounded-xl font-black uppercase text-[10px]"> Generate Receipt</button>
                 </div>
             </aside>
         </main>
@@ -103,7 +103,7 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition((pos) => {
                     gpsLink = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
-                    btn.innerText = "✅ SITE PINNED";
+                    btn.innerText = " SITE PINNED";
                     btn.classList.replace('bg-slate-900', 'bg-green-600');
                 });
             }
