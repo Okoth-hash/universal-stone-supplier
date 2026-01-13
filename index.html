@@ -2,73 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI WARE | QUARRY SUPPLIES</title>
+    <title>KENNETH OMONDI WARE | COMPLETE SUPPLIES</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f1f5f9; font-family: 'Arial Black', sans-serif; }
-        .material-card { background: white; border: 4px solid #000; overflow: hidden; display: flex; flex-direction: column; }
-        .img-box { height: 120px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: white; border-bottom: 4px solid #000; font-weight: 900; }
-        .bg-ballast { background: linear-gradient(45deg, #1f2937, #4b5563); }
-        .bg-murram { background: linear-gradient(45deg, #92400e, #d97706); }
-        .bg-hardcore { background: linear-gradient(45deg, #4b5563, #9ca3af); }
-        .btn-order { background: #000; color: #fff; width: 100%; padding: 12px; font-weight: 900; border-top: 4px solid #eab308; cursor: pointer; }
+        .card { background: white; border: 4px solid #000; overflow: hidden; display: flex; flex-direction: column; }
+        .img-box { height: 120px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: white; border-bottom: 4px solid #000; font-weight: 900; text-align: center; }
+        .bg-grey { background: #808080; } .bg-red { background: #991b1b; }
+        .bg-black { background: #000; } .bg-yellow { background: #ca8a04; }
+        .bg-ballast { background: #1f2937; } .bg-murram { background: #92400e; } .bg-hardcore { background: #4b5563; }
+        .btn-order { background: #000; color: #fff; width: 100%; padding: 15px; font-weight: 900; border-top: 4px solid #eab308; cursor: pointer; position: sticky; bottom: 0; }
     </style>
 </head>
-<body>
+<body class="pb-24">
     <nav class="bg-slate-900 p-6 text-white text-center border-b-4 border-yellow-500">
         <h1 class="text-3xl uppercase italic text-yellow-400">KENNETH OMONDI WARE</h1>
-        <p class="text-xs tracking-widest uppercase">Stones, Ballast, Murram & Hardcore</p>
+        <p class="text-xs tracking-widest uppercase">Building Stones & Aggregates Specialist</p>
     </nav>
 
     <div class="container mx-auto p-4">
-        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-yellow-500 pl-4">Construction Aggregates</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="material-card">
+        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-yellow-500 pl-4">1. Building Stones (Machine Cut & Quarry)</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="card"><div class="img-box bg-grey">GREY 9x9</div><div class="p-2 text-center font-bold">Ksh 53/ft</div><input type="number" id="qty-grey" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
+            <div class="card"><div class="img-box bg-red">RED 9x9</div><div class="p-2 text-center font-bold">Ksh 53/ft</div><input type="number" id="qty-red" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
+            <div class="card"><div class="img-box bg-black">BLACK 6x6</div><div class="p-2 text-center font-bold">Ksh 28/ft</div><input type="number" id="qty-black" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
+            <div class="card"><div class="img-box bg-yellow text-black">YELLOW 6x6</div><div class="p-2 text-center font-bold">Ksh 28/ft</div><input type="number" id="qty-yellow" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
+        </div>
+
+        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-gray-500 pl-4">2. Aggregates (Lorry Loads)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="card">
                 <div class="img-box bg-ballast">BALLAST</div>
                 <div class="p-4">
-                    <select id="size-ballast" class="w-full border-2 border-black p-2 mb-2 font-bold">
-                        <option value="28000">10 Tonne - Ksh 28,000</option>
-                        <option value="52000">20 Tonne - Ksh 52,000</option>
-                    </select>
-                    <input type="number" id="qty-ballast" value="1" class="w-full border-2 border-black p-2 text-center font-bold">
+                    <select id="price-ballast" class="w-full border-2 border-black p-2 font-bold mb-2"><option value="28000">10T - 28k</option><option value="52000">20T - 52k</option></select>
+                    <input type="number" id="qty-ballast" placeholder="No. of Lorries" class="w-full border-2 border-black p-2 text-center">
                 </div>
-                <button onclick="sendSms('Ballast')" class="btn-order uppercase">Order Ballast</button>
             </div>
-            <div class="material-card">
+            <div class="card">
                 <div class="img-box bg-murram">MURRAM</div>
                 <div class="p-4">
-                    <select id="size-murram" class="w-full border-2 border-black p-2 mb-2 font-bold">
-                        <option value="9000">10 Tonne - Ksh 9,000</option>
-                        <option value="16000">20 Tonne - Ksh 16,000</option>
-                    </select>
-                    <input type="number" id="qty-murram" value="1" class="w-full border-2 border-black p-2 text-center font-bold">
+                    <select id="price-murram" class="w-full border-2 border-black p-2 font-bold mb-2"><option value="9000">10T - 9k</option><option value="16000">20T - 16k</option></select>
+                    <input type="number" id="qty-murram" placeholder="No. of Lorries" class="w-full border-2 border-black p-2 text-center">
                 </div>
-                <button onclick="sendSms('Murram')" class="btn-order uppercase text-yellow-400">Order Murram</button>
             </div>
-            <div class="material-card">
+            <div class="card">
                 <div class="img-box bg-hardcore">HARDCORE</div>
                 <div class="p-4">
-                    <select id="size-hardcore" class="w-full border-2 border-black p-2 mb-2 font-bold">
-                        <option value="12000">10 Tonne - Ksh 12,000</option>
-                        <option value="22000">20 Tonne - Ksh 22,000</option>
-                    </select>
-                    <input type="number" id="qty-hardcore" value="1" class="w-full border-2 border-black p-2 text-center font-bold">
+                    <select id="price-hardcore" class="w-full border-2 border-black p-2 font-bold mb-2"><option value="12000">10T - 12k</option><option value="22000">20T - 22k</option></select>
+                    <input type="number" id="qty-hardcore" placeholder="No. of Lorries" class="w-full border-2 border-black p-2 text-center">
                 </div>
-                <button onclick="sendSms('Hardcore')" class="btn-order uppercase">Order Hardcore</button>
             </div>
         </div>
     </div>
 
+    <button onclick="sendOrder()" class="btn-order text-2xl uppercase">Submit Full Order to Kenneth</button>
+
     <script>
-        function sendSms(item) {
-            const sizeElement = document.getElementById('size-' + item.toLowerCase());
-            const qty = document.getElementById('qty-' + item.toLowerCase()).value;
-            const text = sizeElement.options[sizeElement.selectedIndex].text;
-            const total = sizeElement.value * qty;
-            const message = "ORDER FOR KENNETH:\nItem: " + item + "\nLoad: " + text + "\nQty: " + qty + "\nTOTAL: Ksh " + total;
-            window.location.href = "sms:0712694976?body=" + encodeURIComponent(message);
+        function sendOrder() {
+            let msg = "ORDER FOR KENNETH:\n";
+            if(document.getElementById('qty-grey').value) msg += "- Grey Stone: " + document.getElementById('qty-grey').value + "ft\n";
+            if(document.getElementById('qty-ballast').value) msg += "- Ballast: " + document.getElementById('qty-ballast').value + " Lorry\n";
+            msg += "\nPlease confirm delivery time.";
+            window.location.href = "sms:0712694976?body=" + encodeURIComponent(msg);
         }
     </script>
 </body>
 </html>
- 
