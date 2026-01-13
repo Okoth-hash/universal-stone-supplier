@@ -12,10 +12,9 @@
         .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 15px; text-align: center; }
         .price { font-size: 1.1rem; font-weight: 900; color: #fbbf24; margin: 8px 0; }
         .wa-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.8rem; margin-top:5px; }
-        .edu-box { background: #111; padding: 20px; border-radius: 12px; line-height: 1.8; font-size: 0.95rem; border: 1px solid #444; margin-top: 20px; color: #ccc; }
-        .qty-editor { margin: 10px 0; display: flex; flex-direction: column; gap: 10px; background: #222; padding: 15px; border-radius: 8px; border: 1px dashed #fbbf24; }
-        .qty-input { padding: 10px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; font-size: 1.1rem; text-align: center; }
-        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index:1000; border-top: 2px solid #fff; }
+        .qty-editor { margin: 10px 0; background: #222; padding: 15px; border-radius: 8px; border: 1px dashed #fbbf24; }
+        .qty-input { width: 100%; padding: 10px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; box-sizing: border-box; }
+        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index:1000; }
     </style>
 </head>
 <body>
@@ -24,32 +23,37 @@
         <div style="font-size:0.7rem; color:#888;">Dev: Robin | 0742178833</div>
     </div>
     <div class="container">
-        <div class="section-header">Price Calculator</div>
+        <div class="section-header">Stone Calculator</div>
         <div class="qty-editor">
-            <label>Enter Number of Stones:</label>
-            <input type="number" id="qty" class="qty-input" value="1000" oninput="calcTotal()">
-            <div style="text-align: center; font-weight: bold;">Estimated Total: <span id="total-estimate" style="color:#fbbf24;">Ksh 53,000</span></div>
+            <input type="number" id="qty" class="qty-input" placeholder="Enter amount of stones" oninput="calcTotal()">
+            <div style="margin-top:10px; text-align:center;">Total (9x9): <span id="total-9" style="color:#fbbf24;">Ksh 0</span></div>
+            <div style="text-align:center;">Total (6x6): <span id="total-6" style="color:#fbbf24;">Ksh 0</span></div>
         </div>
-        <div class="section-header">Stones & Hardcore</div>
+        <div class="section-header">9x9 Building Stones</div>
         <div class="grid">
-            <div class="card"><b>9x9 Dressed</b><div class="price">Ksh 53</div><a href="https://wa.me/254712694976?text=Order+9x9+Dressed" class="wa-btn">WHATSAPP</a></div>
-            <div class="card"><b>9x9 Undressed</b><div class="price">Ksh 45</div><a href="https://wa.me/254712694976?text=Order+9x9+Undressed" class="wa-btn">WHATSAPP</a></div>
-            <div class="card"><b>Hardcore</b><small>7-Ton</small><div class="price">Ksh 8,500</div><a href="https://wa.me/254712694976?text=Order+Hardcore" class="wa-btn">WHATSAPP</a></div>
-            <div class="card"><b>Ballast</b><small>per Ton</small><div class="price">Ksh 2,800</div><a href="https://wa.me/254712694976?text=Order+Ballast" class="wa-btn">WHATSAPP</a></div>
+            <div class="card"><b>9x9 Dressed</b><div class="price">Ksh 53</div><a href="https://wa.me/254712694976?text=Order+9x9+Dressed" class="wa-btn">ORDER</a></div>
+            <div class="card"><b>9x9 Undressed</b><div class="price">Ksh 45</div><a href="https://wa.me/254712694976?text=Order+9x9+Undressed" class="wa-btn">ORDER</a></div>
         </div>
-        <div class="section-header">Builders Education Dashboard</div>
-        <div class="edu-box">
-            <h3>Construction Excellence Guide</h3>
-            <p><b>Stone Selection:</b> Machine-cut dressed stones save you thousands in labor and mortar because they fit perfectly. For foundations, undressed stones are ideal due to their lower price point...</p>
-            <p><b>Hardcore Compaction:</b> Never build on loose hardcore. Ensure your 7-ton delivery is spread in layers and watered down for maximum stability. This prevents floor sinking in later years...</p>
-            <p><b>Quantity Control:</b> Always order 5% more stones than your architect's estimate. This covers the inevitable breakage during offloading at the site...</p>
-            <p><i>[Guide continues with detailed site management and material ratio tips for Kenyan builders...]</i></p>
+        <div class="section-header">6x6 Building Stones</div>
+        <div class="grid">
+            <div class="card"><b>6x6 Dressed</b><div class="price">Ksh 28</div><a href="https://wa.me/254712694976?text=Order+6x6+Dressed" class="wa-btn">ORDER</a></div>
+            <div class="card"><b>6x6 Undressed</b><div class="price">Ksh 22</div><a href="https://wa.me/254712694976?text=Order+6x6+Undressed" class="wa-btn">ORDER</a></div>
+        </div>
+        <div class="section-header">Hardcore & Others</div>
+        <div class="grid">
+            <div class="card"><b>Hardcore</b><small>7-Ton</small><div class="price">Ksh 8,500</div><a href="https://wa.me/254712694976?text=Order+Hardcore" class="wa-btn">ORDER</a></div>
+            <div class="card"><b>Ballast</b><small>per Ton</small><div class="price">Ksh 2,800</div><a href="https://wa.me/254712694976?text=Order+Ballast" class="wa-btn">ORDER</a></div>
+        </div>
+        <div class="section-header">Education Dashboard</div>
+        <div style="background:#111; padding:15px; border-radius:10px; font-size:0.9rem; color:#ccc; line-height:1.6;">
+            <p><b>Builder Tip:</b> Use 9x9 stones for load-bearing external walls and 6x6 stones for internal partition walls to maximize space and reduce costs. Always ensure hardcore is compacted before laying the floor slab.</p>
         </div>
     </div>
     <script>
         function calcTotal() {
             let q = document.getElementById('qty').value;
-            document.getElementById('total-estimate').innerText = "Ksh " + (q * 53).toLocaleString();
+            document.getElementById('total-9').innerText = "Ksh " + (q * 53).toLocaleString();
+            document.getElementById('total-6').innerText = "Ksh " + (q * 28).toLocaleString();
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
