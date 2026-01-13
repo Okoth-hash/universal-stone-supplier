@@ -5,78 +5,58 @@
     <title>KENNETH OMONDI | STORE</title>
     <style>
         body { font-family: sans-serif; background: #111; color: white; margin: 0; padding-bottom: 100px; }
-        nav { background: #000; padding: 25px; text-align: center; border-bottom: 5px solid #fbbf24; }
-        .btn-admin { background: #fbbf24; color: #000; border: none; padding: 10px 20px; font-weight: 900; border-radius: 5px; cursor: pointer; text-transform: uppercase; }
+        nav { background: #000; padding: 20px; text-align: center; border-bottom: 5px solid #fbbf24; }
+        .btn-admin { background: #fbbf24; color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 5px; cursor: pointer; }
         .container { padding: 15px; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .card { background: #fff; color: #000; border-radius: 10px; overflow: hidden; text-align: center; border: 3px solid #000; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .header { padding: 20px; font-weight: 900; color: white; font-size: 1.1rem; }
-        .price-tag { padding: 15px; font-size: 1rem; font-weight: bold; background: #f9f9f9; }
+        .card { background: #fff; color: #000; border-radius: 10px; overflow: hidden; text-align: center; border: 2px solid #000; }
+        .header { padding: 15px; font-weight: bold; color: white; }
+        .price-tag { padding: 10px; font-size: 1rem; font-weight: bold; }
         .admin-panel { display: none; position: fixed; inset: 0; background: white; color: black; z-index: 2000; padding: 25px; overflow-y: auto; }
-        .order-bar { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: black; padding: 25px; text-align: center; font-weight: 900; font-size: 1.2rem; cursor: pointer; border-top: 4px solid #000; }
-        .edit-box { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
-        input { width: 90%; padding: 12px; margin: 8px 0; border: 2px solid #000; font-size: 16px; border-radius: 5px; }
+        .order-bar { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: black; padding: 20px; text-align: center; font-weight: bold; font-size: 1.1rem; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 2px solid #000; border-radius: 5px; }
     </style>
 </head>
 <body>
     <nav>
-        <h1 style="color:#fbbf24; margin:0 0 10px 0; font-style: italic; letter-spacing: 1px;">KENNETH OMONDI WARE</h1>
-        <button class="btn-admin" onclick="openLogin()">ADMIN LOGIN</button>
+        <h1 style="color:#fbbf24; margin:0;">KENNETH OMONDI WARE</h1>
+        <button class="btn-admin" onclick="showLogin()">ADMIN LOGIN</button>
     </nav>
-
     <div class="container">
-        <h2 style="border-left: 5px solid #fbbf24; padding-left: 10px; text-transform: uppercase;">1. Building Stones</h2>
+        <h3 style="border-left: 5px solid #fbbf24; padding-left: 10px;">1. BUILDING STONES</h3>
         <div class="grid" id="stone-list"></div>
-        
-        <h2 style="border-left: 5px solid #3b82f6; padding-left: 10px; text-transform: uppercase; margin-top: 30px;">2. Lorry Loads</h2>
-        <div id="lorry-list" style="display: flex; flex-direction: column; gap: 15px;"></div>
     </div>
-
-    <div class="order-bar" onclick="alert('System Ready - SMS Feature Active')">SEND ORDER VIA SMS</div>
-
+    <div class="order-bar" onclick="alert('SMS System Ready')">SEND ORDER VIA SMS</div>
     <div id="admin-ui" class="admin-panel">
-        <h1 style="border-bottom: 5px solid #000; padding-bottom: 10px;">MANAGE PRICES</h1>
+        <h2>PRICE EDITOR</h2>
         <div id="editor-fields"></div>
-        <button onclick="saveChanges()" style="background:#059669; color:white; width:100%; padding:20px; font-weight:900; font-size:18px; border:none; border-radius:8px; margin-top:10px; cursor:pointer;">APPLY CHANGES LIVE</button>
-        <button onclick="location.reload()" style="width:100%; margin-top:15px; padding:12px; background:#ef4444; color:white; border:none; border-radius:8px; font-weight:bold;">CANCEL / EXIT</button>
+        <button onclick="saveChanges()" style="background:green; color:white; width:100%; padding:15px; font-weight:bold; border:none; border-radius:5px; margin-top:10px;">SAVE ALL PRICES</button>
+        <button onclick="location.reload()" style="width:100%; margin-top:10px; padding:10px; border:none; background:#ddd;">EXIT</button>
     </div>
-
     <script>
-        let inv = JSON.parse(localStorage.getItem('k_store_v1')) || [
-            { name: "GREY STONE", size: "9x9", price: "53", color: "#4b5563" },
+        let inventory = JSON.parse(localStorage.getItem('kenneth_inv_v2')) || [
+            { name: "GREY STONE", size: "9x9", price: "53", color: "#6b7280" },
             { name: "RED STONE", size: "9x9", price: "53", color: "#991b1b" },
-            { name: "BLACK STONE", size: "6x6", price: "28", color: "#000000" },
-            { name: "YELLOW STONE", size: "6x6", price: "28", color: "#ca8a04" },
-            { name: "BALLAST (10T)", size: "Full Load", price: "28000", color: "#374151" }
+            { name: "BLACK STONE", size: "6x6", price: "28", color: "#000" }
         ];
-
         function render() {
-            const stones = document.getElementById('stone-list');
-            const lorries = document.getElementById('lorry-list');
+            const list = document.getElementById('stone-list');
             const edit = document.getElementById('editor-fields');
-            stones.innerHTML = ''; lorries.innerHTML = ''; edit.innerHTML = '';
-
-            inv.forEach((item, i) => {
-                let html = '<div class="card"><div class="header" style="background:'+item.color+'">'+item.name+'</div><div class="price-tag">'+item.size+' @ Ksh '+item.price+'</div></div>';
-                if(i < 4) stones.innerHTML += html; else lorries.innerHTML += html;
-                
-                edit.innerHTML += '<div class="edit-box"><b>'+item.name+'</b><br>Price: <input type="number" id="p'+i+'" value="'+item.price+'"><br>Label: <input type="text" id="s'+i+'" value="'+item.size+'"></div>';
+            list.innerHTML = ''; edit.innerHTML = '';
+            inventory.forEach((item, i) => {
+                list.innerHTML += '<div class="card"><div class="header" style="background:'+item.color+'">'+item.name+'</div><div class="price-tag">'+item.size+' @ Ksh '+item.price+'</div></div>';
+                edit.innerHTML += '<div style="margin-bottom:15px;"><b>'+item.name+'</b><br>Price: <input type="number" id="p'+i+'" value="'+item.price+'"></div>';
             });
         }
-
-        function openLogin() {
-            let p = prompt("Enter Password:");
-            if(p === "1234") document.getElementById('admin-ui').style.display = 'block';
-            else if (p !== null) alert("Incorrect Password");
+        function showLogin() {
+            let p = prompt("Enter Admin Password:");
+            if(p === "1234") { document.getElementById('admin-ui').style.display = 'block'; }
+            else if (p !== null) { alert("Wrong Password"); }
         }
-
         function saveChanges() {
-            inv.forEach((item, i) => {
-                item.price = document.getElementById('p'+i).value;
-                item.size = document.getElementById('s'+i).value;
-            });
-            localStorage.setItem('k_store_v1', JSON.stringify(inv));
-            alert("SUCCESS! Website updated.");
+            inventory.forEach((item, i) => { item.price = document.getElementById('p'+i).value; });
+            localStorage.setItem('kenneth_inv_v2', JSON.stringify(inventory));
+            alert("Updated Successfully!");
             location.reload();
         }
         render();
