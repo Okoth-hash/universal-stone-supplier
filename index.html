@@ -4,48 +4,57 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KENNETH OMONDI SUPPLIES</title>
     <style>
-        body { font-family: sans-serif; background: #000; color: white; margin: 0; padding-bottom: 110px; }
-        nav { background: #000; padding: 20px; text-align: center; border-bottom: 3px solid #fbbf24; }
-        .dev-tag { font-size: 0.7rem; color: #666; margin-top: 5px; }
+        body { font-family: sans-serif; background: #000; color: white; margin: 0; padding-bottom: 120px; }
+        nav { background: #111; padding: 20px; text-align: center; border-bottom: 3px solid #fbbf24; }
         .container { padding: 15px; }
-        .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 25px 0 15px 0; font-weight: 900; color: #fbbf24; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; }
-        .card:active { border-color: #fbbf24; background: #1a1a1a; }
-        .price { font-size: 1.2rem; font-weight: 900; color: #fff; margin-top: 5px; }
-        .order-bar { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 18px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.1rem; border-top: 2px solid #fff; }
+        .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 25px 0 10px 0; font-weight: 900; color: #fbbf24; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        /* THE GRAND BUTTONS */
+        .card-button { 
+            background: #222; border: 2px solid #333; border-radius: 12px; padding: 20px; 
+            text-align: center; cursor: pointer; -webkit-tap-highlight-color: transparent;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .card-button:active { background: #fbbf24; color: #000; border-color: #fff; transform: scale(0.98); }
+        .price { font-size: 1.2rem; font-weight: 900; margin-top: 5px; }
+        .order-bar { 
+            position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; 
+            padding: 20px; text-align: center; font-weight: 900; text-decoration: none; 
+            font-size: 1.2rem; display: block; border-top: 2px solid #fff;
+        }
     </style>
 </head>
 <body>
     <nav>
         <h1 style="color:#fbbf24; margin:0;">KENNETH OMONDI SUPPLIES</h1>
-        <div class="dev-tag">Developed by Robin: 0742178833</div>
+        <div style="font-size:0.7rem; color:#666;">Dev: Robin (0742178833)</div>
     </nav>
     <div class="container">
         <div class="section-header">BUILDING STONES</div>
         <div class="grid">
-            <div class="card" onclick="sendSms('9x9 Grey Stone', '53')">
-                <b>Grey Stone</b><br><small>9x9 Machine Cut</small><div class="price">Ksh 53</div>
+            <div class="card-button" onclick="makeOrder('9x9 Grey Stone', '53')">
+                <b>Grey Stone</b><br><small>9x9 Size</small><div class="price">Ksh 53</div>
             </div>
-            <div class="card" onclick="sendSms('6x6 Black Stone', '28')">
-                <b>Black Stone</b><br><small>6x6 Machine Cut</small><div class="price">Ksh 28</div>
+            <div class="card-button" onclick="makeOrder('6x6 Black Stone', '28')">
+                <b>Black Stone</b><br><small>6x6 Size</small><div class="price">Ksh 28</div>
             </div>
         </div>
         <div class="section-header">AGGREGATES & FILLS</div>
         <div class="grid">
-            <div class="card" onclick="sendSms('Ballast', '2800')">
+            <div class="card-button" onclick="makeOrder('Ballast', '2800')">
                 <b>Ballast</b><br><small>per Ton</small><div class="price">Ksh 2,800</div>
             </div>
-            <div class="card" onclick="sendSms('Murram', '12000')">
+            <div class="card-button" onclick="makeOrder('Murram', '12000')">
                 <b>Murram</b><br><small>per Lorry</small><div class="price">Ksh 12,000</div>
             </div>
         </div>
     </div>
-    <a href="tel:+254712694976" class="order-bar">CALL KENNETH TO ORDER</a>
+    <a href="tel:+254712694976" class="order-bar">CALL KENNETH: 0712694976</a>
     <script>
-        function sendSms(item, price) {
-            const body = encodeURIComponent("Hello Kenneth, I want to order " + item + " at Ksh " + price + ". From: [Your Name]");
-            window.location.href = "sms:+254712694976?body=" + body;
+        function makeOrder(item, price) {
+            console.log("Button clicked for: " + item);
+            const msg = encodeURIComponent("Hello Kenneth, I want to order " + item + " at Ksh " + price);
+            window.location.href = "sms:+254712694976?body=" + msg;
         }
     </script>
 </body>
