@@ -14,49 +14,74 @@
         .wa-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.85rem; margin-top:5px; cursor: pointer; }
         .qty-editor { margin: 10px 0; background: #222; padding: 15px; border-radius: 8px; border: 1px dashed #fbbf24; }
         .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; box-sizing: border-box; font-size: 1.1rem; }
-        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index:1000; }
+        
+        /* ADMIN DASHBOARD STYLES */
+        #admin-sec { display: none; background: #1a1a1a; margin-top: 30px; padding: 20px; border: 2px solid #fbbf24; border-radius: 15px; }
+        .admin-stat { background: #222; padding: 10px; margin-bottom: 10px; border-radius: 5px; border-left: 3px solid #fbbf24; }
+        
+        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index: 1000; }
     </style>
 </head>
 <body>
     <div class="nav">
         <h2 style="color:#fbbf24; margin:0;">KENNETH OMONDI SUPPLIES</h2>
-        <div style="font-size:0.7rem; color:#888;">Dev: Robin | 0742178833</div>
+        <div onclick="showLogin()" style="font-size:0.7rem; color:#888; cursor:pointer;">Dev: Robin | 0742178833 (Admin Login)</div>
     </div>
+
     <div class="container">
         <div class="section-header">Step 1: Enter Your Quantity</div>
         <div class="qty-editor">
-            <label style="font-size: 0.8rem; color: #888;">How many items do you need?</label>
             <input type="number" id="userQty" class="qty-input" value="1000" oninput="updateOrders()">
             <div style="margin-top:10px; text-align:center; font-weight: bold;">
                 Total 9x9: <span id="disp9" style="color:#fbbf24;">Ksh 53,000</span> | 
                 Total 6x6: <span id="disp6" style="color:#fbbf24;">Ksh 28,000</span>
             </div>
         </div>
+
         <div class="section-header">Step 2: Select Material</div>
         <div class="grid">
-            <div class="card"><b>9x9 Dressed</b><div class="price">Ksh 53</div><div id="btn9d" class="wa-btn" onclick="sendWA('9x9 Dressed', 53)">ORDER NOW</div></div>
-            <div class="card"><b>6x6 Dressed</b><div class="price">Ksh 28</div><div id="btn6d" class="wa-btn" onclick="sendWA('6x6 Dressed', 28)">ORDER NOW</div></div>
-            <div class="card"><b>Hardcore</b><small>7-Ton</small><div class="price">Ksh 8,500</div><div id="btnh" class="wa-btn" onclick="sendWA('Hardcore Lorry', 8500)">ORDER NOW</div></div>
-            <div class="card"><b>Ballast</b><small>per Ton</small><div class="price">Ksh 2,800</div><div id="btnb" class="wa-btn" onclick="sendWA('Ballast Ton', 2800)">ORDER NOW</div></div>
+            <div class="card"><b>9x9 Dressed</b><div class="price">Ksh 53</div><div class="wa-btn" onclick="sendWA('9x9 Dressed', 53)">ORDER NOW</div></div>
+            <div class="card"><b>6x6 Dressed</b><div class="price">Ksh 28</div><div class="wa-btn" onclick="sendWA('6x6 Dressed', 28)">ORDER NOW</div></div>
+            <div class="card"><b>Hardcore</b><div class="price">Ksh 8,500</div><div class="wa-btn" onclick="sendWA('Hardcore Lorry', 8500)">ORDER NOW</div></div>
+            <div class="card"><b>Ballast</b><div class="price">Ksh 2,800</div><div class="wa-btn" onclick="sendWA('Ballast Ton', 2800)">ORDER NOW</div></div>
         </div>
+
         <div class="section-header">Builders Education Dashboard</div>
-        <div style="background:#111; padding:20px; border-radius:10px; font-size:0.95rem; color:#ccc; line-height:1.8; border: 1px solid #333;">
-            <h3>Pro-Tip for Builders</h3>
-            <p>To prevent wall dampness, always use 9x9 stones for the plinth level (below the DPC) even if you plan to use 6x6 for the rest of the walls. This provides a stronger base for your structure.</p>
+        <div style="background:#111; padding:20px; border-radius:10px; font-size:0.95rem; color:#ccc; border: 1px solid #333;">
+            <p>Always verify the moisture content of your ballast before mixing concrete. For Kenyan black cotton soil, ensure your hardcore is at least 300mm thick for maximum stability.</p>
+        </div>
+
+        <div id="admin-sec">
+            <h3 style="color:#fbbf24; border-bottom:1px solid #333;">MANAGER'S DASHBOARD</h3>
+            <div class="admin-stat"><b>Active Sales:</b> Kenneth Omondi (0712694976)</div>
+            <div class="admin-stat"><b>Price Controls:</b> 9x9 @ 53 | 6x6 @ 28 | Hardcore @ 8,500</div>
+            <div class="admin-stat"><b>Security:</b> WhatsApp Direct-Link Active</div>
+            <button onclick="document.getElementById('admin-sec').style.display='none'" style="background:red; color:white; border:none; padding:10px; border-radius:5px; width:100%;">LOG OUT</button>
         </div>
     </div>
+
     <script>
         function updateOrders() {
             let q = document.getElementById('userQty').value || 0;
             document.getElementById('disp9').innerText = "Ksh " + (q * 53).toLocaleString();
             document.getElementById('disp6').innerText = "Ksh " + (q * 28).toLocaleString();
         }
+
         function sendWA(item, price) {
             let q = document.getElementById('userQty').value || 1;
             let total = q * price;
-            let msg = "Hello Kenneth, I want to order " + q + " units of " + item + ". Total estimate is Ksh " + total.toLocaleString();
-            let url = "https://wa.me/254712694976?text=" + encodeURIComponent(msg);
-            window.open(url, '_blank');
+            let msg = "Hello Kenneth, I want to order " + q + " units of " + item + ". Total: Ksh " + total.toLocaleString();
+            window.open("https://wa.me/254712694976?text=" + encodeURIComponent(msg), '_blank');
+        }
+
+        function showLogin() {
+            let pass = prompt("Enter Admin Password:");
+            if(pass === "1234") {
+                document.getElementById('admin-sec').style.display = 'block';
+                window.scrollTo(0, document.body.scrollHeight);
+            } else {
+                alert("Incorrect Password!");
+            }
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
