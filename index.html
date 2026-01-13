@@ -1,131 +1,72 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI WARE | UNIVERSAL MATERIALS</title>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KENNETH OMONDI WARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f8fafc; color: #000000; font-family: 'Arial Black', sans-serif; }
-        .navy-bg { background-color: #0F172A; }
-        .material-card { border: 6px solid #000000; background: white; transition: transform 0.2s; }
-        .material-card:hover { transform: scale(1.02); }
-        .add-btn { background: #facc15; border: 4px solid #000; font-weight: 900; text-transform: uppercase; }
-        .truck-box { border: 8px solid #000; background: #FEFCE8; }
+        body { background-color: #f8fafc; font-family: 'Arial Black', sans-serif; color: #000; }
+        .navy-nav { background-color: #0F172A; border-bottom: 5px solid #eab308; }
+        .material-card { border: 8px solid #000; background: #fff; padding: 25px; margin-bottom: 25px; }
+        .truck-aside { border: 10px solid #000; background: #fefce8; padding: 30px; }
+        .btn-yellow { background: #eab308; border: 4px solid #000; font-weight: 900; padding: 15px; width: 100%; text-transform: uppercase; font-size: 1.5rem; }
     </style>
 </head>
 <body>
-
-    <nav class="navy-bg text-white p-6 border-b-4 border-yellow-500 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <div>
-                <h1 class="text-3xl font-black text-yellow-500 uppercase italic">KENNETH OMONDI WARE</h1>
-                <p class="text-xs tracking-[0.3em] uppercase text-slate-400 font-bold">Universal Materials & Logistics</p>
-            </div>
-            <a href="tel:+254712694976" class="bg-yellow-500 text-slate-900 px-6 py-3 rounded-xl font-black text-lg">0712 694 976</a>
-        </div>
+    <nav class="navy-nav p-6 text-white text-center">
+        <h1 class="text-4xl font-black italic uppercase text-yellow-400">KENNETH OMONDI WARE</h1>
+        <p class="text-sm tracking-widest uppercase opacity-70">Universal Materials & Logistics</p>
     </nav>
 
-    <section class="bg-white py-4 border-b-2 border-slate-200 text-center">
-        <h2 class="text-xl font-black uppercase italic tracking-widest">NYANZA DELIVERY NETWORK</h2>
-        <p class="text-slate-500 text-[10px] font-bold uppercase">KISUMU  KISII  HOMA BAY  MIGORI  +5KM BORDER RADIUS</p>
-    </section>
+    <div class="bg-white py-3 border-b-2 text-center font-black uppercase italic tracking-tighter">
+        Nyanza Delivery Network: Kisumu  Kisii  Homa Bay  Migori
+    </div>
 
-    <main class="container mx-auto py-12 px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
-        <div class="lg:col-span-2 space-y-8">
-            
-            <div class="material-card p-8">
+    <main class="container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8">
+        <div class="lg:col-span-2">
+            <div class="material-card">
                 <div class="h-6 w-32 bg-red-600 mb-4"></div>
-                <h3 class="text-5xl font-black uppercase mb-4">RED STONES</h3>
-                <p class="text-xl font-bold text-slate-600 mb-6">PREMIUM DECORATIVE QUARRY STONES. PERFECT FOR EXTERIOR WALLS AND FINISHING WORK.</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-4xl font-black">Ksh 55</span>
-                    <button onclick="addToTruck('RED STONES', 55)" class="add-btn px-12 py-5 text-2xl">ADD</button>
+                <h2 class="text-5xl font-black uppercase">Red Stones</h2>
+                <p class="text-2xl font-bold my-4 leading-tight">PREMIUM DECORATIVE QUARRY STONES. BEST FOR EXTERIOR WALLS.</p>
+                <div class="flex justify-between items-center mt-6">
+                    <span class="text-4xl font-black bg-black text-white px-4 py-2">Ksh 55</span>
+                    <button onclick="add('Red Stone', 55)" class="btn-yellow w-auto px-10">ADD TO TRUCK</button>
                 </div>
             </div>
-
-            <div class="material-card p-8">
+            <div class="material-card">
                 <div class="h-6 w-32 bg-slate-500 mb-4"></div>
-                <h3 class="text-5xl font-black uppercase mb-4">GREY STONES</h3>
-                <p class="text-xl font-bold text-slate-600 mb-6">HEAVY-DUTY CONSTRUCTION STONES. BEST FOR FOUNDATIONS, RETAINING WALLS, AND STRUCTURES.</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-4xl font-black">Ksh 50</span>
-                    <button onclick="addToTruck('GREY STONES', 50)" class="add-btn px-12 py-5 text-2xl">ADD</button>
+                <h2 class="text-5xl font-black uppercase">Grey Stones</h2>
+                <p class="text-2xl font-bold my-4 leading-tight">DURABLE CONSTRUCTION STONES. IDEAL FOR FOUNDATIONS.</p>
+                <div class="flex justify-between items-center mt-6">
+                    <span class="text-4xl font-black bg-black text-white px-4 py-2">Ksh 50</span>
+                    <button onclick="add('Grey Stone', 50)" class="btn-yellow w-auto px-10">ADD TO TRUCK</button>
                 </div>
             </div>
-
-            <div class="material-card p-8">
-                <div class="h-6 w-32 bg-slate-800 mb-4"></div>
-                <h3 class="text-5xl font-black uppercase mb-4">BALLAST (3/4)</h3>
-                <p class="text-xl font-bold text-slate-600 mb-6">CRUSHED AGGREGATE FOR CONCRETE MIXING. ESSENTIAL FOR SLABS, LINTELS, AND PILLARS.</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-4xl font-black">Ksh 1800</span>
-                    <button onclick="addToTruck('BALLAST', 1800)" class="add-btn px-12 py-5 text-2xl">ADD</button>
-                </div>
-            </div>
-
         </div>
 
-        <aside class="truck-box p-8 h-fit sticky top-32">
-            <h2 class="text-4xl font-black uppercase border-b-4 border-black pb-2 mb-6 italic">YOUR TRUCK</h2>
-            <div id="truck-list" class="text-xl font-bold space-y-3 mb-10 text-slate-500">The truck is currently empty...</div>
-            
+        <aside class="truck-aside h-fit sticky top-10">
+            <h2 class="text-4xl font-black border-b-4 border-black mb-6 italic uppercase">YOUR TRUCK</h2>
+            <div id="list" class="text-xl font-bold mb-10 italic text-slate-500">Truck is empty...</div>
             <div class="border-t-4 border-black pt-6">
-                <div class="flex justify-between items-baseline mb-8">
-                    <span class="text-3xl font-black uppercase">TOTAL:</span>
-                    <span class="text-5xl font-black text-indigo-900">Ksh <span id="total-price">0</span></span>
-                </div>
-                
-                <button onclick="getGPS()" id="gps-btn" class="w-full bg-white border-4 border-black py-4 font-black text-lg uppercase mb-4"> PIN SITE LOCATION</button>
-                <button onclick="sendSMS()" class="w-full bg-blue-600 text-white py-6 border-4 border-black font-black text-2xl uppercase shadow-[8px_8px_0px_rgba(0,0,0,1)]">SEND ORDER VIA SMS</button>
+                <p class="text-5xl font-black">TOTAL:<br>Ksh <span id="total">0</span></p>
+                <button onclick="sendOrder()" class="btn-yellow bg-black text-white mt-8 h-24 text-3xl">SEND ORDER</button>
             </div>
         </aside>
-
     </main>
 
     <script>
-        let truck = [];
-        let total = 0;
-        let gpsUrl = "";
-
-        function addToTruck(name, price) {
-            truck.push(name);
-            total += price;
-            document.getElementById('total-price').innerText = total.toLocaleString();
-            
-            const list = document.getElementById('truck-list');
-            if(truck.length === 1) list.innerHTML = "";
-            list.innerHTML += \<div class="flex justify-between border-b border-black/10 pb-1"><span>\</span><span>Ksh \</span></div>\;
+        let t = 0; let items = [];
+        function add(n, p) {
+            items.push(n); t += p;
+            document.getElementById('total').innerText = t.toLocaleString();
+            const l = document.getElementById('list');
+            if(items.length === 1) l.innerHTML = "";
+            l.innerHTML += "<div> " + n + "</div>";
         }
-
-        function getGPS() {
-            const btn = document.getElementById('gps-btn');
-            btn.innerText = "LOCATING SITE...";
-            navigator.geolocation.getCurrentPosition((pos) => {
-                gpsUrl = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
-                btn.innerText = " SITE PINNED";
-                btn.classList.replace('bg-white', 'bg-green-400');
-            });
-        }
-
-        function sendSMS() {
-            if(total === 0) return alert("Your truck is empty! Add materials first.");
-            let message = "ORDER FOR KENNETH:\nItems: " + truck.join(", ") + "\nTotal: Ksh " + total;
-            if(gpsUrl) message += "\n\nDelivery Site: " + gpsUrl;
-            
-            window.location.href = "sms:0712694976?body=" + encodeURIComponent(message);
+        function sendOrder() {
+            if(t === 0) return alert('Add items!');
+            window.location.href = "sms:0712694976?body=" + encodeURIComponent("ORDER: " + items.join(', ') + " TOTAL: Ksh " + t);
         }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
