@@ -11,23 +11,26 @@
         .admin-trigger { color: #fbbf24; text-decoration: underline; cursor: pointer; font-size: 0.75rem; margin-top: 8px; font-weight: bold; }
         
         .container { padding: 15px; }
-        .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 20px 0 10px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.85rem; }
+        .section-header { border-left: 5px solid #fbbf24; padding-left: 12px; margin: 25px 0 10px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.85rem; }
         
-        /* FINAL ADMIN DASHBOARD STYLES */
-        #admin-sec { display: none; background: #1a1a1a; padding: 20px; border: 2px solid #fbbf24; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 0 20px rgba(251, 191, 36, 0.2); }
+        #admin-sec { display: none; background: #1a1a1a; padding: 20px; border: 2px solid #fbbf24; border-radius: 12px; margin-bottom: 25px; }
         .admin-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #222; padding: 8px; border-radius: 6px; }
-        .admin-row label { font-size: 0.8rem; color: #ccc; }
-        .admin-input { width: 90px; background: #000; color: #fbbf24; border: 1px solid #fbbf24; padding: 6px; text-align: center; border-radius: 4px; font-weight: bold; }
-        .save-all-btn { background: #fbbf24; color: #000; border: none; padding: 15px; border-radius: 6px; font-weight: 900; width: 100%; cursor: pointer; margin-top: 10px; }
+        .admin-input { width: 90px; background: #000; color: #fbbf24; border: 1px solid #fbbf24; padding: 6px; text-align: center; border-radius: 4px; }
+        .save-all-btn { background: #fbbf24; color: #000; border: none; padding: 15px; border-radius: 6px; font-weight: 900; width: 100%; cursor: pointer; }
 
-        .edu-box { background: #1a1a1a; border: 1px solid #444; border-radius: 10px; padding: 15px; margin-bottom: 20px; }
+        /* EDUCATION AT BOTTOM STYLES */
+        .edu-box { background: #111; border-top: 2px solid #fbbf24; padding: 20px; margin-top: 40px; border-radius: 15px 15px 0 0; }
+        .edu-guide-content { font-size: 0.85rem; line-height: 1.6; color: #ccc; text-align: justify; }
+        .edu-guide-content h4 { color: #fbbf24; margin-top: 20px; text-transform: uppercase; }
+        .calc-area { background: #222; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed #fbbf24; }
+
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 10px; }
-        .card img { width: 100%; height: 100px; object-fit: cover; border-bottom: 1px solid #333; }
+        .card img { width: 100%; height: 100px; object-fit: cover; }
         .price-tag { font-size: 1.1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
         .wa-btn { background: #25D366; color: white; border: none; padding: 8px; border-radius: 6px; width: 90%; font-weight: bold; font-size: 0.7rem; cursor: pointer; }
-        .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; box-sizing: border-box; font-size: 1.1rem; text-align: center; }
-        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index: 1000; }
+        .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; text-align: center; }
+        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; }
     </style>
 </head>
 <body onload="loadSavedPrices()">
@@ -40,70 +43,81 @@
 
     <div class="container">
         <div id="admin-sec">
-            <h3 style="color:#fbbf24; margin-top:0; border-bottom: 1px solid #333; padding-bottom: 10px;">Manager: Update Prices</h3>
-            
+            <h3 style="color:#fbbf24; margin-top:0;">Manager: Update Prices</h3>
             <div class="admin-row"><label>9x9 Dressed:</label><input type="number" id="i_9d" class="admin-input" value="53"></div>
             <div class="admin-row"><label>9x9 Undressed:</label><input type="number" id="i_9u" class="admin-input" value="45"></div>
             <div class="admin-row"><label>6x9 Dressed:</label><input type="number" id="i_6d" class="admin-input" value="28"></div>
             <div class="admin-row"><label>6x9 Undressed:</label><input type="number" id="i_6u" class="admin-input" value="22"></div>
             <div class="admin-row"><label>Hardcore:</label><input type="number" id="i_hard" class="admin-input" value="8500"></div>
             <div class="admin-row"><label>Marrum:</label><input type="number" id="i_mar" class="admin-input" value="12000"></div>
-            
-            <button class="save-all-btn" onclick="savePrices()">SAVE ALL CHANGES PERMANENTLY</button>
-            <button onclick="document.getElementById('admin-sec').style.display='none'" style="width:100%; background:transparent; color:red; border:none; margin-top:15px; cursor:pointer; font-weight:bold;">DISMISS DASHBOARD</button>
+            <button class="save-all-btn" onclick="savePrices()">SAVE ALL CHANGES</button>
         </div>
 
-        <div class="section-header">1. Set Order Quantity</div>
-        <input type="number" id="userQty" class="qty-input" value="1000">
+        <div class="section-header">Order Materials</div>
+        <input type="number" id="userQty" class="qty-input" value="1000" placeholder="Enter Quantity">
 
-        <div class="section-header">Building Stones</div>
-        <div class="grid">
+        <div class="grid" style="margin-top:15px;">
             <div class="card"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b><div class="price-tag">Ksh <span id="p_9d">53</span></div><div class="wa-btn" onclick="sendWA('9x9 Dressed', 'p_9d')">PURCHASE</div></div>
             <div class="card"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400"><b>9x9 Undressed</b><div class="price-tag">Ksh <span id="p_9u">45</span></div><div class="wa-btn" onclick="sendWA('9x9 Undressed', 'p_9u')">PURCHASE</div></div>
             <div class="card"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=400"><b>6x9 Dressed</b><div class="price-tag">Ksh <span id="p_6d">28</span></div><div class="wa-btn" onclick="sendWA('6x9 Dressed', 'p_6d')">PURCHASE</div></div>
             <div class="card"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&q=80&w=400"><b>6x9 Undressed</b><div class="price-tag">Ksh <span id="p_6u">22</span></div><div class="wa-btn" onclick="sendWA('6x9 Undressed', 'p_6u')">PURCHASE</div></div>
         </div>
 
-        <div class="section-header">Aggregates & Fills</div>
-        <div class="grid">
-            <div class="card"><img src="https://images.unsplash.com/photo-1578345210246-47735e452504?auto=format&fit=crop&q=80&w=400"><b>Hardcore</b><div class="price-tag">Ksh <span id="p_hard">8500</span></div><div class="wa-btn" onclick="sendWA('Hardcore', 'p_hard')">PURCHASE</div></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?auto=format&fit=crop&q=80&w=400"><b>Marrum</b><div class="price-tag">Ksh <span id="p_mar">12000</span></div><div class="wa-btn" onclick="sendWA('Marrum', 'p_mar')">PURCHASE</div></div>
+        <div class="edu-box">
+            <h2 style="color:#fbbf24; text-align:center;">PROFESSIONAL BUILDER'S DASHBOARD</h2>
+            
+            <div class="calc-area">
+                <span style="color:#fbbf24; font-weight:bold;">Automatic Material Estimator</span>
+                <p style="font-size:0.75rem;">Enter wall length (feet) to calculate stones (7k Ref):</p>
+                <input type="number" id="wallLen" class="qty-input" placeholder="Feet e.g. 100">
+                <button onclick="calcEdu()" class="save-all-btn" style="margin-top:10px; padding:10px;">GET ESTIMATE</button>
+                <p id="eduFeedback" style="color:#fbbf24; margin-top:10px; font-weight:bold;"></p>
+            </div>
+
+            <div class="edu-guide-content">
+                <h4>1. Foundation & Site Preparation</h4>
+                <p>Before ordering your <b>Hardcore</b> and <b>Marrum</b>, ensure the site is excavated to the solid 'red soil' or rock layer. For a standard 3-bedroom house, you will require approximately 7,000 to 8,000 stones. Use Marrum for backfilling to ensure a stable base that does not sink during the rainy season.</p>
+                
+                <h4>2. Selecting the Right Stones</h4>
+                <p><b>9x9 Dressed Stones:</b> These are machine-cut for precision. They require less mortar (cement/sand mix) and provide a faster building speed. Ideal for external walls where a neat finish is required.</p>
+                <p><b>6x9 Stones:</b> Best used for internal partitioning walls. They are lighter and help reduce the overall load on the foundation while maximizing internal floor space.</p>
+                
+                <h4>3. Material Quality Standards</h4>
+                <p>Always check for "ringing" sound when two stones are struck together; this indicates high density and strength. Our Ballast is crushed to 20mm, perfect for high-strength concrete lintels and floor slabs.</p>
+                
+                <h4>4. Quantity Management</h4>
+                <p>To avoid project delays, always order in batches of 1,000 stones. This allows for better site space management and easier offloading for the delivery trucks.</p>
+            </div>
         </div>
     </div>
 
     <script>
-        function loginAdmin() {
-            if(prompt("Enter Admin Password:") === "1234") {
-                document.getElementById('admin-sec').style.display = 'block';
-                window.scrollTo({top: 0, behavior: 'smooth'});
+        function calcEdu() {
+            let l = document.getElementById('wallLen').value;
+            if(l) {
+                let est = Math.ceil(l * 15.5);
+                document.getElementById('eduFeedback').innerText = "Estimate: " + est + " Stones Required.";
+                document.getElementById('userQty').value = est;
             }
         }
-
+        function loginAdmin() { if(prompt("Pass:") === "1234") document.getElementById('admin-sec').style.display='block'; }
         function savePrices() {
             const keys = ['9d', '9u', '6d', '6u', 'hard', 'mar'];
-            keys.forEach(k => {
-                let newVal = document.getElementById('i_' + k).value;
-                localStorage.setItem('price_' + k, newVal);
-            });
+            keys.forEach(k => localStorage.setItem('price_' + k, document.getElementById('i_' + k).value));
             loadSavedPrices();
-            alert("SUCCESS: All prices have been updated live!");
+            alert("Prices Saved Successfully!");
         }
-
         function loadSavedPrices() {
             const keys = ['9d', '9u', '6d', '6u', 'hard', 'mar'];
             keys.forEach(k => {
-                let saved = localStorage.getItem('price_' + k);
-                if(saved) {
-                    document.getElementById('p_' + k).innerText = saved;
-                    document.getElementById('i_' + k).value = saved;
-                }
+                let s = localStorage.getItem('price_' + k);
+                if(s) { document.getElementById('p_' + k).innerText = s; document.getElementById('i_' + k).value = s; }
             });
         }
-
         function sendWA(item, id) {
             let q = document.getElementById('userQty').value;
             let p = document.getElementById(id).innerText;
-            window.open("https://wa.me/254712694976?text=" + encodeURIComponent("Order Request: " + q + " units of " + item + " @ Ksh " + p), '_blank');
+            window.open("https://wa.me/254712694976?text=" + encodeURIComponent("I want to order " + q + " units of " + item + " @ Ksh " + p), '_blank');
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
