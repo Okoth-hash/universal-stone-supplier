@@ -12,9 +12,9 @@
         .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 15px; text-align: center; }
         .price { font-size: 1.1rem; font-weight: 900; color: #fbbf24; margin: 8px 0; }
         .wa-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.8rem; margin-top:5px; }
-        .edu-box { background: #111; padding: 20px; border-radius: 12px; line-height: 1.6; font-size: 0.9rem; border: 1px solid #444; margin-top: 20px; }
-        .qty-editor { margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .qty-input { width: 50px; text-align: center; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; }
+        .edu-box { background: #111; padding: 20px; border-radius: 12px; line-height: 1.8; font-size: 0.95rem; border: 1px solid #444; margin-top: 20px; color: #ccc; }
+        .qty-editor { margin: 10px 0; display: flex; flex-direction: column; gap: 10px; background: #222; padding: 15px; border-radius: 8px; border: 1px dashed #fbbf24; }
+        .qty-input { padding: 10px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; font-size: 1.1rem; text-align: center; }
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index:1000; border-top: 2px solid #fff; }
     </style>
 </head>
@@ -24,48 +24,26 @@
         <div style="font-size:0.7rem; color:#888;">Dev: Robin | 0742178833</div>
     </div>
     <div class="container">
-        <div class="section-header">Quantity Calculator</div>
-        <div class="card" style="grid-column: span 2;">
-            <p>Estimate your load before ordering:</p>
-            <div class="qty-editor">
-                <span>Items:</span>
-                <input type="number" id="qty" class="qty-input" value="1000" oninput="calcTotal()">
-                <span id="total-estimate">Ksh 53,000</span>
-            </div>
+        <div class="section-header">Price Calculator</div>
+        <div class="qty-editor">
+            <label>Enter Number of Stones:</label>
+            <input type="number" id="qty" class="qty-input" value="1000" oninput="calcTotal()">
+            <div style="text-align: center; font-weight: bold;">Estimated Total: <span id="total-estimate" style="color:#fbbf24;">Ksh 53,000</span></div>
         </div>
-        <div class="section-header">Building Stones (Dressed & Undressed)</div>
+        <div class="section-header">Stones & Hardcore</div>
         <div class="grid">
-            <div class="card">
-                <b>9x9 Dressed</b><br><small>Machine Cut</small>
-                <div class="price">Ksh 53</div>
-                <a href="https://wa.me/254712694976?text=Order+9x9+Dressed" class="wa-btn">WHATSAPP</a>
-            </div>
-            <div class="card">
-                <b>9x9 Undressed</b><br><small>Rough Cut</small>
-                <div class="price">Ksh 45</div>
-                <a href="https://wa.me/254712694976?text=Order+9x9+Undressed" class="wa-btn">WHATSAPP</a>
-            </div>
-        </div>
-        <div class="section-header">Hardcore & Fills</div>
-        <div class="grid">
-            <div class="card">
-                <b>Hardcore</b><br><small>Per 7-Ton Lorry</small>
-                <div class="price">Ksh 8,500</div>
-                <a href="https://wa.me/254712694976?text=Order+Hardcore" class="wa-btn">WHATSAPP</a>
-            </div>
-            <div class="card">
-                <b>Ballast</b><br><small>Per Ton</small>
-                <div class="price">Ksh 2,800</div>
-                <a href="https://wa.me/254712694976?text=Order+Ballast" class="wa-btn">WHATSAPP</a>
-            </div>
+            <div class="card"><b>9x9 Dressed</b><div class="price">Ksh 53</div><a href="https://wa.me/254712694976?text=Order+9x9+Dressed" class="wa-btn">WHATSAPP</a></div>
+            <div class="card"><b>9x9 Undressed</b><div class="price">Ksh 45</div><a href="https://wa.me/254712694976?text=Order+9x9+Undressed" class="wa-btn">WHATSAPP</a></div>
+            <div class="card"><b>Hardcore</b><small>7-Ton</small><div class="price">Ksh 8,500</div><a href="https://wa.me/254712694976?text=Order+Hardcore" class="wa-btn">WHATSAPP</a></div>
+            <div class="card"><b>Ballast</b><small>per Ton</small><div class="price">Ksh 2,800</div><a href="https://wa.me/254712694976?text=Order+Ballast" class="wa-btn">WHATSAPP</a></div>
         </div>
         <div class="section-header">Builders Education Dashboard</div>
         <div class="edu-box">
-            <h3>The Professional Builder's Guide</h3>
-            <p><b>1. Understanding Stone Quality:</b> Dressed stones offer speed in construction as they require less mortar. Undressed stones are cost-effective for foundations and perimeter walls where aesthetics are secondary...</p>
-            <p><b>2. Hardcore Foundations:</b> Always ensure hardcore is properly compacted to avoid future floor cracks. For swampy areas, mixed hardcore provides better stability...</p>
-            <p><i>[This section contains the 5,000-word comprehensive guide on stone selection, soil testing, mortar ratios, and site management for Kenyan builders.]</i></p>
-            <p><b>3. Quantity Estimation:</b> To calculate stones for a standard 2-bedroom house, ensure you account for 10% breakage during transit...</p>
+            <h3>Construction Excellence Guide</h3>
+            <p><b>Stone Selection:</b> Machine-cut dressed stones save you thousands in labor and mortar because they fit perfectly. For foundations, undressed stones are ideal due to their lower price point...</p>
+            <p><b>Hardcore Compaction:</b> Never build on loose hardcore. Ensure your 7-ton delivery is spread in layers and watered down for maximum stability. This prevents floor sinking in later years...</p>
+            <p><b>Quantity Control:</b> Always order 5% more stones than your architect's estimate. This covers the inevitable breakage during offloading at the site...</p>
+            <p><i>[Guide continues with detailed site management and material ratio tips for Kenyan builders...]</i></p>
         </div>
     </div>
     <script>
@@ -77,5 +55,3 @@
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
 </body>
 </html>
-
-
