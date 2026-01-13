@@ -14,11 +14,9 @@
         .wa-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.8rem; cursor: pointer; }
         .qty-input { width: 100%; padding: 12px; background: #333; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; box-sizing: border-box; font-size: 1.1rem; }
         
-        /* ADMIN & SALES REPORT STYLES */
         #admin-sec { display: none; background: #111; margin-top: 30px; padding: 20px; border: 2px solid #fbbf24; border-radius: 15px; }
         .report-box { background: #000; border: 1px solid #333; padding: 10px; border-radius: 8px; margin-top: 15px; font-family: monospace; font-size: 0.8rem; height: 150px; overflow-y: auto; color: #0f0; }
-        .edit-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-        .edit-input { width: 60px; background: #222; color: #fbbf24; border: 1px solid #444; text-align: center; }
+        .admin-btn { background: #fbbf24; color: #000; border: none; padding: 10px; border-radius: 5px; width: 100%; font-weight: bold; margin-top: 10px; cursor: pointer; }
         
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; font-size: 1.2rem; z-index: 1000; }
     </style>
@@ -43,39 +41,44 @@
 
         <div class="section-header">Education Dashboard</div>
         <div style="background:#111; padding:15px; border-radius:10px; font-size:0.85rem; color:#aaa; border:1px solid #333;">
-            Construction Tip: Always place hardcore in layers of 150mm and compact each layer thoroughly.
+            Construction Tip: 9x9 stones provide better thermal insulation than 6x9 stones.
         </div>
 
         <div id="admin-sec">
-            <h3 style="color:#fbbf24; margin-top:0;">ADMIN & SALES REPORT</h3>
+            <h3 style="color:#fbbf24; margin-top:0;">SALES REPORT MANAGER</h3>
             <div style="background:#222; padding:10px; border-radius:5px; margin-bottom:15px;">
-                <b>Projected Revenue:</b> <span id="totalRevenue" style="color:#fbbf24;">Ksh 0</span>
+                <b>Total Session Revenue:</b> <span id="totalRevenue" style="color:#fbbf24;">Ksh 0</span>
             </div>
             
-            <div class="edit-row"><span>Update 9x9 Price:</span><input type="number" id="inp9d" class="edit-input" value="53"></div>
-            <div class="edit-row"><span>Update 6x9 Price:</span><input type="number" id="inp6d" class="edit-input" value="28"></div>
+            <div style="font-weight:bold; color:#fbbf24;">Inquiry Activity Log:</div>
+            <div id="salesLog" class="report-box">Ready to track...</div>
             
-            <div style="margin-top:15px; font-weight:bold; color:#fbbf24;">Recent Activity Log:</div>
-            <div id="salesLog" class="report-box">System Initialized... Waiting for clicks.</div>
-            
-            <button onclick="saveAdminChanges()" style="background:#fbbf24; color:#000; border:none; padding:10px; border-radius:5px; width:100%; font-weight:bold; margin-top:10px;">SAVE & REFRESH</button>
+            <button class="admin-btn" onclick="downloadReport()">DOWNLOAD TODAY'S REPORT</button>
+            <button class="admin-btn" style="background:red; color:white; margin-top:20px;" onclick="document.getElementById('admin-sec').style.display='none'">CLOSE ADMIN</button>
         </div>
     </div>
 
     <script>
         let revenue = 0;
+        let logText = "SALES REPORT - KENNETH OMONDI SUPPLIES\n==============================\n";
+
         function sendWA(item, priceId) {
             let q = document.getElementById('userQty').value || 1;
             let p = document.getElementById(priceId).innerText;
             let total = q * p;
             revenue += total;
             
-            // Log to Sales Report
-            let log = document.getElementById('salesLog');
             let time = new Date().toLocaleTimeString();
-            log.innerHTML = "[" + time + "] Inquiry: " + q + " units of " + item + " (Ksh " + total.toLocaleString() + ")<br>" + log.innerHTML;
+            let entry = "[" + time + "] " + q + " units of " + item + " (Ksh " + total.toLocaleString() + ")";
+            
+            // Update UI
+            let logDiv = document.getElementById('salesLog');
+            logDiv.innerHTML = entry + "<br>" + logDiv.innerHTML;
             document.getElementById('totalRevenue').innerText = "Ksh " + revenue.toLocaleString();
-
+            
+            // Update Download String
+            logText += entry + "\n";
+            
             window.open("https://wa.me/254712694976?text=" + encodeURIComponent("Order: " + q + " " + item), '_blank');
         }
 
@@ -86,10 +89,13 @@
             }
         }
 
-        function saveAdminChanges() {
-            document.getElementById('p9d').innerText = document.getElementById('inp9d').value;
-            document.getElementById('p6d').innerText = document.getElementById('inp6d').value;
-            alert("Settings Saved!");
+        function downloadReport() {
+            let finalReport = logText + "\nTOTAL PROJECTED REVENUE: Ksh " + revenue.toLocaleString();
+            let blob = new Blob([finalReport], { type: "text/plain" });
+            let a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "Sales_Report_" + new Date().toLocaleDateString() + ".txt";
+            a.click();
         }
     </script>
     <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
