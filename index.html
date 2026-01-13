@@ -469,8 +469,50 @@
             location.reload();
         }
     </script>
+<script>
+    // Updated Product List with Specific Colors for Kenneth Omondi Ware
+    window.products = [
+        { name: "Red Stones (Premium)", price: 55, stock: 2000, img: "https://images.unsplash.com/photo-1590060057030-97727282845c?q=80&w=400", cat: "stones", color: "Red" },
+        { name: "Grey Stones (Standard)", price: 50, stock: 3500, img: "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=400", cat: "stones", color: "Grey" },
+        { name: "Yellow Stones (Golden)", price: 52, stock: 1500, img: "https://images.unsplash.com/photo-1620138546344-7b2c0b057df3?q=80&w=400", cat: "stones", color: "Yellow" },
+        { name: "Black Stones (Basalt)", price: 60, stock: 800, img: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=400", cat: "stones", color: "Black" },
+        { name: "Discolour Stones (Mixed)", price: 45, stock: 4000, img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=400", cat: "stones", color: "Mixed" },
+        { name: "Ballast ( Inch)", price: 1800, stock: 50, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400", cat: "aggregates" },
+        { name: "Hardcore", price: 900, stock: 1000, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400", cat: "hardcore" }
+    ];
+
+    // Updated Render Function to show Color Badges
+    function render() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = products.map((p, index) => {
+            const isOut = p.stock <= 0;
+            const colorBadge = p.color ? <span class="bg-slate-900 text-white text-[8px] px-2 py-1 rounded-full mr-2">\</span> : '';
+            
+            return 
+            <div class="bg-white rounded-[2.5rem] shadow-lg border \">
+                <div class="relative">
+                    <img src="\" class="h-48 w-full object-cover rounded-t-[2.5rem]">
+                    <div class="absolute top-4 left-4">\</div>
+                    \
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-black uppercase italic text-lg leading-tight">\</h3>
+                        <span class="text-[9px] font-black px-2 py-1 bg-slate-100 rounded text-slate-500">\ Units</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-black text-slate-900">Ksh \</span>
+                        <button onclick="add('\', \, \)" \ class="bg-yellow-500 px-6 py-2 rounded-xl font-black \">ADD</button>
+                    </div>
+                </div>
+            </div>;
+        }).join('');
+    }
+    render();
+</script>
 </body>
 </html>
+
 
 
 
