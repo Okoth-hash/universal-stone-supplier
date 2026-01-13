@@ -2,65 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI WARE | STONE SUPPLIES</title>
+    <title>KENNETH OMONDI WARE | AGGREGATES</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f1f5f9; font-family: 'Arial Black', sans-serif; }
-        .stone-box { height: 150px; width: 100%; border-bottom: 4px solid #000; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .bg-grey { background: linear-gradient(45deg, #808080, #a9a9a9); }
-        .bg-red { background: linear-gradient(45deg, #991b1b, #ef4444); }
-        .bg-black { background: linear-gradient(45deg, #000000, #444444); }
-        .bg-yellow { background: linear-gradient(45deg, #ca8a04, #facc15); color: #000; }
-        .stone-card { background: white; border: 4px solid #000; overflow: hidden; transition: 0.2s; }
-        .stone-card:hover { transform: scale(1.02); }
+        .material-card { background: white; border: 4px solid #000; overflow: hidden; }
+        .img-placeholder { height: 160px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: white; border-bottom: 4px solid #000; }
+        .bg-hardcore { background: linear-gradient(45deg, #4b5563, #9ca3af); }
+        .bg-murram { background: linear-gradient(45deg, #92400e, #d97706); }
+        .bg-ballast { background: linear-gradient(45deg, #1f2937, #4b5563); }
+        .btn-order { background: #000; color: #fff; width: 100%; padding: 12px; font-weight: 900; border-top: 4px solid #eab308; }
     </style>
 </head>
 <body>
     <nav class="bg-slate-900 p-6 text-white text-center border-b-4 border-yellow-500">
         <h1 class="text-3xl uppercase italic text-yellow-400">KENNETH OMONDI WARE</h1>
-        <p class="text-xs tracking-widest uppercase">9x9 & 6x6 Dressed & Undressed Specialist</p>
+        <p class="text-xs tracking-widest uppercase">Construction Aggregates & Stones</p>
     </nav>
 
-    <div class="container mx-auto p-4">
-        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-yellow-500 pl-4">Dressed Stones (Machine Cut)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="stone-card">
-                <div class="stone-box bg-grey text-2xl">GREY DRESSED</div>
-                <div class="p-4 flex justify-between items-center">
-                    <div><p class="font-black">9x9 Stone</p><p class="text-red-600">Ksh 53/ft</p></div>
-                    <input type="number" placeholder="Feet" class="w-24 border-2 border-black p-2 text-center">
+    <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        
+        <div class="material-card">
+            <div class="img-placeholder bg-hardcore uppercase">Hardcore</div>
+            <div class="p-4">
+                <h3 class="font-black text-xl uppercase">Hardcore Fill</h3>
+                <select id="size-hardcore" class="w-full border-2 border-black p-2 my-2 font-bold">
+                    <option value="12000">10 Tonne - Ksh 12,000</option>
+                    <option value="22000">20 Tonne - Ksh 22,000</option>
+                </select>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm">Qty:</span>
+                    <input type="number" id="qty-hardcore" value="1" min="1" class="w-full border-2 border-black p-1 text-center font-bold">
                 </div>
             </div>
-            <div class="stone-card">
-                <div class="stone-box bg-red text-2xl">RED DRESSED</div>
-                <div class="p-4 flex justify-between items-center">
-                    <div><p class="font-black">9x9 Stone</p><p class="text-red-600">Ksh 53/ft</p></div>
-                    <input type="number" placeholder="Feet" class="w-24 border-2 border-black p-2 text-center">
-                </div>
-            </div>
+            <button onclick="sendSms('Hardcore')" class="btn-order uppercase">Order Hardcore</button>
         </div>
 
-        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-gray-500 pl-4 mt-10">Undressed Stones (Quarry)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            <div class="stone-card">
-                <div class="stone-box bg-black text-2xl">BLACK QUARRY</div>
-                <div class="p-4 flex justify-between items-center">
-                    <div><p class="font-black">6x6 Stone</p><p class="text-red-600">Ksh 28/ft</p></div>
-                    <input type="number" placeholder="Feet" class="w-24 border-2 border-black p-2 text-center">
+        <div class="material-card">
+            <div class="img-placeholder bg-murram uppercase">Murram</div>
+            <div class="p-4">
+                <h3 class="font-black text-xl uppercase">Quality Murram</h3>
+                <select id="size-murram" class="w-full border-2 border-black p-2 my-2 font-bold">
+                    <option value="9000">10 Tonne - Ksh 9,000</option>
+                    <option value="16000">20 Tonne - Ksh 16,000</option>
+                </select>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm">Qty:</span>
+                    <input type="number" id="qty-murram" value="1" min="1" class="w-full border-2 border-black p-1 text-center font-bold">
                 </div>
             </div>
-            <div class="stone-card">
-                <div class="stone-box bg-yellow text-2xl">YELLOW QUARRY</div>
-                <div class="p-4 flex justify-between items-center">
-                    <div><p class="font-black">6x6 Stone</p><p class="text-red-600">Ksh 28/ft</p></div>
-                    <input type="number" placeholder="Feet" class="w-24 border-2 border-black p-2 text-center">
-                </div>
-            </div>
+            <button onclick="sendSms('Murram')" class="btn-order uppercase text-yellow-400">Order Murram</button>
         </div>
 
-        <button onclick="window.location.href='sms:0712694976?body=I would like to order stones.'" class="w-full bg-black text-white py-6 text-2xl font-black border-4 border-yellow-500 uppercase">
-            SEND ORDER TO KENNETH
-        </button>
+        <div class="material-card">
+            <div class="img-placeholder bg-ballast uppercase">Ballast</div>
+            <div class="p-4">
+                <h3 class="font-black text-xl uppercase">Machine Ballast</h3>
+                <select id="size-ballast" class="w-full border-2 border-black p-2 my-2 font-bold">
+                    <option value="28000">10 Tonne - Ksh 28,000</option>
+                    <option value="52000">20 Tonne - Ksh 52,000</option>
+                </select>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm">Qty:</span>
+                    <input type="number" id="qty-ballast" value="1" min="1" class="w-full border-2 border-black p-1 text-center font-bold">
+                </div>
+            </div>
+            <button onclick="sendSms('Ballast')" class="btn-order uppercase">Order Ballast</button>
+        </div>
+
     </div>
+
+    <script>
+        function sendSms(item) {
+            const sizeElement = document.getElementById('size-' + item.toLowerCase());
+            const qty = document.getElementById('qty-' + item.toLowerCase()).value;
+            const price = sizeElement.value;
+            const text = sizeElement.options[sizeElement.selectedIndex].text;
+            const total = price * qty;
+            
+            const message = "ORDER FOR KENNETH:\nItem: " + item + "\nDetails: " + text + "\nQuantity: " + qty + " Lorries\nTOTAL: Ksh " + total;
+            window.location.href = "sms:0712694976?body=" + encodeURIComponent(message);
+        }
+    </script>
 </body>
 </html>
