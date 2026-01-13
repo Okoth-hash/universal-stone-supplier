@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI | OFFICIAL STORE - VER 1844</title>
+    <title>KENNETH OMONDI | OFFICIAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .admin-hidden { display: none; }
@@ -14,47 +14,37 @@
 <body class="bg-gray-100 pb-32">
     <nav class="bg-black p-6 text-center border-b-4 border-yellow-500">
         <h1 class="text-3xl font-black text-yellow-400 italic">KENNETH OMONDI WARE</h1>
-        <button onclick="showLogin()" class="bg-yellow-500 text-black text-xs px-4 py-1 mt-2 font-bold rounded shadow-lg">OPEN ADMIN PANEL</button>
+        <button onclick="showLogin()" class="bg-yellow-500 text-black text-xs px-4 py-1 mt-2 font-bold rounded shadow-lg uppercase">OPEN ADMIN PANEL</button>
     </nav>
-
     <div class="container mx-auto p-4">
-        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-yellow-500 pl-2">1. Building Stones</h2>
+        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-yellow-500 pl-2">1. Building Stones (Machine Cut)</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="grid-box"><div class="stone-header bg-gray-500"><span>GREY</span><span class="text-[10px] mt-1">9x9 @ Ksh 53</span></div><input type="number" id="q-grey" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
-            <div class="grid-box"><div class="stone-header bg-red-800"><span>RED</span><span class="text-[10px] mt-1">9x9 @ Ksh 53</span></div><input type="number" id="q-red" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
-            <div class="grid-box"><div class="stone-header bg-black"><span>BLACK</span><span class="text-[10px] mt-1">6x6 @ Ksh 28</span></div><input type="number" id="q-black" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
-            <div class="grid-box"><div class="stone-header bg-yellow-600"><span>YELLOW</span><span class="text-[10px] mt-1">6x6 @ Ksh 28</span></div><input type="number" id="q-yellow" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-gray-500"><span>GREY</span><span class="text-[10px] mt-1 italic">9x9 @ Ksh 53</span></div><input type="number" id="q-grey" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-red-800"><span>RED</span><span class="text-[10px] mt-1 italic">9x9 @ Ksh 53</span></div><input type="number" id="q-red" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-black"><span>BLACK</span><span class="text-[10px] mt-1 italic">6x6 @ Ksh 28</span></div><input type="number" id="q-black" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-yellow-600"><span>YELLOW</span><span class="text-[10px] mt-1 italic">6x6 @ Ksh 28</span></div><input type="number" id="q-yellow" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
         </div>
-
-        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-blue-500 pl-2">2. Lorry Loads</h2>
+        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-blue-500 pl-2">2. Lorry Loads (Aggregates)</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="grid-box p-4"><p class="font-black">BALLAST</p><select id="p-ballast" class="w-full border-2 border-black my-2 p-1 font-bold"><option value="28000">10T - Ksh 28,000</option><option value="52000">20T - Ksh 52,000</option></select><input type="number" id="q-ballast" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
-            <div class="grid-box p-4"><p class="font-black">MURRAM</p><select id="p-murram" class="w-full border-2 border-black my-2 p-1 font-bold"><option value="9000">10T - Ksh 9,000</option><option value="16000">20T - Ksh 16,000</option></select><input type="number" id="q-murram" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
-            <div class="grid-box p-4"><p class="font-black">HARDCORE</p><select id="p-hardcore" class="w-full border-2 border-black my-2 p-1 font-bold"><option value="12000">10T - Ksh 12,000</option><option value="22000">20T - Ksh 22,000</option></select><input type="number" id="q-hardcore" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black italic text-sm">BALLAST</p><select id="p-ballast" class="w-full border-2 border-black my-2 p-1 font-bold"><option value="28000">10T - Ksh 28,000</option><option value="52000">20T - Ksh 52,000</option></select><input type="number" id="q-ballast" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black italic text-sm">MURRAM</p><select id="p-murram" class="w-full border-2 border-black my-2 p-1 font-bold"><option value="9000">10T - Ksh 9,000</option><option value="16000">20T - Ksh 16,000</option></select><input type="number" id="q-murram" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black italic text-sm">HARDCORE</p><select id="p-hardcore" class="w-full border-2 border-black my-2 p-1 font-bold"><option value="12000">10T - Ksh 12,000</option><option value="22000">20T - Ksh 22,000</option></select><input type="number" id="q-hardcore" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
         </div>
     </div>
-
-    <div onclick="submitOrder()" class="order-bar uppercase">Send Full Order To Kenneth</div>
-
+    <div onclick="submitOrder()" class="order-bar uppercase">Send Order To Kenneth</div>
     <div id="login-screen" class="admin-hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[200]">
-        <div class="bg-white p-8 rounded shadow-xl">
-            <h3 class="font-bold mb-4">Enter Password</h3>
-            <input type="password" id="pass-input" class="border-2 border-black p-2 w-full mb-4">
-            <button onclick="checkPass()" class="bg-black text-white w-full py-2">Login</button>
-            <button onclick="hideLogin()" class="text-gray-400 w-full mt-2 text-sm">Cancel</button>
+        <div class="bg-white p-8 rounded shadow-xl w-80">
+            <h3 class="font-bold mb-4">ADMIN DASHBOARD</h3>
+            <input type="password" id="pass-input" placeholder="Password (1234)" class="border-2 border-black p-2 w-full mb-4 text-center">
+            <button onclick="checkPass()" class="bg-black text-white w-full py-2 font-black">LOGIN</button>
+            <button onclick="hideLogin()" class="text-gray-400 w-full mt-4 text-xs">CANCEL</button>
         </div>
     </div>
-
     <script>
         function showLogin() { document.getElementById('login-screen').classList.remove('admin-hidden'); }
         function hideLogin() { document.getElementById('login-screen').classList.add('admin-hidden'); }
-        function checkPass() { if(document.getElementById('pass-input').value === '1234') { alert('Dashboard Active'); } else { alert('Wrong Password'); } }
-        function submitOrder() {
-            let body = "ORDER FOR KENNETH:\n";
-            let qG = document.getElementById('q-grey').value;
-            if(qG) body += "- Grey: " + qG + "ft\n";
-            window.location.href = "sms:0712694976?body=" + encodeURIComponent(body);
-        }
+        function checkPass() { if(document.getElementById('pass-input').value === '1234') { alert('Price Editing Enabled'); } else { alert('Wrong Password'); } }
+        function submitOrder() { window.location.href = "sms:0712694976?body=" + encodeURIComponent("Checking prices for Kenneth..."); }
     </script>
 </body>
 </html>
