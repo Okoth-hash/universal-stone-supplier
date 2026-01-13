@@ -2,79 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI WARE | PREMIUM STONES</title>
+    <title>KENNETH OMONDI WARE | STONE GALLERY</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f8fafc; font-family: 'Segoe UI', sans-serif; }
-        .navy-header { background: linear-gradient(to right, #0F172A, #1e293b); border-bottom: 5px solid #eab308; }
-        .stone-card { background: white; border-radius: 15px; overflow: hidden; border: 2px solid #e2e8f0; transition: 0.3s; }
-        .stone-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: #eab308; }
-        .stone-img { height: 200px; width: 100%; object-fit: cover; background: #cbd5e1; }
-        .price-badge { background: #eab308; color: #000; font-weight: 900; padding: 5px 15px; border-radius: 5px; }
+        body { background-color: #f3f4f6; font-family: 'Arial Black', sans-serif; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px; }
+        .stone-card { background: white; border: 5px solid #000; overflow: hidden; display: flex; flex-direction: column; }
+        .stone-img { height: 180px; width: 100%; object-fit: cover; background: #ddd; border-bottom: 5px solid #000; }
+        .price-tag { background: #eab308; color: #000; padding: 5px 10px; font-weight: 900; }
+        .input-box { border: 3px solid #000; width: 100%; padding: 10px; margin-top: 10px; text-align: center; }
+        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <nav class="navy-header p-8 text-white text-center">
-        <h1 class="text-4xl font-black text-yellow-400 tracking-tighter">KENNETH OMONDI WARE</h1>
-        <p class="uppercase tracking-widest text-sm opacity-90">Direct Quarry Supplies  9x9 & 6x6 Specialist</p>
+    <nav class="bg-slate-900 p-8 text-white text-center border-b-8 border-yellow-500">
+        <h1 class="text-4xl uppercase italic text-yellow-400">KENNETH OMONDI WARE</h1>
+        <p class="tracking-widest opacity-80 mt-2">PREMIUM BUILDING STONES (9x9 & 6x6)</p>
     </nav>
 
-    <div class="container mx-auto p-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-black p-6 uppercase underline">1. DRESSED STONES (Machine Cut)</h2>
+        <div class="grid-container">
             <div class="stone-card">
-                <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Grey Stone">
+                <img src="assets/images/grey.jpg" class="stone-img" alt="Grey Stone">
                 <div class="p-4">
-                    <h3 class="font-black text-xl uppercase">Grey Dressed</h3>
-                    <p class="text-sm text-gray-500 mb-4 italic">Clean, modern, structural finish.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="price-badge text-xl">Ksh 53</span>
-                        <input type="number" id="grey_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
-                    </div>
+                    <div class="flex justify-between items-center"><span class="text-xl">GREY DRESSED</span> <span class="price-tag">Ksh 53/ft</span></div>
+                    <input type="number" placeholder="Enter Feet" class="input-box">
                 </div>
             </div>
-
             <div class="stone-card">
-                <img src="https://images.unsplash.com/photo-1590059393165-27a36c6451d6?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Red Stone">
+                <img src="assets/images/red.jpg" class="stone-img" alt="Red Stone">
                 <div class="p-4">
-                    <h3 class="font-black text-xl uppercase text-red-700">Red Dressed</h3>
-                    <p class="text-sm text-gray-500 mb-4 italic">Premium decorative exterior stone.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="price-badge text-xl">Ksh 53</span>
-                        <input type="number" id="red_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
-                    </div>
+                    <div class="flex justify-between items-center"><span class="text-xl text-red-600">RED DRESSED</span> <span class="price-tag">Ksh 53/ft</span></div>
+                    <input type="number" placeholder="Enter Feet" class="input-box">
                 </div>
             </div>
-
-            <div class="stone-card">
-                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Black Stone">
-                <div class="p-4">
-                    <h3 class="font-black text-xl uppercase text-gray-900">Black Dressed</h3>
-                    <p class="text-sm text-gray-500 mb-4 italic">Elegant, bold, and high-strength.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="price-badge text-xl">Ksh 53</span>
-                        <input type="number" id="black_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
-                    </div>
-                </div>
-            </div>
-
-            <div class="stone-card">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" class="stone-img" alt="Yellow Stone">
-                <div class="p-4">
-                    <h3 class="font-black text-xl uppercase text-yellow-600">Yellow Dressed</h3>
-                    <p class="text-sm text-gray-500 mb-4 italic">Bright, natural, warm aesthetic.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="price-badge text-xl">Ksh 53</span>
-                        <input type="number" id="yellow_d" placeholder="Feet" class="w-20 border-2 border-black p-1 text-center rounded">
-                    </div>
-                </div>
-            </div>
-
         </div>
-        
-        <div class="mt-10 text-center">
-            <button onclick="window.location.href='sms:0712694976'" class="bg-black text-white px-10 py-5 rounded-full font-black text-2xl hover:bg-yellow-400 hover:text-black transition">
-                ORDER VIA SMS
+
+        <h2 class="text-3xl font-black p-6 uppercase underline mt-10">2. UNDRESSED STONES (Quarry Rough)</h2>
+        <div class="grid-container">
+            <div class="stone-card">
+                <img src="assets/images/black.jpg" class="stone-img" alt="Black Stone">
+                <div class="p-4">
+                    <div class="flex justify-between items-center"><span class="text-xl">BLACK QUARRY</span> <span class="price-tag">Ksh 36/ft</span></div>
+                    <input type="number" placeholder="Enter Feet" class="input-box">
+                </div>
+            </div>
+            <div class="stone-card">
+                <img src="assets/images/yellow.jpg" class="stone-img" alt="Yellow Stone">
+                <div class="p-4">
+                    <div class="flex justify-between items-center"><span class="text-xl text-yellow-600">YELLOW QUARRY</span> <span class="price-tag">Ksh 36/ft</span></div>
+                    <input type="number" placeholder="Enter Feet" class="input-box">
+                </div>
+            </div>
+        </div>
+
+        <div class="p-10 text-center">
+            <button onclick="window.location.href='sms:0712694976'" class="bg-black text-white w-full max-w-lg py-6 text-3xl font-black border-4 border-yellow-500 shadow-2xl">
+                ORDER FOR DELIVERY
             </button>
         </div>
     </div>
