@@ -13,48 +13,60 @@
         .header { padding: 15px; font-weight: bold; color: white; }
         .price-tag { padding: 10px; font-size: 1rem; font-weight: bold; }
         .admin-panel { display: none; position: fixed; inset: 0; background: white; color: black; z-index: 2000; padding: 25px; overflow-y: auto; }
-        input { width: 90%; padding: 10px; margin: 10px 0; border: 2px solid #000; border-radius: 5px; }
+        input { width: 90%; padding: 12px; margin: 10px 0; border: 2px solid #000; border-radius: 5px; font-size: 16px; }
     </style>
 </head>
 <body>
     <nav>
         <h1 style="color:#fbbf24; margin:0;">KENNETH OMONDI WARE</h1>
-        <button class="btn-admin" onclick="showLogin()">ADMIN LOGIN</button>
+        <button class="btn-admin" onclick="triggerLogin()">ADMIN LOGIN</button>
     </nav>
+
     <div class="container">
-        <h3>1. BUILDING STONES (9x9)</h3>
+        <h3>1. BUILDING STONES (9x9 & 6x6)</h3>
         <div class="grid" id="stone-list"></div>
     </div>
+
     <div id="admin-ui" class="admin-panel">
-        <h2>PRICE EDITOR</h2>
+        <h2 style="border-bottom: 3px solid #fbbf24;">PRICE EDITOR</h2>
         <div id="editor-fields"></div>
-        <button onclick="saveChanges()" style="background:green; color:white; width:100%; padding:15px; font-weight:bold; border:none; border-radius:5px;">SAVE CHANGES</button>
-        <button onclick="location.reload()" style="width:100%; margin-top:10px;">EXIT</button>
+        <button onclick="saveChanges()" style="background:green; color:white; width:100%; padding:15px; font-weight:bold; border:none; border-radius:5px; margin-top:20px;">SAVE ALL PRICES</button>
+        <button onclick="location.reload()" style="width:100%; margin-top:10px; padding:10px; border:none; background:#ddd;">EXIT</button>
     </div>
+
     <script>
-        let inventory = JSON.parse(localStorage.getItem('k_inv_v2')) || [
+        let inventory = JSON.parse(localStorage.getItem('k_inv_v3')) || [
             { name: "GREY STONE", size: "9x9", price: "53", color: "#6b7280" },
             { name: "RED STONE", size: "9x9", price: "53", color: "#991b1b" },
             { name: "BLACK STONE", size: "6x6", price: "28", color: "#000" }
         ];
+
         function render() {
             const list = document.getElementById('stone-list');
             const edit = document.getElementById('editor-fields');
             list.innerHTML = ''; edit.innerHTML = '';
             inventory.forEach((item, i) => {
                 list.innerHTML += '<div class="card"><div class="header" style="background:'+item.color+'">'+item.name+'</div><div class="price-tag">'+item.size+' @ Ksh '+item.price+'</div></div>';
-                edit.innerHTML += '<div><b>'+item.name+'</b><br>Price: <input type="number" id="p'+i+'" value="'+item.price+'"></div>';
+                edit.innerHTML += '<div style="margin-bottom:15px;"><b>'+item.name+'</b><br>Price: <input type="number" id="p'+i+'" value="'+item.price+'"></div>';
             });
         }
-        function showLogin() {
-            let p = prompt("Enter Admin Password:");
-            if(p === "1234") document.getElementById('admin-ui').style.display = 'block';
-            else if (p !== null) alert("Wrong Password");
+
+        function triggerLogin() {
+            let p = prompt("Enter Password:");
+            if(p === "1234") {
+                document.getElementById('admin-ui').style.display = 'block';
+            } else if (p !== null) {
+                alert("Wrong Password");
+            }
         }
+
         function saveChanges() {
-            inventory.forEach((item, i) => { item.price = document.getElementById('p'+i).value; });
-            localStorage.setItem('k_inv_v2', JSON.stringify(inventory));
-            alert("Updated!"); location.reload();
+            inventory.forEach((item, i) => {
+                item.price = document.getElementById('p'+i).value;
+            });
+            localStorage.setItem('k_inv_v3', JSON.stringify(inventory));
+            alert("Prices Updated Live!");
+            location.reload();
         }
         render();
     </script>
