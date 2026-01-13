@@ -1,89 +1,65 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI | ADMIN</title>
+    <title>KENNETH OMONDI | OFFICIAL STORE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .admin-hidden { display: none; }
-        .card { border: 2px solid #000; padding: 10px; background: white; margin-bottom: 10px; }
-        .save-btn { background: #16a34a; color: white; padding: 10px; width: 100%; font-weight: bold; margin-top: 20px; }
+        .grid-box { border: 3px solid #000; background: white; border-radius: 8px; overflow: hidden; }
+        .stone-header { height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-weight: 900; }
+        .order-bar { position: fixed; bottom: 0; width: 100%; background: #000; color: #fbbf24; padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 900; cursor: pointer; border-top: 4px solid #fbbf24; z-index: 100; }
     </style>
 </head>
-<body class="bg-gray-100 pb-20">
-    <div id="user-view">
-        <nav class="bg-black p-4 text-center text-yellow-400 font-bold uppercase">
-            KENNETH OMONDI WARE
-            <button onclick="showLogin()" class="block mx-auto text-[8px] text-gray-700">Admin</button>
-        </nav>
-        <div class="p-4">
-            <h2 class="font-black border-l-4 border-yellow-500 pl-2 mb-4">AVAILABLE MATERIALS</h2>
-            <div id="products-display" class="grid grid-cols-1 gap-4"></div>
+<body class="bg-gray-100 pb-32">
+    <nav class="bg-black p-6 text-center border-b-4 border-yellow-500">
+        <h1 class="text-3xl font-black text-yellow-400 italic">KENNETH OMONDI WARE</h1>
+        <button onclick="showLogin()" class="bg-yellow-500 text-black text-[10px] px-2 py-1 mt-2 font-bold rounded">ADMIN LOGIN</button>
+    </nav>
+
+    <div id="user-view" class="container mx-auto p-4">
+        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-yellow-500 pl-2">1. Building Stones (Machine Cut)</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="grid-box"><div class="stone-header bg-gray-500"><span>GREY</span><span class="text-xs">9x9 @ Ksh 53</span></div><input type="number" id="q-grey" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-red-800"><span>RED</span><span class="text-xs">9x9 @ Ksh 53</span></div><input type="number" id="q-red" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-black"><span>BLACK</span><span class="text-xs">6x6 @ Ksh 28</span></div><input type="number" id="q-black" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-yellow-600"><span>YELLOW</span><span class="text-xs">6x6 @ Ksh 28</span></div><input type="number" id="q-yellow" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+        </div>
+
+        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-blue-500 pl-2">2. Lorries (Aggregates)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid-box p-4"><p class="font-black">BALLAST</p><select id="p-ballast" class="w-full border-2 border-black my-2 p-1"><option value="28000">10T - Ksh 28,000</option><option value="52000">20T - Ksh 52,000</option></select><input type="number" id="q-ballast" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black">MURRAM</p><select id="p-murram" class="w-full border-2 border-black my-2 p-1"><option value="9000">10T - Ksh 9,000</option><option value="16000">20T - Ksh 16,000</option></select><input type="number" id="q-murram" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black">HARDCORE</p><select id="p-hardcore" class="w-full border-2 border-black my-2 p-1"><option value="12000">10T - Ksh 12,000</option><option value="22000">20T - Ksh 22,000</option></select><input type="number" id="q-hardcore" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
         </div>
     </div>
 
-    <div id="login-screen" class="admin-hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-6">
-        <div class="bg-white p-6 rounded-lg w-full max-w-sm">
-            <h2 class="font-bold mb-4">Admin Access</h2>
-            <input type="password" id="pass-input" placeholder="Enter Password" class="w-full border p-2 mb-4">
-            <button onclick="checkPass()" class="bg-black text-white w-full p-2">Login</button>
-            <button onclick="hideLogin()" class="w-full p-2 text-gray-500 text-sm">Cancel</button>
-        </div>
-    </div>
+    <div onclick="submitOrder()" class="order-bar uppercase">Send Full Order To Kenneth</div>
 
-    <div id="admin-dashboard" class="admin-hidden p-4">
-        <h1 class="text-2xl font-black mb-4">DASHBOARD</h1>
-        <div id="editor-list"></div>
-        <button onclick="saveChanges()" class="save-btn">APPLY CHANGES TO SITE</button>
-        <button onclick="logout()" class="w-full mt-4 text-red-600 font-bold">Logout</button>
+    <div id="login-screen" class="admin-hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[200]">
+        <div class="bg-white p-8 rounded shadow-xl">
+            <h3 class="font-bold mb-4">Enter Admin Password</h3>
+            <input type="password" id="pass-input" class="border-2 border-black p-2 w-full mb-4">
+            <button onclick="checkPass()" class="bg-black text-white w-full py-2">Login</button>
+            <button onclick="hideLogin()" class="text-gray-400 w-full mt-2 text-sm">Cancel</button>
+        </div>
     </div>
 
     <script>
-        // Data Store
-        let inventory = JSON.parse(localStorage.getItem('kenneth_data')) || [
-            { id: 0, name: "Grey Stone", price: "53/ft" },
-            { id: 1, name: "Red Stone", price: "53/ft" },
-            { id: 2, name: "Ballast (10T)", price: "28,000" },
-            { id: 3, name: "Murram (10T)", price: "9,000" }
-        ];
-
-        function render() {
-            const display = document.getElementById('products-display');
-            const editor = document.getElementById('editor-list');
-            display.innerHTML = ''; editor.innerHTML = '';
-
-            inventory.forEach((item, index) => {
-                display.innerHTML += <div class="card"><b></b>: Ksh </div>;
-                editor.innerHTML += 
-                    <div class="card">
-                        <label class="text-xs">Item Name</label>
-                        <input class="w-full border mb-2 p-1" value="" onchange="updateData(, 'name', this.value)">
-                        <label class="text-xs">Price</label>
-                        <input class="w-full border p-1" value="" onchange="updateData(, 'price', this.value)">
-                    </div>;
-            });
-        }
-
-        function updateData(index, key, val) { inventory[index][key] = val; }
         function showLogin() { document.getElementById('login-screen').classList.remove('admin-hidden'); }
         function hideLogin() { document.getElementById('login-screen').classList.add('admin-hidden'); }
-        
         function checkPass() {
             if(document.getElementById('pass-input').value === '1234') {
-                document.getElementById('login-screen').classList.add('admin-hidden');
-                document.getElementById('user-view').classList.add('admin-hidden');
-                document.getElementById('admin-dashboard').classList.remove('admin-hidden');
+                alert('Admin Dashboard Access Granted');
+                // Dashboard logic goes here
             } else { alert('Wrong Password'); }
         }
-
-        function saveChanges() {
-            localStorage.setItem('kenneth_data', JSON.stringify(inventory));
-            alert('Prices Updated!');
-            location.reload();
+        function submitOrder() {
+            let body = "ORDER FOR KENNETH:\n";
+            let qG = document.getElementById('q-grey').value;
+            if(qG) body += "Grey Stones: " + qG + "ft\n";
+            window.location.href = "sms:0712694976?body=" + encodeURIComponent(body);
         }
-
-        function logout() { location.reload(); }
-        render();
     </script>
 </body>
 </html>
