@@ -7,130 +7,555 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .navy-bg { background-color: #0F172A; }
-        @media print { .no-print { display: none; } #invoice-print { display: block !important; } }
+        .gold-glow:hover { box-shadow: 0 0 20px rgba(234, 179, 8, 0.3); transition: 0.5s; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans">
 
-    <div class="no-print">
-        <nav class="navy-bg text-white p-5 sticky top-0 z-50 shadow-xl border-b-2 border-yellow-500">
-            <div class="container mx-auto flex justify-between items-center">
-                <div>
-                    <h1 class="text-xl md:text-2xl font-black text-yellow-500 italic uppercase">Kenneth Omondi Ware</h1>
-                    <p class="text-[9px] tracking-[0.4em] uppercase text-slate-400">Universal Materials & Logistics</p>
-                </div>
-                <a href="tel:+254712694976" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-lg font-black text-xs uppercase flex items-center gap-2">
-                     Call 0712694976
-                </a>
+    <nav class="navy-bg text-white p-5 sticky top-0 z-50 shadow-xl border-b-2 border-yellow-500">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-black text-yellow-500 italic uppercase leading-none">Kenneth Omondi Ware</h1>
+                <p class="text-[9px] tracking-[0.4em] uppercase text-slate-400 mt-1">Universal Materials & Logistics</p>
             </div>
-        </nav>
+            <a href="tel:+254712694976" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-lg font-black text-[10px] uppercase">
+                Call: 0712 694 976
+            </a>
+        </div>
+    </nav>
 
-        <section class="bg-white py-8 border-b text-center">
-            <h2 class="text-2xl font-black uppercase italic italic tracking-tighter">Nyanza Delivery Reach</h2>
-            <p class="text-slate-500 text-[10px] font-bold uppercase mt-1">Kisumu | Kisii | Homa Bay | Migori | +5KM Borders</p>
-        </section>
+    <section class="bg-white py-12 border-b">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase italic italic tracking-tighter">Nyanza & Outskirts Delivery</h2>
+            <div class="flex flex-wrap justify-center gap-4 mt-6">
+                <span class="bg-slate-100 px-4 py-1 rounded-full text-[10px] font-bold uppercase border border-slate-200">Kisumu</span>
+                <span class="bg-slate-100 px-4 py-1 rounded-full text-[10px] font-bold uppercase border border-slate-200">Kisii</span>
+                <span class="bg-slate-100 px-4 py-1 rounded-full text-[10px] font-bold uppercase border border-slate-200">Homa Bay</span>
+                <span class="bg-slate-100 px-4 py-1 rounded-full text-[10px] font-bold uppercase border border-slate-200">Migori</span>
+                <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full text-[10px] font-bold uppercase border border-yellow-200">+5KM Border Reach</span>
+            </div>
+        </div>
+    </section>
 
-        <main class="container mx-auto py-10 px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div id="grid" class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-
-            <aside class="bg-white rounded-3xl shadow-2xl border-4 border-slate-900 h-fit sticky top-24 overflow-hidden">
-                <div class="navy-bg text-white p-4 text-center font-black uppercase tracking-widest text-xs">Load Manifest</div>
-                <div id="cart-items" class="p-6 space-y-3 min-h-[100px] text-sm italic text-slate-400">Truck is empty...</div>
-                <div class="p-6 bg-slate-50 border-t-2">
-                    <div class="flex justify-between text-2xl font-black mb-6">
-                        <span>Total:</span>
-                        <span class="text-indigo-900">Ksh <span id="total-val">0</span></span>
+    <section class="py-16 bg-slate-900 text-white overflow-hidden">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-yellow-500 font-black uppercase text-xs tracking-[0.3em] mb-4">The Universal Fleet</h3>
+                <h2 class="text-4xl font-black italic uppercase leading-tight mb-6">Heavy-Duty Delivery <br>to Your Site</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">Kenneth Omondi Ware maintains a robust logistics network capable of moving tons of Hardcore, Ballast, and Stones daily. Our trucks are specialized for the rough terrain of Nyanza, ensuring your project never stops.</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="border-l-2 border-yellow-500 pl-4">
+                        <p class="text-2xl font-black">24Hr</p>
+                        <p class="text-[9px] uppercase font-bold text-slate-500 tracking-widest">Dispatch Time</p>
                     </div>
-                    <button onclick="sendSMS()" class="w-full bg-blue-600 text-white py-4 rounded-xl font-black uppercase mb-2"> Order via SMS</button>
-                    <button onclick="printInvoice()" class="w-full bg-slate-200 text-slate-700 py-3 rounded-xl font-black uppercase text-xs"> Generate Receipt</button>
+                    <div class="border-l-2 border-yellow-500 pl-4">
+                        <p class="text-2xl font-black">100%</p>
+                        <p class="text-[9px] uppercase font-bold text-slate-500 tracking-widest">Pure Natural Stone</p>
+                    </div>
                 </div>
-            </aside>
-        </main>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1586864387917-f538a58e2e4b?q=80&w=600" class="rounded-[3rem] shadow-2xl grayscale hover:grayscale-0 transition duration-700">
+                <div class="absolute -bottom-6 -left-6 bg-yellow-500 text-slate-900 p-8 rounded-3xl font-black italic uppercase text-sm shadow-xl">
+                    Universal <br>Logistics
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <footer class="py-10 bg-slate-200 text-center">
-            <input type="password" id="admin-pass" placeholder="Admin PIN" class="p-2 rounded-lg border-none text-xs">
-            <button onclick="checkAdmin()" class="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase">Manage Store</button>
-            <p class="mt-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center">Developed by Omondi Robin</p>
-        </footer>
-    </div>
+    <main class="container mx-auto py-20 px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div id="grid" class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+            </div>
 
-    <div id="invoice-print" class="hidden p-10 bg-white text-black">
-        <h1 class="text-2xl font-black uppercase">Official Receipt</h1>
-        <p>Supplier: Kenneth Omondi Ware (0712694976)</p>
-        <hr class="my-4 border-black">
-        <div id="inv-content" class="py-4"></div>
-        <hr class="my-4 border-black">
-        <h2 id="inv-total" class="text-xl font-bold"></h2>
-    </div>
+        <aside class="bg-white rounded-[2.5rem] shadow-2xl border-[6px] border-slate-900 h-fit sticky top-24 gold-glow">
+            <div class="navy-bg text-white p-6 text-center font-black uppercase tracking-widest text-xs">Your Load Summary</div>
+            <div id="cart" class="p-8 space-y-4 min-h-[150px] text-sm text-slate-400 italic text-center">Your order is empty...</div>
+            <div class="p-8 bg-slate-50 border-t-2">
+                <div class="flex justify-between text-3xl font-black mb-8 italic">
+                    <span>Total:</span>
+                    <span class="text-indigo-900">Ksh <span id="total">0</span></span>
+                </div>
+                <button onclick="sendSMS()" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-black uppercase shadow-lg hover:bg-blue-700 mb-4 transition"> Order via SMS</button>
+                <a href="tel:+254712694976" class="w-full block text-center bg-slate-900 text-white py-5 rounded-2xl font-black uppercase hover:bg-yellow-500 hover:text-slate-900 transition"> Direct Call</a>
+            </div>
+        <button onclick='printInvoice()' class='mt-2 w-full bg-slate-100 text-slate-900 py-3 rounded-2xl font-black uppercase text-xs hover:bg-slate-200 transition'> Generate Receipt</button></aside>
+    </main>
 
     <script>
-        let products = [
-            { name: "Red Stones", price: 55, stock: 2000, img: "https://images.unsplash.com/photo-1590060057030-97727282845c?q=80&w=400", color: "RED" },
-            { name: "Grey Stones", price: 50, stock: 3500, img: "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=400", color: "GREY" },
-            { name: "Yellow Stones", price: 52, stock: 1500, img: "https://images.unsplash.com/photo-1620138546344-7b2c0b057df3?q=80&w=400", color: "YELLOW" },
-            { name: "Black Stones", price: 60, stock: 800, img: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=400", color: "BLACK" },
-            { name: "Discolour Stones", price: 45, stock: 4000, img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=400", color: "MIXED" },
-            { name: "Ballast (Ton)", price: 1800, stock: 50, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400" },
-            { name: "Hardcore", price: 900, stock: 1000, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400" }
+        const products = [
+            { name: "9x9 Dressed Stone", price: 50, img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400" },
+            { name: "Ballast (Per Ton)", price: 1800, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400" },
+            { name: "Hardcore (Standard)", price: 900, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400" },
+            { name: "Marrum (Fine Grade)", price: 1200, img: "https://images.unsplash.com/photo-1590131431182-6256d510e9ae?q=80&w=400" }
         ];
 
         let truck = [];
-        let total = 0;
+        let totalVal = 0;
 
         function render() {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = products.map((p, i) => 
-                <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
-                    <img src="\" class="h-40 w-full object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[10px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">\</span>
-                            <span class="text-[10px] font-bold text-slate-400">Stock: \</span>
-                        </div>
-                        <h3 class="font-black uppercase italic">\</h3>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-xl font-black">Ksh \</span>
-                            <button onclick="add(\)" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-xl font-black text-xs">ADD</button>
+            document.getElementById('grid').innerHTML = products.map(p => 
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-200 hover:border-yellow-500 transition-all duration-300">
+                    <img src="\" class="h-48 w-full object-cover">
+                    <div class="p-8">
+                        <h3 class="font-black uppercase italic text-xl">\</h3>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-2xl font-black text-slate-900">Ksh \</span>
+                            <button onclick="add('\', \)" class="bg-yellow-500 text-slate-900 px-6 py-2 rounded-xl font-black hover:bg-slate-900 hover:text-white transition">ADD</button>
                         </div>
                     </div>
                 </div>).join('');
         }
 
-        function add(i) {
-            const p = products[i];
-            if(p.stock <= 0) return alert("Out of Stock!");
-            truck.push(p.name);
-            total += p.price;
-            p.stock--;
-            document.getElementById('total-val').innerText = total.toLocaleString();
-            const items = document.getElementById('cart-items');
-            if(truck.length === 1) items.innerHTML = '';
-            items.innerHTML += \<div class="flex justify-between font-bold text-slate-700"><span>\</span><span>Ksh \</span></div>\;
-            render();
+        function add(n, p) {
+            const c = document.getElementById('cart');
+            if(totalVal === 0) c.innerHTML = '';
+            c.innerHTML += \<div class="flex justify-between font-bold border-b pb-3 text-slate-800"><span>\</span><span>Ksh \</span></div>\;
+            totalVal += p;
+            truck.push(n);
+            document.getElementById('total').innerText = totalVal.toLocaleString();
         }
 
         function sendSMS() {
-            if(total === 0) return alert("Truck is empty!");
-            const msg = "ORDER FOR KENNETH: " + truck.join(', ') + ". Total: Ksh " + total;
-            window.location.href = "sms:0712694976?body=" + encodeURIComponent(msg);
-        }
-
-        function printInvoice() {
-            if(total === 0) return;
-            document.getElementById('inv-content').innerHTML = truck.map(t => \<p>\</p>\).join('');
-            document.getElementById('inv-total').innerText = "Total: Ksh " + total;
-            window.print();
-        }
-
-        function checkAdmin() {
-            if(document.getElementById('admin-pass').value === "1234") {
-                const newPrice = prompt("Enter new price for Red Stones:");
-                if(newPrice) products[0].price = parseInt(newPrice);
-                render();
-            } else { alert("Wrong PIN"); }
+            if(totalVal === 0) return alert("Please select items first");
+            const phone = "0712694976";
+            const msg = "KENNETH OMONDI WARE ORDER: " + truck.join(', ') + ". Total: Ksh " + totalVal;
+            window.location.href = "sms:" + phone + "?body=" + encodeURIComponent(msg);
         }
 
         render();
     </script>
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-slate-900 to-slate-800 rounded-[3rem] p-1 shadow-2xl overflow-hidden">
+                <div class="bg-white m-1 rounded-[2.8rem] p-10 flex flex-col md:flex-row items-center gap-10">
+                    <div class="bg-slate-50 p-6 rounded-3xl border-2 border-dashed border-slate-200 text-center">
+                        <div class="w-40 h-40 bg-white shadow-inner mx-auto flex items-center justify-center border-4 border-slate-900 rounded-2xl mb-4">
+                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://okoth-hash.github.io/universal-stone-supplier/" alt="QR Code">
+                        </div>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 italic">Scan to Order</p>
+                    </div>
+
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="text-3xl font-black italic uppercase text-slate-900 leading-none">Kenneth Omondi Ware</h4>
+                        <p class="text-yellow-600 font-bold uppercase tracking-[0.3em] text-[11px] mt-2">Director & Universal Supplier</p>
+                        
+                        <div class="mt-8 space-y-4">
+                            <div class="flex items-center gap-4 justify-center md:justify-start">
+                                <span class="bg-slate-900 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs"></span>
+                                <span class="font-black text-lg">0712 694 976</span>
+                            </div>
+                            <div class="flex items-center gap-4 justify-center md:justify-start">
+                                <span class="bg-slate-900 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs"></span>
+                                <span class="font-bold text-slate-600 uppercase text-xs">Nyanza Region Coverage (HQ: Kisumu)</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-slate-100 flex justify-between items-center">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Architect: Omondi Robin</p>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[9px] font-black uppercase">Verified Supplier</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="navy-bg text-white py-10 text-center border-t border-yellow-500/20">
+        <p class="text-[10px] text-slate-500 uppercase font-bold tracking-[0.5em]">Kenneth Omondi Ware &copy; 2026 - All Rights Reserved</p>
+    </footer>
+    <section id="admin-login" class="py-10 bg-slate-200 border-t-4 border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-slate-600">Supplier Control Panel</h3>
+            <div id="login-form" class="max-w-xs mx-auto flex gap-2">
+                <input type="password" id="pass-input" placeholder="Enter Admin Password" class="w-full p-4 rounded-xl border-none shadow-inner focus:ring-2 focus:ring-yellow-500">
+                <button onclick="checkPass()" class="bg-slate-900 text-white px-6 rounded-xl font-bold">Access</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin-panel" class="hidden py-16 bg-slate-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-10 border-b border-slate-800 pb-6">
+                <h2 class="text-2xl font-black italic uppercase text-yellow-500">Universal Price Manager</h2>
+                <button onclick="logout()" class="text-[10px] font-bold uppercase border border-red-500 text-red-500 px-4 py-1 rounded-full">Lock System</button>
+            </div>
+            
+            <div id="admin-controls" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
+            
+            <div class="mt-10 text-center">
+                <button onclick="saveChanges()" class="bg-green-600 hover:bg-green-500 text-white px-12 py-4 rounded-2xl font-black uppercase shadow-xl transition">Apply New Prices Live</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function checkPass() {
+            const input = document.getElementById('pass-input').value;
+            if(input === "1234") {
+                document.getElementById('admin-login').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                loadAdminControls();
+            } else {
+                alert("Unauthorized Access Denied.");
+            }
+        }
+
+        function loadAdminControls() {
+            const container = document.getElementById('admin-controls');
+            container.innerHTML = products.map((p, index) => 
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">\</p>
+                    <div class="flex items-center gap-2">
+                        <span class="text-slate-400 font-bold text-xs uppercase">Ksh</span>
+                        <input type="number" value="\" id="price-\" class="bg-slate-900 text-white w-full p-2 rounded-lg border border-slate-700 font-black">
+                    </div>
+                </div>
+            ).join('');
+        }
+
+        function saveChanges() {
+            products.forEach((p, index) => {
+                const newPrice = document.getElementById(\price-\\).value;
+                p.price = parseInt(newPrice);
+            });
+            render(); // Refresh the public shop view
+            alert("Universal Prices Updated Successfully!");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function logout() {
+            location.reload();
+        }
+    </script>
+    <script>
+        // Update the global products array to include stock levels
+        products[0].stock = 5000; // 9x9 Dressed
+        products[1].stock = 50;   // Ballast (Tons)
+        products[2].stock = 1000; // Hardcore
+        products[3].stock = 200;  // Marrum (Tons)
+
+        // Fully Update the Public Render function to show stock
+        function render() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = products.map((p, index) => {
+                const isOut = p.stock <= 0;
+                return 
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg border \">
+                    <div class="relative">
+                        <img src="\" class="h-48 w-full object-cover">
+                        \
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-black uppercase italic text-xl">\</h3>
+                            <span class="text-[9px] font-black px-2 py-1 rounded bg-slate-100">\ Available</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-2xl font-black">Ksh \</span>
+                            <button onclick="add('\', \, \)" 
+                                \
+                                class="\ text-slate-900 px-6 py-2 rounded-xl font-black transition">
+                                \
+                            </button>
+                        </div>
+                    </div>
+                </div>;
+            }).join('');
+        }
+
+        // Add to Admin Controls: Stock Inputs
+        const originalLoadAdmin = loadAdminControls;
+        loadAdminControls = function() {
+            const container = document.getElementById('admin-controls');
+            container.innerHTML = products.map((p, index) => 
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <p class="text-[10px] font-black text-yellow-500 uppercase mb-4">\</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[9px] uppercase text-slate-500 font-bold">Price (Ksh)</label>
+                            <input type="number" value="\" id="price-\" class="bg-slate-900 text-white w-full p-2 rounded-lg border border-slate-700 font-black">
+                        </div>
+                        <div>
+                            <label class="text-[9px] uppercase text-slate-500 font-bold">Current Stock</label>
+                            <input type="number" value="\" id="stock-\" class="bg-slate-900 text-white w-full p-2 rounded-lg border border-slate-700 font-black">
+                        </div>
+                    </div>
+                </div>
+            ).join('');
+        };
+
+        // Update Save function to include stock
+        const originalSave = saveChanges;
+        saveChanges = function() {
+            products.forEach((p, index) => {
+                p.price = parseInt(document.getElementById(\price-\\).value);
+                p.stock = parseInt(document.getElementById(\stock-\\).value);
+            });
+            render();
+            alert("Universal Inventory Updated Successfully!");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+<script>
+    // Initializing Universal Data
+    if (!window.products) {
+        window.products = [
+            { name: "9x9 Dressed Stone", price: 50, stock: 5000, img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400", cat: "stones" },
+            { name: "Ballast (Per Ton)", price: 1800, stock: 50, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400", cat: "aggregates" },
+            { name: "Hardcore (Standard)", price: 900, stock: 1000, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400", cat: "hardcore" },
+            { name: "Marrum (Fine Grade)", price: 1200, stock: 200, img: "https://images.unsplash.com/photo-1590131431182-6256d510e9ae?q=80&w=400", cat: "aggregates" }
+        ];
+    }
+
+    function render() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = products.map((p, index) => {
+            const isOut = p.stock <= 0;
+            return 
+            <div class="bg-white rounded-[2.5rem] shadow-lg border \">
+                <div class="relative">
+                    <img src="\" class="h-48 w-full object-cover">
+                    \
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-black uppercase italic text-xl">\</h3>
+                        <span class="text-[9px] font-black px-2 py-1 bg-slate-100 rounded">\ In Stock</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-black text-slate-900">Ksh \</span>
+                        <button onclick="add('\', \, \)" \ class="bg-yellow-500 px-6 py-2 rounded-xl font-black \">ADD</button>
+                    </div>
+                </div>
+            </div>;
+        }).join('');
+    }
+
+    // Sales Tracking logic for Kenneth's Admin Panel
+    let totalSalesThisMonth = 0;
+    
+    function logOrder(amt) {
+        totalSalesThisMonth += amt;
+        document.getElementById('sales-display').innerText = totalSalesThisMonth.toLocaleString();
+    }
+
+    // Override the SMS function to track sales locally
+    const originalSMS = sendSMS;
+    sendSMS = function() {
+        if(totalVal === 0) return alert("Truck is empty");
+        logOrder(totalVal);
+        const phone = "0712694976";
+        const msg = "ORDER FOR KENNETH: " + truck.join(', ') + ". Total: Ksh " + totalVal;
+        window.location.href = "sms:" + phone + "?body=" + encodeURIComponent(msg);
+    };
+
+    render();
+</script>
+<script>
+    // Initializing Universal Data
+    if (!window.products) {
+        window.products = [
+            { name: "9x9 Dressed Stone", price: 50, stock: 5000, img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400", cat: "stones" },
+            { name: "Ballast (Per Ton)", price: 1800, stock: 50, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400", cat: "aggregates" },
+            { name: "Hardcore (Standard)", price: 900, stock: 1000, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400", cat: "hardcore" },
+            { name: "Marrum (Fine Grade)", price: 1200, stock: 200, img: "https://images.unsplash.com/photo-1590131431182-6256d510e9ae?q=80&w=400", cat: "aggregates" }
+        ];
+    }
+
+    function render() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = products.map((p, index) => {
+            const isOut = p.stock <= 0;
+            return 
+            <div class="bg-white rounded-[2.5rem] shadow-lg border \">
+                <div class="relative">
+                    <img src="\" class="h-48 w-full object-cover">
+                    \
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-black uppercase italic text-xl">\</h3>
+                        <span class="text-[9px] font-black px-2 py-1 bg-slate-100 rounded">\ In Stock</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-black text-slate-900">Ksh \</span>
+                        <button onclick="add('\', \, \)" \ class="bg-yellow-500 px-6 py-2 rounded-xl font-black \">ADD</button>
+                    </div>
+                </div>
+            </div>;
+        }).join('');
+    }
+
+    // Sales Tracking logic for Kenneth's Admin Panel
+    let totalSalesThisMonth = 0;
+    
+    function logOrder(amt) {
+        totalSalesThisMonth += amt;
+        document.getElementById('sales-display').innerText = totalSalesThisMonth.toLocaleString();
+    }
+
+    // Override the SMS function to track sales locally
+    const originalSMS = sendSMS;
+    sendSMS = function() {
+        if(totalVal === 0) return alert("Truck is empty");
+        logOrder(totalVal);
+        const phone = "0712694976";
+        const msg = "ORDER FOR KENNETH: " + truck.join(', ') + ". Total: Ksh " + totalVal;
+        window.location.href = "sms:" + phone + "?body=" + encodeURIComponent(msg);
+    };
+
+    render();
+</script>
+    <div id="invoice-print" class="hidden font-serif p-10 bg-white text-black">
+        <div class="flex justify-between border-b-4 border-slate-900 pb-6">
+            <div>
+                <h1 class="text-3xl font-black uppercase italic">Universal Stone Supplier</h1>
+                <p class="text-sm font-bold">Proprietor: Kenneth Omondi Ware</p>
+                <p class="text-xs">Location: Nyanza Region Coverage</p>
+                <p class="text-xs">Phone: 0712 694 976</p>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-black uppercase text-slate-400">Official Receipt</h2>
+                <p id="inv-date" class="text-xs mt-2 font-bold"></p>
+            </div>
+        </div>
+        <div class="py-10">
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="border-b-2 border-slate-200 uppercase text-[10px] tracking-widest">
+                        <th class="py-2">Description</th>
+                        <th class="py-2 text-right">Amount (Ksh)</th>
+                    </tr>
+                </thead>
+                <tbody id="inv-items"></tbody>
+            </table>
+        </div>
+        <div class="border-t-4 border-slate-900 pt-6 flex justify-between">
+            <span class="text-xl font-black uppercase">Grand Total</span>
+            <span id="inv-total" class="text-xl font-black"></span>
+        </div>
+        <div class="mt-20 text-center border-t border-slate-100 pt-4">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Thank you for building with Kenneth Omondi Ware</p>
+            <p class="text-[8px] mt-2 text-slate-300">System Architect: Omondi Robin</p>
+        </div>
+    </div>
+
+    <script>
+        function printInvoice() {
+            if(truck.length === 0) return alert("No items to bill.");
+            
+            const date = new Date().toLocaleDateString('en-GB');
+            document.getElementById('inv-date').innerText = "Date: " + date;
+            document.getElementById('inv-total').innerText = "Ksh " + totalVal.toLocaleString();
+            
+            const itemsList = document.getElementById('inv-items');
+            itemsList.innerHTML = truck.map(item => 
+                <tr class="border-b border-slate-50">
+                    <td class="py-4 font-bold text-sm">\</td>
+                    <td class="py-4 text-right font-black text-sm">Included</td>
+                </tr>
+            ).join('');
+
+            // Hide everything else to print only the invoice
+            const originalContent = document.body.innerHTML;
+            const printContent = document.getElementById('invoice-print').innerHTML;
+            
+            document.body.innerHTML = printContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+            
+            // Reload scripts after printing to keep the site functional
+            location.reload();
+        }
+    </script>
+<script>
+    // Updated Product List with Specific Colors for Kenneth Omondi Ware
+    window.products = [
+        { name: "Red Stones (Premium)", price: 55, stock: 2000, img: "https://images.unsplash.com/photo-1590060057030-97727282845c?q=80&w=400", cat: "stones", color: "Red" },
+        { name: "Grey Stones (Standard)", price: 50, stock: 3500, img: "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=400", cat: "stones", color: "Grey" },
+        { name: "Yellow Stones (Golden)", price: 52, stock: 1500, img: "https://images.unsplash.com/photo-1620138546344-7b2c0b057df3?q=80&w=400", cat: "stones", color: "Yellow" },
+        { name: "Black Stones (Basalt)", price: 60, stock: 800, img: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=400", cat: "stones", color: "Black" },
+        { name: "Discolour Stones (Mixed)", price: 45, stock: 4000, img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=400", cat: "stones", color: "Mixed" },
+        { name: "Ballast ( Inch)", price: 1800, stock: 50, img: "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?q=80&w=400", cat: "aggregates" },
+        { name: "Hardcore", price: 900, stock: 1000, img: "https://images.unsplash.com/photo-1541888941294-e83f9521ee83?q=80&w=400", cat: "hardcore" }
+    ];
+
+    // Updated Render Function to show Color Badges
+    function render() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = products.map((p, index) => {
+            const isOut = p.stock <= 0;
+            const colorBadge = p.color ? <span class="bg-slate-900 text-white text-[8px] px-2 py-1 rounded-full mr-2">\</span> : '';
+            
+            return 
+            <div class="bg-white rounded-[2.5rem] shadow-lg border \">
+                <div class="relative">
+                    <img src="\" class="h-48 w-full object-cover rounded-t-[2.5rem]">
+                    <div class="absolute top-4 left-4">\</div>
+                    \
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-black uppercase italic text-lg leading-tight">\</h3>
+                        <span class="text-[9px] font-black px-2 py-1 bg-slate-100 rounded text-slate-500">\ Units</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-2xl font-black text-slate-900">Ksh \</span>
+                        <button onclick="add('\', \, \)" \ class="bg-yellow-500 px-6 py-2 rounded-xl font-black \">ADD</button>
+                    </div>
+                </div>
+            </div>;
+        }).join('');
+    }
+    render();
+</script>
+<script>
+    let userLocation = "Location not provided";
+
+    function getSiteLocation() {
+        const btn = document.getElementById('gps-btn');
+        btn.innerText = " Locating Site...";
+        btn.classList.add('animate-pulse');
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    userLocation = https://www.google.com/maps?q=\,\;
+                    btn.innerText = " Site Pinned";
+                    btn.classList.remove('animate-pulse');
+                    btn.classList.replace('bg-slate-800', 'bg-green-600');
+                    alert("GPS Coordinates Locked! Kenneth's driver will see your exact location.");
+                },
+                () => {
+                    alert("Unable to get location. Please ensure GPS is ON.");
+                    btn.innerText = " GPS Error";
+                }
+            );
+        }
+    }
+
+    // Override the SMS function to include the GPS Link
+    const finalSMSWithGPS = sendSMS;
+    sendSMS = function() {
+        if(total === 0) return alert("Truck is empty!");
+        let msg = "ORDER FOR KENNETH:\nItems: " + truck.join(', ') + "\nTotal: Ksh " + total;
+        if(userLocation !== "Location not provided") {
+            msg += "\n\nDelivery Site: " + userLocation;
+        } else {
+            msg += "\n\n(No GPS link provided)";
+        }
+        window.location.href = "sms:0712694976?body=" + encodeURIComponent(msg);
+    };
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
