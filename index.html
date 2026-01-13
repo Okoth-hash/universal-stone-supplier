@@ -228,7 +228,77 @@
             location.reload();
         }
     </script>
+    <script>
+        // Update the global products array to include stock levels
+        products[0].stock = 5000; // 9x9 Dressed
+        products[1].stock = 50;   // Ballast (Tons)
+        products[2].stock = 1000; // Hardcore
+        products[3].stock = 200;  // Marrum (Tons)
+
+        // Fully Update the Public Render function to show stock
+        function render() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = products.map((p, index) => {
+                const isOut = p.stock <= 0;
+                return 
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg border \">
+                    <div class="relative">
+                        <img src="\" class="h-48 w-full object-cover">
+                        \
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-black uppercase italic text-xl">\</h3>
+                            <span class="text-[9px] font-black px-2 py-1 rounded bg-slate-100">\ Available</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-2xl font-black">Ksh \</span>
+                            <button onclick="add('\', \, \)" 
+                                \
+                                class="\ text-slate-900 px-6 py-2 rounded-xl font-black transition">
+                                \
+                            </button>
+                        </div>
+                    </div>
+                </div>;
+            }).join('');
+        }
+
+        // Add to Admin Controls: Stock Inputs
+        const originalLoadAdmin = loadAdminControls;
+        loadAdminControls = function() {
+            const container = document.getElementById('admin-controls');
+            container.innerHTML = products.map((p, index) => 
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <p class="text-[10px] font-black text-yellow-500 uppercase mb-4">\</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[9px] uppercase text-slate-500 font-bold">Price (Ksh)</label>
+                            <input type="number" value="\" id="price-\" class="bg-slate-900 text-white w-full p-2 rounded-lg border border-slate-700 font-black">
+                        </div>
+                        <div>
+                            <label class="text-[9px] uppercase text-slate-500 font-bold">Current Stock</label>
+                            <input type="number" value="\" id="stock-\" class="bg-slate-900 text-white w-full p-2 rounded-lg border border-slate-700 font-black">
+                        </div>
+                    </div>
+                </div>
+            ).join('');
+        };
+
+        // Update Save function to include stock
+        const originalSave = saveChanges;
+        saveChanges = function() {
+            products.forEach((p, index) => {
+                p.price = parseInt(document.getElementById(\price-\\).value);
+                p.stock = parseInt(document.getElementById(\stock-\\).value);
+            });
+            render();
+            alert("Universal Inventory Updated Successfully!");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
 </body>
 </html>
+
 
 
