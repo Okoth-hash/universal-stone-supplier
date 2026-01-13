@@ -2,68 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI WARE | COMPLETE SUPPLIES</title>
+    <title>KENNETH OMONDI WARE | TOTAL SUPPLIES</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f1f5f9; font-family: 'Arial Black', sans-serif; }
-        .card { background: white; border: 4px solid #000; overflow: hidden; display: flex; flex-direction: column; }
-        .img-box { height: 120px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: white; border-bottom: 4px solid #000; font-weight: 900; text-align: center; }
-        .bg-grey { background: #808080; } .bg-red { background: #991b1b; }
-        .bg-black { background: #000; } .bg-yellow { background: #ca8a04; }
-        .bg-ballast { background: #1f2937; } .bg-murram { background: #92400e; } .bg-hardcore { background: #4b5563; }
-        .btn-order { background: #000; color: #fff; width: 100%; padding: 15px; font-weight: 900; border-top: 4px solid #eab308; cursor: pointer; position: sticky; bottom: 0; }
+        body { background-color: #f8fafc; font-family: sans-serif; }
+        .grid-box { border: 3px solid #000; background: white; border-radius: 8px; overflow: hidden; }
+        .stone-header { height: 100px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 1.4rem; }
+        .order-bar { position: fixed; bottom: 0; width: 100%; background: #000; color: #fbbf24; padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 900; cursor: pointer; border-top: 4px solid #fbbf24; }
     </style>
 </head>
-<body class="pb-24">
-    <nav class="bg-slate-900 p-6 text-white text-center border-b-4 border-yellow-500">
-        <h1 class="text-3xl uppercase italic text-yellow-400">KENNETH OMONDI WARE</h1>
-        <p class="text-xs tracking-widest uppercase">Building Stones & Aggregates Specialist</p>
+<body class="pb-32">
+    <nav class="bg-black p-6 text-center border-b-4 border-yellow-500">
+        <h1 class="text-3xl font-black text-yellow-400 italic">KENNETH OMONDI WARE</h1>
+        <p class="text-white text-xs tracking-widest uppercase mt-1">Stones & Construction Aggregates</p>
     </nav>
 
     <div class="container mx-auto p-4">
-        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-yellow-500 pl-4">1. Building Stones (Machine Cut & Quarry)</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <div class="card"><div class="img-box bg-grey">GREY 9x9</div><div class="p-2 text-center font-bold">Ksh 53/ft</div><input type="number" id="qty-grey" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
-            <div class="card"><div class="img-box bg-red">RED 9x9</div><div class="p-2 text-center font-bold">Ksh 53/ft</div><input type="number" id="qty-red" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
-            <div class="card"><div class="img-box bg-black">BLACK 6x6</div><div class="p-2 text-center font-bold">Ksh 28/ft</div><input type="number" id="qty-black" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
-            <div class="card"><div class="img-box bg-yellow text-black">YELLOW 6x6</div><div class="p-2 text-center font-bold">Ksh 28/ft</div><input type="number" id="qty-yellow" placeholder="Feet" class="border-2 border-black p-1 m-2 text-center"></div>
+        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-yellow-500 pl-2">1. Building Stones (Per Feet)</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="grid-box"><div class="stone-header bg-gray-500">GREY</div><input type="number" id="q-grey" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-red-800">RED</div><input type="number" id="q-red" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-black">BLACK</div><input type="number" id="q-black" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
+            <div class="grid-box"><div class="stone-header bg-yellow-600">YELLOW</div><input type="number" id="q-yellow" placeholder="Feet" class="w-full p-2 text-center border-t-2 border-black"></div>
         </div>
 
-        <h2 class="text-2xl font-black uppercase my-6 border-l-8 border-gray-500 pl-4">2. Aggregates (Lorry Loads)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="card">
-                <div class="img-box bg-ballast">BALLAST</div>
-                <div class="p-4">
-                    <select id="price-ballast" class="w-full border-2 border-black p-2 font-bold mb-2"><option value="28000">10T - 28k</option><option value="52000">20T - 52k</option></select>
-                    <input type="number" id="qty-ballast" placeholder="No. of Lorries" class="w-full border-2 border-black p-2 text-center">
-                </div>
-            </div>
-            <div class="card">
-                <div class="img-box bg-murram">MURRAM</div>
-                <div class="p-4">
-                    <select id="price-murram" class="w-full border-2 border-black p-2 font-bold mb-2"><option value="9000">10T - 9k</option><option value="16000">20T - 16k</option></select>
-                    <input type="number" id="qty-murram" placeholder="No. of Lorries" class="w-full border-2 border-black p-2 text-center">
-                </div>
-            </div>
-            <div class="card">
-                <div class="img-box bg-hardcore">HARDCORE</div>
-                <div class="p-4">
-                    <select id="price-hardcore" class="w-full border-2 border-black p-2 font-bold mb-2"><option value="12000">10T - 12k</option><option value="22000">20T - 22k</option></select>
-                    <input type="number" id="qty-hardcore" placeholder="No. of Lorries" class="w-full border-2 border-black p-2 text-center">
-                </div>
-            </div>
+        <h2 class="text-xl font-black uppercase mb-4 border-l-4 border-blue-500 pl-2">2. Lorries (Ballast, Murram, Hardcore)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid-box p-4"><p class="font-black">BALLAST</p><select id="p-ballast" class="w-full border-2 border-black my-2 p-1"><option value="28000">10T - 28k</option><option value="52000">20T - 52k</option></select><input type="number" id="q-ballast" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black">MURRAM</p><select id="p-murram" class="w-full border-2 border-black my-2 p-1"><option value="9000">10T - 9k</option><option value="16000">20T - 16k</option></select><input type="number" id="q-murram" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
+            <div class="grid-box p-4"><p class="font-black">HARDCORE</p><select id="p-hardcore" class="w-full border-2 border-black my-2 p-1"><option value="12000">10T - 12k</option><option value="22000">20T - 22k</option></select><input type="number" id="q-hardcore" placeholder="No. of Lorries" class="w-full border-2 border-black p-1"></div>
         </div>
     </div>
 
-    <button onclick="sendOrder()" class="btn-order text-2xl uppercase">Submit Full Order to Kenneth</button>
+    <div onclick="submitOrder()" class="order-bar uppercase">Send Full Order To Kenneth</div>
 
     <script>
-        function sendOrder() {
-            let msg = "ORDER FOR KENNETH:\n";
-            if(document.getElementById('qty-grey').value) msg += "- Grey Stone: " + document.getElementById('qty-grey').value + "ft\n";
-            if(document.getElementById('qty-ballast').value) msg += "- Ballast: " + document.getElementById('qty-ballast').value + " Lorry\n";
-            msg += "\nPlease confirm delivery time.";
-            window.location.href = "sms:0712694976?body=" + encodeURIComponent(msg);
+        function submitOrder() {
+            let body = "NEW ORDER FOR KENNETH:\n";
+            if(document.getElementById('q-grey').value) body += "Grey Stone: " + document.getElementById('q-grey').value + "ft\n";
+            if(document.getElementById('q-ballast').value) body += "Ballast: " + document.getElementById('q-ballast').value + " Lorry\n";
+            window.location.href = "sms:0712694976?body=" + encodeURIComponent(body);
         }
     </script>
 </body>
