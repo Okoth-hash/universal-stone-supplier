@@ -13,28 +13,33 @@
         #admin-sec { display: none; background: #1a1a1a; padding: 15px; border: 2px solid #fbbf24; border-radius: 12px; margin-bottom: 20px; }
         .admin-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; }
         .admin-input { width: 70px; background: #000; color: #fbbf24; border: 1px solid #fbbf24; text-align: center; }
-        .qty-box { background: #111; padding: 15px; border-radius: 10px; border: 1px solid #333; }
         .qty-input { width: 100%; padding: 15px; background: #222; color: #fbbf24; border: 2px solid #fbbf24; border-radius: 6px; font-size: 1.2rem; text-align: center; font-weight: bold; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-        .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 10px;}
+        .card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 12px;}
         .card img { width: 100%; height: 100px; object-fit: cover; }
-        .price-tag { font-size: 1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
-        .checkout-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 6px; width: 90%; font-weight: bold; cursor: pointer; font-size: 0.7rem; }
-        .edu-box { background: #111; border-top: 2px solid #fbbf24; padding: 20px; margin-top: 30px; border-radius: 20px 20px 0 0; }
+        .price-tag { font-size: 0.95rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
+        
+        /* TRIPLE COMMUNICATION BUTTONS */
+        .btn-stack { display: flex; flex-direction: column; gap: 4px; align-items: center; margin-top: 5px; padding: 0 5px; }
+        .comm-btn { border: none; padding: 7px; border-radius: 4px; width: 100%; font-weight: bold; cursor: pointer; font-size: 0.6rem; text-transform: uppercase; text-decoration: none; display: inline-block; box-sizing: border-box; }
+        .wa-btn { background: #25D366; color: white; }
+        .sms-btn { background: #007AFF; color: white; }
+        .call-btn { background: #fbbf24; color: #000; }
+        
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; font-size: 1.2rem; }
     </style>
 </head>
 <body onload="loadSavedPrices()">
     <div class="nav">
         <svg class="logo-icon" viewBox="0 0 24 24"><path d="M12,7V3H2V21H22V7H12M10,19H4V17H10V19M10,15H4V13H10V15M10,11H4V9H10V11M20,19H12V17H20V19M20,15H12V13H20V15M20,11H12V9H20V11Z" /></svg>
-        <h2 style="color:#fbbf24; margin:0; font-size: 1.1rem;">KENNETH OMONDI SUPPLIES</h2>
+        <h2 style="color:#fbbf24; margin:0; font-size: 1rem;">KENNETH OMONDI SUPPLIES</h2>
         <div style="font-size:0.6rem; color:#888;">Robin | okothrobin323@gmail.com | 0742178833</div>
         <div class="admin-trigger" id="atrig" onclick="loginAdmin()">ADMIN UPDATER</div>
     </div>
 
     <div class="container">
         <div id="admin-sec">
-            <h4 style="color:#fbbf24; margin-top:0;">Update Prices</h4>
+            <h4 style="color:#fbbf24; margin-top:0;">Manager Control</h4>
             <div class="admin-row"><span>9x9 Dressed:</span><input type="number" id="i_9d" class="admin-input" value="53"></div>
             <div class="admin-row"><span>9x9 Undressed:</span><input type="number" id="i_9u" class="admin-input" value="45"></div>
             <div class="admin-row"><span>6x9 Dressed:</span><input type="number" id="i_6d" class="admin-input" value="28"></div>
@@ -42,58 +47,95 @@
             <div class="admin-row"><span>Hardcore:</span><input type="number" id="i_hard" class="admin-input" value="8500"></div>
             <div class="admin-row"><span>Ballast:</span><input type="number" id="i_bal" class="admin-input" value="3500"></div>
             <div class="admin-row"><span>Marrum:</span><input type="number" id="i_mar" class="admin-input" value="12000"></div>
-            <button onclick="savePrices()" style="width:100%; background:#fbbf24; border:none; padding:10px; font-weight:bold; margin-top:10px;">SAVE ALL</button>
+            <button onclick="savePrices()" style="width:100%; background:#fbbf24; border:none; padding:10px; font-weight:bold; margin-top:10px;">SAVE LIVE PRICES</button>
             <button onclick="logoutAdmin()" style="width:100%; background:red; color:#fff; border:none; padding:8px; margin-top:5px;">LOGOUT</button>
         </div>
 
-        <div class="section-header">Order Specifications</div>
-        <div class="qty-box"><input type="number" id="userQty" class="qty-input" value="1000"></div>
+        <div class="section-header">1. Select Quantity</div>
+        <input type="number" id="userQty" class="qty-input" value="1000">
 
-        <div class="section-header">Building Stones</div>
+        <div class="section-header">Construction Stones</div>
         <div class="grid">
-            <div class="card"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b><div class="price-tag">Ksh <span id="p_9d">53</span></div><button class="checkout-btn" onclick="checkout('9x9 Dressed', 'p_9d')">PROCEED TO CHECKOUT</button></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400"><b>9x9 Undressed</b><div class="price-tag">Ksh <span id="p_9u">45</span></div><button class="checkout-btn" onclick="checkout('9x9 Undressed', 'p_9u')">PROCEED TO CHECKOUT</button></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=400"><b>6x9 Dressed</b><div class="price-tag">Ksh <span id="p_6d">28</span></div><button class="checkout-btn" onclick="checkout('6x9 Dressed', 'p_6d')">PROCEED TO CHECKOUT</button></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&q=80&w=400"><b>6x9 Undressed</b><div class="price-tag">Ksh <span id="p_6u">22</span></div><button class="checkout-btn" onclick="checkout('6x9 Undressed', 'p_6u')">PROCEED TO CHECKOUT</button></div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b>
+                <div class="price-tag">Ksh <span id="p_9d">53</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', '9x9 Dressed', 'p_9d')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', '9x9 Dressed', 'p_9d')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400"><b>9x9 Undressed</b>
+                <div class="price-tag">Ksh <span id="p_9u">45</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', '9x9 Undressed', 'p_9u')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', '9x9 Undressed', 'p_9u')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
         </div>
 
-        <div class="section-header">Aggregates & Fills</div>
+        <div class="section-header">Fills & Ballast</div>
         <div class="grid">
-            <div class="card"><img src="https://images.unsplash.com/photo-1578345210246-47735e452504?auto=format&fit=crop&q=80&w=400"><b>Hardcore</b><div class="price-tag">Ksh <span id="p_hard">8500</span></div><button class="checkout-btn" onclick="checkout('Hardcore', 'p_hard')">PROCEED TO CHECKOUT</button></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?auto=format&fit=crop&q=80&w=400"><b>Marrum</b><div class="price-tag">Ksh <span id="p_mar">12000</span></div><button class="checkout-btn" onclick="checkout('Marrum', 'p_mar')">PROCEED TO CHECKOUT</button></div>
-            <div class="card"><img src="https://images.unsplash.com/photo-1533036490184-3165b70bb391?auto=format&fit=crop&q=80&w=400"><b>Ballast</b><div class="price-tag">Ksh <span id="p_bal">3500</span></div><button class="checkout-btn" onclick="checkout('Ballast', 'p_bal')">PROCEED TO CHECKOUT</button></div>
-        </div>
-
-        <div class="edu-box">
-            <h3 style="color:#fbbf24; text-align:center;">EDUCATION DASHBOARD</h3>
-            <p style="font-size:0.8rem; color:#ccc;">Undressed stones are excellent for foundation walling (below ground level) to save on costs. For visible external walls, machine-cut Dressed stones are recommended.</p>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1578345210246-47735e452504?auto=format&fit=crop&q=80&w=400"><b>Hardcore</b>
+                <div class="price-tag">Ksh <span id="p_hard">8500</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', 'Hardcore', 'p_hard')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', 'Hardcore', 'p_hard')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1533036490184-3165b70bb391?auto=format&fit=crop&q=80&w=400"><b>Ballast</b>
+                <div class="price-tag">Ksh <span id="p_bal">3500</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', 'Ballast', 'p_bal')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', 'Ballast', 'p_bal')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         function loginAdmin() { if(prompt("Pass:") === "1234") { document.getElementById('admin-sec').style.display='block'; document.getElementById('atrig').style.display='none'; }}
         function logoutAdmin() { document.getElementById('admin-sec').style.display='none'; document.getElementById('atrig').style.display='block'; }
+        
         function savePrices() {
             const keys = ['9d', '9u', '6d', '6u', 'hard', 'bal', 'mar'];
-            keys.forEach(k => localStorage.setItem('price_' + k, document.getElementById('i_' + k).value));
+            keys.forEach(k => {
+                let input = document.getElementById('i_' + k);
+                if(input) localStorage.setItem('price_' + k, input.value);
+            });
             loadSavedPrices();
-            alert("Prices updated!");
+            alert("Pricing Updated Successfully!");
         }
+
         function loadSavedPrices() {
             const keys = ['9d', '9u', '6d', '6u', 'hard', 'bal', 'mar'];
             keys.forEach(k => {
                 let s = localStorage.getItem('price_' + k);
-                if(s) { document.getElementById('p_' + k).innerText = s; document.getElementById('i_' + k).value = s; }
+                let pElem = document.getElementById('p_' + k);
+                let iElem = document.getElementById('i_' + k);
+                if(s) { if(pElem) pElem.innerText = s; if(iElem) iElem.value = s; }
             });
         }
-        function checkout(item, id) {
+
+        function checkout(type, item, id) {
             let q = document.getElementById('userQty').value;
             let p = document.getElementById(id).innerText;
             let total = q * p.replace(/,/g, '');
-            let msg = "*ORDER SPECIFICATIONS*\nItem: " + item + "\nQty: " + q + "\nPrice: Ksh " + p + "\n*TOTAL: Ksh " + total.toLocaleString() + "*";
-            window.open("https://wa.me/254712694976?text=" + encodeURIComponent(msg), '_blank');
+            let msg = "URGENT ORDER: " + item + "\nQuantity: " + q + "\nTotal: Ksh " + total.toLocaleString();
+            
+            if(type === 'wa') {
+                window.open("https://wa.me/254712694976?text=" + encodeURIComponent(msg), '_blank');
+            } else if(type === 'sms') {
+                window.location.href = "sms:+254712694976?body=" + encodeURIComponent(msg);
+            }
         }
     </script>
-    <a href="tel:+254712694976" class="footer-call">CALL KENNETH: 0712694976</a>
+    <a href="tel:+254712694976" class="footer-call">0712694976 - CALL NOW</a>
 </body>
 </html>
