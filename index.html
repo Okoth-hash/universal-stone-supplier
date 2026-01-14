@@ -19,10 +19,11 @@
         .card img { width: 100%; height: 100px; object-fit: cover; }
         .price-tag { font-size: 0.95rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
         .btn-stack { display: flex; flex-direction: column; gap: 4px; align-items: center; margin-top: 5px; padding: 0 5px; }
-        .comm-btn { border: none; padding: 7px; border-radius: 4px; width: 100%; font-weight: bold; cursor: pointer; font-size: 0.6rem; text-transform: uppercase; text-decoration: none; box-sizing: border-box; }
+        .comm-btn { border: none; padding: 7px; border-radius: 4px; width: 100%; font-weight: bold; cursor: pointer; font-size: 0.6rem; text-transform: uppercase; text-decoration: none; box-sizing: border-box; display: block; }
         .wa-btn { background: #25D366; color: white; }
         .sms-btn { background: #007AFF; color: white; }
         .call-btn { background: #fbbf24; color: #000; }
+        .edu-box { background: #111; border-top: 2px solid #fbbf24; padding: 20px; margin-top: 30px; border-radius: 20px 20px 0 0; }
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; font-size: 1.2rem; }
     </style>
 </head>
@@ -36,7 +37,7 @@
 
     <div class="container">
         <div id="admin-sec">
-            <h4 style="color:#fbbf24; margin-top:0;">Manager Price Control</h4>
+            <h4 style="color:#fbbf24; margin-top:0;">Master Price Control</h4>
             <div class="admin-row"><span>9x9 Dressed:</span><input type="number" id="i_9d" class="admin-input" value="53"></div>
             <div class="admin-row"><span>9x9 Undressed:</span><input type="number" id="i_9u" class="admin-input" value="45"></div>
             <div class="admin-row"><span>6x9 Dressed:</span><input type="number" id="i_6d" class="admin-input" value="28"></div>
@@ -50,6 +51,28 @@
 
         <div class="section-header">1. Order Quantity</div>
         <input type="number" id="userQty" class="qty-input" value="1000">
+
+        <div class="section-header">9x9 Construction Stones</div>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?auto=format&fit=crop&q=80&w=400"><b>9x9 Dressed</b>
+                <div class="price-tag">Ksh <span id="p_9d">53</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', '9x9 Dressed', 'p_9d')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', '9x9 Dressed', 'p_9d')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1590069230005-db393731499c?auto=format&fit=crop&q=80&w=400"><b>9x9 Undressed</b>
+                <div class="price-tag">Ksh <span id="p_9u">45</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', '9x9 Undressed', 'p_9u')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', '9x9 Undressed', 'p_9u')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
+        </div>
 
         <div class="section-header">6x9 Construction Stones</div>
         <div class="grid">
@@ -73,7 +96,7 @@
             </div>
         </div>
 
-        <div class="section-header">Aggregates & Fills</div>
+        <div class="section-header">Aggregates & Ballast</div>
         <div class="grid">
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?auto=format&fit=crop&q=80&w=400"><b>Murrum</b>
@@ -93,6 +116,20 @@
                     <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
                 </div>
             </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1533036490184-3165b70bb391?auto=format&fit=crop&q=80&w=400"><b>Ballast</b>
+                <div class="price-tag">Ksh <span id="p_bal">3500</span></div>
+                <div class="btn-stack">
+                    <button class="comm-btn wa-btn" onclick="checkout('wa', 'Ballast', 'p_bal')">WhatsApp Order</button>
+                    <button class="comm-btn sms-btn" onclick="checkout('sms', 'Ballast', 'p_bal')">SMS Order</button>
+                    <a href="tel:+254712694976" class="comm-btn call-btn">Call to Order</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="edu-box">
+            <h3 style="color:#fbbf24; text-align:center;">EDUCATION DASHBOARD</h3>
+            <p style="font-size:0.8rem; color:#ccc;">Our 9x9 stones are perfect for main structural walls, while Ballast is essential for high-quality concrete mixtures.</p>
         </div>
     </div>
 
@@ -107,7 +144,7 @@
                 if(input) localStorage.setItem('price_' + k, input.value);
             });
             loadSavedPrices();
-            alert("Prices Updated Live!");
+            alert("Prices Restored & Updated!");
         }
 
         function loadSavedPrices() {
@@ -124,7 +161,7 @@
             let q = document.getElementById('userQty').value;
             let p = document.getElementById(id).innerText;
             let total = q * p.replace(/,/g, '');
-            let msg = "ORDER REQUEST: " + item + "\nQty: " + q + "\nTotal: Ksh " + total.toLocaleString();
+            let msg = "ORDER: " + item + "\nQty: " + q + "\nTotal: Ksh " + total.toLocaleString();
             
             if(type === 'wa') {
                 window.open("https://wa.me/254712694976?text=" + encodeURIComponent(msg), '_blank');
@@ -133,6 +170,6 @@
             }
         }
     </script>
-    <a href="tel:+254712694976" class="footer-call">0712694976 - CALL NOW</a>
+    <a href="tel:+254712694976" class="footer-call">0712694976 - CALL KENNETH</a>
 </body>
 </html>
