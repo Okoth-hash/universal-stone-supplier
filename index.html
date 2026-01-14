@@ -3,57 +3,58 @@
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KENNETH OMONDI SUPPLIES | OFFICIAL SITE</title>
+    <meta name="description" content="Kenneth Omondi Supplies - Premium 9x9 and 6x9 Dressed Stones, Ballast, and Murrum in Nairobi.">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; margin: 0; padding-bottom: 200px; }
-        
-        /* BRANDED NAV */
-        .nav { background: #111; padding: 10px 15px; text-align: center; border-bottom: 3px solid #fbbf24; position: sticky; top:0; z-index:100; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.8); }
-        .logo-container { display: flex; align-items: center; gap: 10px; }
-        .logo-img { height: 40px; width: 40px; border-radius: 5px; border: 1px solid #fbbf24; }
-        .brand-name { color: #fbbf24; margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+        .nav { background: #111; padding: 10px 15px; text-align: center; border-bottom: 3px solid #fbbf24; position: sticky; top:0; z-index:100; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; gap: 8px; }
+        .logo-img { height: 35px; width: 35px; border: 1px solid #fbbf24; border-radius: 4px; }
+        .brand-name { color: #fbbf24; margin: 0; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; }
 
         /* ADMIN & DASHBOARD */
         #admin-panel { display: none; background: #1a1a1a; margin: 10px; padding: 20px; border: 2px solid #fbbf24; border-radius: 15px; }
-        .admin-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; }
-        .admin-input { width: 80px; background: #000; border: 1px solid #fbbf24; color: #fbbf24; text-align: center; padding: 5px; border-radius: 5px; }
+        .admin-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .admin-input { width: 80px; background: #000; border: 1px solid #fbbf24; color: #fbbf24; text-align: center; border-radius: 5px; }
         .dashboard { background: #111; margin: 10px; padding: 20px; border-radius: 15px; border: 2px solid #fbbf24; text-align: center; }
-        .summary-total { font-size: 2rem; font-weight: 900; color: #fbbf24; margin: 10px 0; }
+        .summary-total { font-size: 2.2rem; font-weight: 900; color: #fbbf24; margin: 10px 0; }
         .qty-box { width: 90%; padding: 15px; background: #1a1a1a; border: 1px solid #fbbf24; color: #fff; border-radius: 8px; font-size: 1.6rem; text-align: center; }
 
-        /* PRODUCT CARDS */
+        /* GRID & CARDS */
         .container { padding: 12px; }
-        .header { border-left: 5px solid #fbbf24; padding-left: 10px; margin: 30px 0 15px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .header { border-left: 5px solid #fbbf24; padding-left: 10px; margin: 30px 0 15px 0; font-weight: 900; color: #fbbf24; text-transform: uppercase; font-size: 0.8rem; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; text-align: center; padding-bottom: 10px; transition: 0.3s; }
-        .card:active { transform: scale(0.97); border-color: #fbbf24; }
+        .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; text-align: center; padding-bottom: 10px; }
         .card img { width: 100%; height: 110px; object-fit: cover; }
         .price { font-size: 1rem; font-weight: 900; color: #fbbf24; margin: 5px 0; }
 
-        /* CHANNELS */
+        /* 3-CHANNEL BUTTONS */
         .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 0 8px; }
-        .ch-btn { border: none; padding: 10px 2px; border-radius: 5px; font-weight: 900; font-size: 0.6rem; text-transform: uppercase; cursor: pointer; color: white; }
-        .wa { background: #25D366; }
-        .sm { background: #007AFF; }
+        .ch-btn { border: none; padding: 10px 2px; border-radius: 5px; font-weight: 900; font-size: 0.6rem; text-transform: uppercase; color: white; cursor: pointer; }
+        .wa { background: #25D366; } .sm { background: #007AFF; }
         .ca-card { background: #444; grid-column: span 2; margin-top: 2px; }
 
+        /* EDUCATION SECTION */
+        .edu-box { background: #111; border: 1px solid #222; margin: 40px 10px; padding: 20px; border-radius: 15px; }
+        .edu-item { margin-bottom: 15px; font-size: 0.85rem; color: #ccc; line-height: 1.5; }
+        .edu-title { color: #fbbf24; font-weight: 900; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px; display: block; }
+
         /* FOOTER */
-        .dev-footer { background: #0a0a0a; border-top: 1px solid #222; padding: 40px 15px; text-align: center; margin-top: 50px; }
-        .dev-badge { display: inline-block; padding: 4px 12px; border: 1px solid #fbbf24; border-radius: 20px; color: #fbbf24; font-size: 0.6rem; font-weight: bold; margin-bottom: 15px; }
-        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 20px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; font-size: 1.2rem; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
+        .dev-footer { background: #0a0a0a; border-top: 1px solid #222; padding: 40px 15px; text-align: center; }
+        .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 20px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; font-size: 1.2rem; }
     </style>
 </head>
 <body onload="initSite()">
 
     <div class="nav">
         <div class="logo-container">
-            <img class="logo-img" src="https://img.icons8.com/fluency/96/brick-wall.png" alt="Logo">
+            <img class="logo-img" src="https://img.icons8.com/fluency/96/brick-wall.png">
             <h1 class="brand-name">KENNETH OMONDI</h1>
         </div>
-        <span onclick="showAdmin()" style="color:#222; font-size:0.7rem; cursor:pointer; font-weight:bold;">ADMIN</span>
+        <span onclick="showAdmin()" style="color:#222; font-size:0.7rem; font-weight:bold; cursor:pointer;">ADMIN</span>
     </div>
 
     <div id="admin-panel">
-        <h3 style="color:#fbbf24; margin:0 0 15px 0;">PRICE CONTROL</h3>
+        <h3 style="color:#fbbf24; margin-bottom:15px;">PRICE MANAGER</h3>
         <div class="admin-row"><span>9x9 Dressed:</span><input type="number" id="i_9d" class="admin-input" value="53"></div>
         <div class="admin-row"><span>9x9 Undressed:</span><input type="number" id="i_9u" class="admin-input" value="45"></div>
         <div class="admin-row"><span>6x9 Dressed:</span><input type="number" id="i_6d" class="admin-input" value="28"></div>
@@ -61,17 +62,17 @@
         <div class="admin-row"><span>Hardcore:</span><input type="number" id="i_hard" class="admin-input" value="8500"></div>
         <div class="admin-row"><span>Ballast:</span><input type="number" id="i_bal" class="admin-input" value="3500"></div>
         <div class="admin-row"><span>Murrum:</span><input type="number" id="i_mar" class="admin-input" value="12000"></div>
-        <button style="width:100%; padding:15px; background:#fbbf24; color:#000; font-weight:900; border:none; border-radius:8px;" onclick="savePrices()">PUBLISH CHANGES</button>
+        <button style="width:100%; padding:15px; background:#fbbf24; font-weight:900; border:none; border-radius:8px;" onclick="savePrices()">SYNC PRICES</button>
     </div>
 
     <div class="dashboard">
-        <div id="summary-text" style="color:#888; font-size:0.75rem;">Calculated Quote</div>
+        <div id="summary-text" style="color:#888; font-size:0.75rem;">Price Estimate</div>
         <div class="summary-total" id="summary-total">Ksh 0</div>
         <input type="number" id="userQty" class="qty-box" value="1000" oninput="reCalc()">
     </div>
 
     <div class="container">
-        <div class="header">Premium Building Stones</div>
+        <div class="header">Building Stones</div>
         <div class="grid">
             <div class="card" onclick="set('9x9 Dressed', 'p_9d')"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?w=300"><b>9x9 Dressed</b><div class="price">Ksh <span id="p_9d">53</span></div><div class="channel-grid"><button class="ch-btn wa" onclick="order('WA')">WhatsApp</button><button class="ch-btn sm" onclick="order('SMS')">SMS</button><button class="ch-btn ca-card" onclick="order('CAL')">Call Now</button></div></div>
             <div class="card" onclick="set('9x9 Undressed', 'p_9u')"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?w=300"><b>9x9 Undressed</b><div class="price">Ksh <span id="p_9u">45</span></div><div class="channel-grid"><button class="ch-btn wa" onclick="order('WA')">WhatsApp</button><button class="ch-btn sm" onclick="order('SMS')">SMS</button><button class="ch-btn ca-card" onclick="order('CAL')">Call Now</button></div></div>
@@ -79,33 +80,43 @@
             <div class="card" onclick="set('6x9 Undressed', 'p_6u')"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?w=300"><b>6x9 Undressed</b><div class="price">Ksh <span id="p_6u">22</span></div><div class="channel-grid"><button class="ch-btn wa" onclick="order('WA')">WhatsApp</button><button class="ch-btn sm" onclick="order('SMS')">SMS</button><button class="ch-btn ca-card" onclick="order('CAL')">Call Now</button></div></div>
         </div>
 
-        <div class="header">Aggregates & Materials</div>
+        <div class="header">Aggregates</div>
         <div class="grid">
             <div class="card" onclick="set('Hardcore', 'p_hard')"><img src="https://images.unsplash.com/photo-1578345210246-47735e452504?w=300"><b>Hardcore</b><div class="price">Ksh <span id="p_hard">8500</span></div><div class="channel-grid"><button class="ch-btn wa" onclick="order('WA')">WhatsApp</button><button class="ch-btn sm" onclick="order('SMS')">SMS</button><button class="ch-btn ca-card" onclick="order('CAL')">Call Now</button></div></div>
             <div class="card" onclick="set('Ballast', 'p_bal')"><img src="https://images.unsplash.com/photo-1533036490184-3165b70bb391?w=300"><b>Ballast</b><div class="price">Ksh <span id="p_bal">3500</span></div><div class="channel-grid"><button class="ch-btn wa" onclick="order('WA')">WhatsApp</button><button class="ch-btn sm" onclick="order('SMS')">SMS</button><button class="ch-btn ca-card" onclick="order('CAL')">Call Now</button></div></div>
             <div class="card" onclick="set('Murrum', 'p_mar')"><img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?w=300"><b>Murrum</b><div class="price">Ksh <span id="p_mar">12000</span></div><div class="channel-grid"><button class="ch-btn wa" onclick="order('WA')">WhatsApp</button><button class="ch-btn sm" onclick="order('SMS')">SMS</button><button class="ch-btn ca-card" onclick="order('CAL')">Call Now</button></div></div>
         </div>
 
+        <div class="edu-box">
+            <h2 style="color:#fbbf24; font-size:1.1rem; margin-top:0;">Build Smarter</h2>
+            <div class="edu-item">
+                <span class="edu-title">Stone Selection</span>
+                Use 9x9 Dressed stones for external perimeter walls and load-bearing structures for maximum durability. 6x9 stones are ideal for internal room partitions to save on floor space.
+            </div>
+            <div class="edu-item">
+                <span class="edu-title">Foundation Tip</span>
+                Always ensure your Hardcore is hand-packed and blinded with Murrum before casting the slab to prevent future cracking.
+            </div>
+        </div>
+
         <footer class="dev-footer">
-            <div class="dev-badge">SYSTEM SECURED & VERIFIED</div>
-            <div style="font-weight:900; font-size:1.1rem; color:#fff;">Robin the Developer</div>
-            <div style="color:#666; font-size:0.7rem; margin-top:5px;">Architecting the Future of Construction Logistics</div>
-            <p style="color:#333; font-size:0.6rem; margin-top:20px;"> 2026 KENNETH OMONDI SUPPLIES. NAIROBI, KENYA.</p>
+            <div style="font-weight:900; color:#fff;">Robin the Developer</div>
+            <div style="color:#444; font-size:0.6rem; margin-top:5px;">Digital Architecture for Kenneth Omondi Supplies</div>
+            <p style="color:#222; font-size:0.5rem;"> 2026 OFFICIAL SYSTEM.</p>
         </footer>
     </div>
 
     <script>
         let curN = ""; let curID = "";
         function initSite() { loadPrices(); }
-        function showAdmin() { if(prompt("Access Key:") === "1234") document.getElementById('admin-panel').style.display = 'block'; }
+        function showAdmin() { if(prompt("Key:") === "1234") document.getElementById('admin-panel').style.display = 'block'; }
         function set(name, id) { curN = name; curID = id; reCalc(); }
         function reCalc() {
             let q = document.getElementById('userQty').value;
             if(curID) {
-                let p = document.getElementById(curID).innerText;
-                let t = q * p.replace(/,/g, '');
+                let p = document.getElementById(curID).innerText.replace(/,/g, '');
                 document.getElementById('summary-text').innerText = q + " x " + curN;
-                document.getElementById('summary-total').innerText = "Ksh " + t.toLocaleString();
+                document.getElementById('summary-total').innerText = "Ksh " + (q * p).toLocaleString();
             }
         }
         function savePrices() {
@@ -121,13 +132,13 @@
             });
         }
         function order(m) {
-            if(!curN) return alert("Tap a product image first!");
-            let msg = "*OFFICIAL QUOTE - KENNETH OMONDI SUPPLIES*\n--------------------------\nItem: "+curN+"\nQuantity: "+document.getElementById('userQty').value+"\nTotal Price: "+document.getElementById('summary-total').innerText+"\n--------------------------\nPlease confirm availability.";
+            if(!curN) return alert("Select a product first!");
+            let msg = "*ORDER REQUEST*\nItem: "+curN+"\nQty: "+document.getElementById('userQty').value+"\nTotal: "+document.getElementById('summary-total').innerText;
             if(m==='WA') window.open("https://wa.me/254712694976?text="+encodeURIComponent(msg));
             else if(m==='SMS') window.location.href = "sms:+254712694976?body="+encodeURIComponent(msg);
             else window.location.href = "tel:+254712694976";
         }
     </script>
-    <a href="tel:+254712694976" class="footer-call"> CALL KENNETH OMONDI</a>
+    <a href="tel:+254712694976" class="footer-call"> CALL KENNETH NOW</a>
 </body>
 </html>
