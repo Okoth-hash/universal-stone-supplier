@@ -1,31 +1,35 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KENNETH OMONDI SUPPLIES | MASTER</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>KENNETH OMONDI SUPPLIES | Quality Building Stones & Aggregates Nairobi</title>
+    <meta name="description" content="Kenneth Omondi Supplies offers premium 9x9 and 6x9 Dressed Stones, Hardcore, Ballast, and Murrum in Nairobi and across Kenya. Order via WhatsApp or Call 0712694976.">
+    <meta name="keywords" content="Kenneth Omondi Supplies, Building stones Nairobi, 9x9 dressed stones Kenya, ballast prices Kenya, hardcore delivery Nairobi, construction materials Kenya">
+    <meta name="author" content="Robin the Developer">
+    <link rel="canonical" href="https://okoth-hash.github.io/universal-stone-supplier/">
+
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; margin: 0; padding-bottom: 160px; }
         .nav { background: #111; padding: 15px; text-align: center; border-bottom: 3px solid #fbbf24; position: sticky; top:0; z-index:100; }
         .logo-icon { width: 45px; height: 45px; fill: #fbbf24; }
         
-        /* POPUP AD STYLES */
+        /* POPUP AD */
         #promo-popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
         .popup-content { background: #1a1a1a; width: 85%; max-width: 400px; border-radius: 20px; border: 3px solid #fbbf24; position: relative; text-align: center; overflow: hidden; animation: zoomIn 0.4s ease; }
         @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .popup-img { width: 100%; height: 180px; object-fit: cover; }
         .popup-text { padding: 20px; }
         .popup-h { color: #fbbf24; font-weight: 900; font-size: 1.4rem; margin-bottom: 10px; }
-        .popup-p { font-size: 0.9rem; color: #ccc; margin-bottom: 20px; }
         .popup-btn { background: #fbbf24; color: #000; padding: 15px 30px; border-radius: 50px; font-weight: 900; text-decoration: none; display: inline-block; width: 80%; }
         .close-popup { position: absolute; top: 10px; right: 15px; color: #fff; font-size: 2rem; cursor: pointer; font-weight: bold; }
 
-        /* ADMIN & DASHBOARD */
+        /* CONTENT GRID */
         #admin-panel { display: none; background: #1a1a1a; margin: 10px; padding: 15px; border: 1px solid #fbbf24; border-radius: 12px; }
         .admin-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; }
         .admin-input { width: 80px; background: #000; border: 1px solid #fbbf24; color: #fbbf24; text-align: center; font-weight: bold; }
         .dashboard { background: #111; margin: 10px; padding: 20px; border-radius: 15px; border: 2px solid #fbbf24; text-align: center; }
-        #order-label { font-size: 0.9rem; color: #fbbf24; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; }
-        #summary-text { font-size: 1.1rem; color: #fff; margin: 10px 0; min-height: 1.2em; }
         .summary-total { font-size: 2rem; font-weight: 900; color: #fbbf24; margin-bottom: 15px; }
         .qty-box { width: 90%; padding: 15px; background: #1a1a1a; border: 1px solid #fbbf24; color: #fff; border-radius: 8px; font-size: 1.6rem; text-align: center; }
         .container { padding: 12px; }
@@ -33,15 +37,13 @@
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; text-align: center; padding-bottom: 12px; }
         .card img { width: 100%; height: 110px; object-fit: cover; }
-        .card b { display: block; margin: 8px 0; font-size: 0.85rem; }
         .price { font-size: 1rem; font-weight: 900; color: #fbbf24; margin-bottom: 10px; }
         .btn-stack { display: flex; flex-direction: column; gap: 5px; padding: 0 10px; }
         .btn { border: none; padding: 10px; border-radius: 6px; font-weight: 900; font-size: 0.65rem; text-transform: uppercase; cursor: pointer; text-decoration: none; display: block; text-align: center; }
         .wa { background: #25D366; color: white; }
         .sm { background: #007AFF; color: white; }
-        .edu-section { background: #0a0a0a; border: 1px solid #222; border-radius: 12px; padding: 20px; margin: 40px 10px; font-size: 0.85rem; line-height: 1.6; color: #bbb; }
-        .dev-tag { text-align: center; color: #444; font-size: 0.7rem; padding: 20px 0; border-top: 1px solid #111; }
         .footer-call { position: fixed; bottom: 0; width: 100%; background: #fbbf24; color: #000; padding: 20px; text-align: center; font-weight: 900; text-decoration: none; z-index: 1000; font-size: 1.3rem; }
+        .dev-tag { text-align: center; color: #444; font-size: 0.7rem; padding: 20px 0; }
     </style>
 </head>
 <body onload="initSite()">
@@ -52,15 +54,14 @@
             <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?w=500" class="popup-img">
             <div class="popup-text">
                 <div class="popup-h">NEW YEAR OFFER!</div>
-                <div class="popup-p">Get premium 9x9 Dressed Stones at the best market rates in Nairobi. Quality guaranteed.</div>
+                <p style="color:#ccc; font-size:0.9rem;">Get premium 9x9 Dressed Stones at the best market rates.</p>
                 <a href="tel:+254712694976" class="popup-btn">ORDER NOW</a>
             </div>
         </div>
     </div>
 
     <div class="nav">
-        <svg class="logo-icon" viewBox="0 0 24 24"><path d="M12,7V3H2V21H22V7H12M10,19H4V17H10V19M10,15H4V13H10V15M10,11H4V9H10V11M20,19H12V17H20V19M20,15H12V13H20V15M20,11H12V9H20V11Z" /></svg>
-        <h2 style="color:#fbbf24; margin:0; font-size: 1.1rem;">KENNETH OMONDI SUPPLIES</h2>
+        <h1 style="color:#fbbf24; margin:0; font-size: 1.1rem;">KENNETH OMONDI SUPPLIES</h1>
         <span style="color:#222; font-size:0.6rem;" onclick="showAdmin()">ADMIN</span>
     </div>
 
@@ -72,12 +73,11 @@
         <div class="admin-row"><span>Hardcore:</span><input type="number" id="i_hard" class="admin-input" value="8500"></div>
         <div class="admin-row"><span>Ballast:</span><input type="number" id="i_bal" class="admin-input" value="3500"></div>
         <div class="admin-row"><span>Murrum:</span><input type="number" id="i_mar" class="admin-input" value="12000"></div>
-        <button style="width:100%; padding:10px; background:#fbbf24; font-weight:bold; border:none;" onclick="savePrices()">SAVE ALL UPDATES</button>
+        <button style="width:100%; padding:10px; background:#fbbf24; font-weight:bold; border:none;" onclick="savePrices()">SAVE UPDATES</button>
     </div>
 
     <div class="dashboard">
-        <div id="order-label">Current Quote</div>
-        <div id="summary-text">Select a commodity below</div>
+        <div id="summary-text" style="color:#fbbf24; font-size:0.8rem; text-transform:uppercase;">Select Commodity</div>
         <div class="summary-total" id="summary-total">Ksh 0</div>
         <input type="number" id="userQty" class="qty-box" value="1000" oninput="reCalc()">
     </div>
@@ -85,26 +85,21 @@
     <div class="container">
         <div class="header">9x9 Load-Bearing Stones</div>
         <div class="grid">
-            <div class="card" onclick="set('9x9 Dressed Stones', 'p_9d')"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?w=300"><b>9x9 Dressed</b><div class="price">Ksh <span id="p_9d">53</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button><button class="btn sm" onclick="order('SMS')">SMS</button></div></div>
-            <div class="card" onclick="set('9x9 Undressed Stones', 'p_9u')"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?w=300"><b>9x9 Undressed</b><div class="price">Ksh <span id="p_9u">45</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button><button class="btn sm" onclick="order('SMS')">SMS</button></div></div>
+            <div class="card" onclick="set('9x9 Dressed Stones', 'p_9d')"><img src="https://images.unsplash.com/photo-1516655855035-d52159ce4c51?w=300"><b>9x9 Dressed</b><div class="price">Ksh <span id="p_9d">53</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
+            <div class="card" onclick="set('9x9 Undressed Stones', 'p_9u')"><img src="https://images.unsplash.com/photo-1590069230005-db393731499c?w=300"><b>9x9 Undressed</b><div class="price">Ksh <span id="p_9u">45</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
         </div>
 
         <div class="header">6x9 Partition Stones</div>
         <div class="grid">
-            <div class="card" onclick="set('6x9 Dressed Stones', 'p_6d')"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=300"><b>6x9 Dressed</b><div class="price">Ksh <span id="p_6d">28</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button><button class="btn sm" onclick="order('SMS')">SMS</button></div></div>
-            <div class="card" onclick="set('6x9 Undressed Stones', 'p_6u')"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?w=300"><b>6x9 Undressed</b><div class="price">Ksh <span id="p_6u">22</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button><button class="btn sm" onclick="order('SMS')">SMS</button></div></div>
+            <div class="card" onclick="set('6x9 Dressed Stones', 'p_6d')"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=300"><b>6x9 Dressed</b><div class="price">Ksh <span id="p_6d">28</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
+            <div class="card" onclick="set('6x9 Undressed Stones', 'p_6u')"><img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?w=300"><b>6x9 Undressed</b><div class="price">Ksh <span id="p_6u">22</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
         </div>
 
-        <div class="header">Foundation & Fills</div>
+        <div class="header">Foundation & Aggregates</div>
         <div class="grid">
             <div class="card" onclick="set('Hardcore', 'p_hard')"><img src="https://images.unsplash.com/photo-1578345210246-47735e452504?w=300"><b>Hardcore</b><div class="price">Ksh <span id="p_hard">8500</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
             <div class="card" onclick="set('Ballast', 'p_bal')"><img src="https://images.unsplash.com/photo-1533036490184-3165b70bb391?w=300"><b>Ballast</b><div class="price">Ksh <span id="p_bal">3500</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
             <div class="card" onclick="set('Murrum', 'p_mar')"><img src="https://images.unsplash.com/photo-1518709766631-a6a7f4e921c3?w=300"><b>Murrum</b><div class="price">Ksh <span id="p_mar">12000</span></div><div class="btn-stack"><button class="btn wa" onclick="order('WA')">WhatsApp</button></div></div>
-        </div>
-
-        <div class="edu-section">
-            <h3 style="color:#fbbf24; margin-top:0;">CONSTRUCTION EDUCATION</h3>
-            <b>Stones:</b> Use 9x9 for external security walls and 6x9 for internal partitions. 
         </div>
 
         <div class="dev-tag">System Architecture by Robin the Developer<br> 2026 Kenneth Omondi Supplies</div>
@@ -117,14 +112,14 @@
             setTimeout(() => { document.getElementById('promo-popup').style.display = 'flex'; }, 5000);
         }
         function closePopup() { document.getElementById('promo-popup').style.display = 'none'; }
-        function showAdmin() { if(prompt("Access Code:")==="1234") document.getElementById('admin-panel').style.display='block'; }
+        function showAdmin() { if(prompt("Code:")==="1234") document.getElementById('admin-panel').style.display='block'; }
         function set(name, id) { curN = name; curID = id; reCalc(); }
         function reCalc() {
             let q = document.getElementById('userQty').value;
             if(curID) {
                 let p = document.getElementById(curID).innerText;
                 let t = q * p.replace(/,/g, '');
-                document.getElementById('summary-text').innerText = "Ordering: " + q + " of " + curN;
+                document.getElementById('summary-text').innerText = q + " x " + curN;
                 document.getElementById('summary-total').innerText = "Ksh " + t.toLocaleString();
             }
         }
@@ -144,12 +139,11 @@
             });
         }
         function order(m) {
-            if(!curN) return alert("Select a commodity image!");
+            if(!curN) return alert("Select an image!");
             let q = document.getElementById('userQty').value;
             let t = document.getElementById('summary-total').innerText;
-            let txt = "*KENNETH OMONDI SUPPLIES - ORDER*\nCommodity: "+curN+"\nQuantity: "+q+"\nTotal: "+t;
-            if(m==='WA') window.open("https://wa.me/254712694976?text="+encodeURIComponent(txt));
-            else window.location.href = "sms:+254712694976?body="+encodeURIComponent(txt);
+            let txt = "*KENNETH OMONDI SUPPLIES*\nItem: "+curN+"\nQty: "+q+"\nTotal: "+t;
+            window.open("https://wa.me/254712694976?text="+encodeURIComponent(txt));
         }
     </script>
     <a href="tel:+254712694976" class="footer-call"> CALL KENNETH NOW: 0712694976</a>
